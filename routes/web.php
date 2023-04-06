@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [LoginController::class, 'index']);
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/dashboard2', function () {
+    return view('dashboard.admin');
+});
