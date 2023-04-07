@@ -70,7 +70,7 @@
         </div>
       </div>
     </div>
-    <div class="h-full hidden laptop:block w-[59%] bg-gradient-to-b from-[#5BAAD7] to-[#FFD25C]">
+    <div class="h-full hidden laptop:block w-[59%] bg-[#F1F5FD]">
       <div class="flex justify-center items-center h-full">
         <div class="flex flex-col justify-start items-center gap-4 ml-8">
           {{-- <h1 class="ml-3 font-bold text-[4rem] text-white">Selamat Datang</h1> --}}
