@@ -1,6 +1,6 @@
-/* @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
+/* @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap'); */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -31,5 +31,9 @@
 
   .input-error{
     @apply bg-red-100 border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500 dark:bg-red-700 dark:border-red-600 dark:text-red-100 dark:placeholder-red-400 dark:focus:ring-red-500 dark:focus:border-red-500;
+  }
+
+  .fa{
+    @apply w-4 h-4;
   }
 }
