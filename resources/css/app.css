@@ -36,4 +36,8 @@
   .fa{
     @apply w-4 h-4;
   }
+
+  .sidebar-item-active{
+    @apply text-white bg-slate-700;
+  }
 }
