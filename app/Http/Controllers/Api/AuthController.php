@@ -1,26 +1,16 @@
 <?php
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Role;
 use App\Query\UserQuery;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    protected $errorMessages = [
-        'name.required' => 'Name is required',
-        'username.required' => 'Username is required',
-        'username.numeric' => 'Username must be numeric',
-        'email.required' => 'Email is required',
-        'email.email' => 'Email is not valid',
-        'password.required' => 'Password is required',
-        'password.min' => 'Password must be at least 6 characters',
-    ];
-
     public function register(Request $request)
     {
         $validate = Validator::make($request->all(), [
@@ -28,27 +18,31 @@ class AuthController extends Controller
             'name' => 'required|string',
             'email' => 'required|email',
             'password' => 'required|string|min:6',
-        ], $this->errorMessages);
+        ], errorMsg());
 
         if ($validate->fails()) {
             return Response::error('Validation failed', ['message' => $validate->errors()->first()]);
         }
 
-        if (UserQuery::findUsername($request->username)) {
-            return Response::error('Nisn already exists', [], 409);
-        }
-        
-        if (UserQuery::findEmail($request->email)) {
-            return Response::error('Email already exists', [], 409);
-        }
+        try {
+            if (UserQuery::findUsername($request->username) instanceof \App\Models\User) {
+                return Response::error('Username already exists', [], 409);
+            }
 
-        if ($user = UserQuery::create($request)) {
-            $token = auth()->login($user);
-    
-            return $this->respondWithToken($token);
-        }
+            if (UserQuery::findEmail($request->email) instanceof \App\Models\User) {
+                return Response::error('Email already exists', [], 409);
+            }
 
-        return Response::internalServerError();
+            if ($user = UserQuery::create($request)) {
+                $token = auth()->login($user);
+
+                return $this->respondWithToken($token);
+            }
+
+            return Response::internalServerError();
+        } catch (\Throwable $th) {
+            return Response::internalServerError($th->getMessage());
+        }
     }
 
     /**
@@ -61,27 +55,27 @@ class AuthController extends Controller
         $validate = Validator::make(request()->all(), [
             'username' => 'required|numeric',
             'password' => 'required|string',
-        ], $this->errorMessages);
+        ], errorMsg());
 
         if ($validate->fails()) {
             return Response::error('Validation failed', $validate->errors());
         }
 
-        $credentials = request(['username', 'password']);
+        try {
+            $credentials = request(['username', 'password']);
 
-        if (UserQuery::findUsername($credentials['username']) === false) {
-            return Response::internalServerError();
+            if (UserQuery::findUsername($credentials['username']) === null) {
+                return Response::error('Username not found', [], 401);
+            }
+
+            if (!$token = auth()->attempt($credentials)) {
+                return Response::error('Password is incorrect', [], 401);
+            }
+
+            return $this->respondWithToken($token);
+        } catch (\Throwable $th) {
+            return Response::internalServerError($th->getMessage());
         }
-
-        if (UserQuery::findUsername($credentials['username']) === null) {
-            return Response::error('Username not found', [], 401);
-        }
-
-        if (! $token = auth()->attempt($credentials)) {
-            return Response::error('Password is incorrect', [], 401);
-        }
-
-        return $this->respondWithToken($token);
     }
 
     /**
@@ -124,11 +118,7 @@ class AuthController extends Controller
         try {
             $user = UserQuery::findEmail(auth()->user()->email);
 
-            if ($user == false) {
-                return Response::internalServerError();
-            }
-
-            if (! Hash::check(request()->old_password, $user->password)) {
+            if (!Hash::check(request()->old_password, $user->password)) {
                 return Response::error('Old password is incorrect', [], 401);
             }
 
@@ -151,17 +141,17 @@ class AuthController extends Controller
             return Response::error('Validation failed', $validate->errors());
         }
 
-        $user = UserQuery::findEmail(request()->email);
+        try {
+            $user = UserQuery::findEmail(request()->email);
 
-        if ($user === false) {
-            return Response::internalServerError();
+            if ($user === null) {
+                return Response::error('Email not found', [], 404);
+            }
+
+            return $this->sendResetPasswordEmail($user);
+        } catch (\Throwable $th) {
+            return Response::internalServerError($th->getMessage());
         }
-
-        if ($user === null) {
-            return Response::error('Email not found', [], 404);
-        }
-
-        return $this->sendResetPasswordEmail($user);
     }
 
     /**
@@ -174,7 +164,8 @@ class AuthController extends Controller
     {
         $token = $this->createToken($user);
 
-        $user->sendPasswordResetNotification($token);
+        // $user->sendPasswordResetNotification($token);
+        Mail::to($user->email)->send(new \App\Mail\SmektuberMail($user, $token));
 
         return Response::success([], 'Reset password email sent');
     }
@@ -214,15 +205,9 @@ class AuthController extends Controller
         ];
 
         if (!$refresh) {
-            $data['user']['name'] = auth()->user()->name;
-            $data['user']['username'] = auth()->user()->username;
-            $data['user']['email'] = auth()->user()->email;
-            $data['user']['email_verified'] = auth()->user()->email_verified_at ? true : false;
-            $data['user']['role'] = Role::where('id', auth()->user()->role_id)->first()->name;
+            $data['user'] = formatUser();
         }
 
         return Response::success($data);
     }
-
-    
 }

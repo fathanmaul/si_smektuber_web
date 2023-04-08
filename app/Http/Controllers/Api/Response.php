@@ -7,14 +7,48 @@ class Response
      * Success response
      * 
      * @param array $data
+     * @param string $message
      * @param int $status
+     * @return \Illuminate\Http\JsonResponse
      */
-    public static function success($data = [], $message = null, $status = 200)
+    public static function success($data = null, $message = null, $status = 200)
+    {
+        $data = is_array($data) ? $data : $data;
+        $data = is_null($data) ? [] : $data;
+
+        return response()->json([
+            'status' => $status,
+            'message' => $message ?? 'Success',
+            'data' => $data,
+        ], $status);
+    }
+
+    /**
+     * Success response with pagination
+     * 
+     * @param array|object $data
+     * @param string $message
+     * @param int $status
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public static function paginate($data, $message = null, $status = 200)
     {
         return response()->json([
             'status' => $status,
             'message' => $message ?? 'Success',
-            'data' => $data
+            'data' => $data->items(),
+            'pagination' => [
+                'total' => $data->total(),
+                'per_page' => $data->perPage(),
+                'current_page' => $data->currentPage(),
+                'last_page' => $data->lastPage(),
+                'first_page_url' => $data->url(1),
+                'last_page_url' => $data->url($data->lastPage()),
+                'next_page_url' => $data->nextPageUrl(),
+                'prev_page_url' => $data->previousPageUrl(),
+                'from' => $data->firstItem(),
+                'to' => $data->lastItem()
+            ]
         ], $status);
     }
 
@@ -24,6 +58,7 @@ class Response
      * @param string $message
      * @param array $data
      * @param int $status
+     * @return \Illuminate\Http\JsonResponse
      */
     public static function error($message, $data = [], $status = 400)
     {
@@ -40,6 +75,8 @@ class Response
 
     /**
      * Unauthorized response
+     * 
+     * @return \Illuminate\Http\JsonResponse
      */
     public static function unauthorized()
     {
@@ -52,6 +89,8 @@ class Response
 
     /**
      * Not Found response
+     * 
+     * @return \Illuminate\Http\JsonResponse
      */
     public static function notFound()
     {
@@ -64,18 +103,22 @@ class Response
 
     /**
      * Internal Server Error response
+     * 
+     * @return \Illuminate\Http\JsonResponse
      */
     public static function internalServerError($message = null)
     {
         return response()->json([
             'status' => 500,
-            'message' => 'Internal Server Error',
+            'message' => $message ?? 'Internal Server Error',
             'data' => json_decode('{}')
         ], 500);
     }
 
     /**
      * Bad Request response
+     * 
+     * @return \Illuminate\Http\JsonResponse
      */
     public static function badRequest()
     {
@@ -88,6 +131,8 @@ class Response
 
     /**
      * Forbidden response
+     * 
+     * @return \Illuminate\Http\JsonResponse
      */
     public static function forbidden()
     {
