@@ -22,7 +22,7 @@ Route::prefix('/auth')->group(function () {
     Route::middleware('api.auth')->group(function () {
         Route::post('/logout', NAMESPACE_API . 'AuthController@logout')->name('logout');
         Route::post('/refresh', NAMESPACE_API . 'AuthController@refresh')->name('refresh');
-        Route::post('/update-password', NAMESPACE_API . 'AuthController@updatePassword')->name('reset-password');
+        Route::put('/update-password', NAMESPACE_API . 'AuthController@updatePassword')->name('reset-password');
     });
 
     Route::post('/forgot-password', NAMESPACE_API . 'AuthController@forgotPassword')->name('forgot-password');
@@ -32,4 +32,10 @@ Route::prefix('/auth')->group(function () {
 Route::prefix('/article')->middleware('api.auth')->group(function () {
     Route::get('/', NAMESPACE_API . 'ArticleController@index')->name('article.index');
     Route::get('/{id}', NAMESPACE_API . 'ArticleController@show')->name('article.show');
+});
+
+Route::prefix('/user')->middleware('api.auth')->group(function () {
+    Route::get('/detail', NAMESPACE_API . 'UserController@show')->name('user.show');
+    Route::put('/update', NAMESPACE_API . 'UserController@update')->name('user.update');
+    Route::post('/avatar', NAMESPACE_API . 'UserController@updateAvatar')->name('user.update.avatar');
 });

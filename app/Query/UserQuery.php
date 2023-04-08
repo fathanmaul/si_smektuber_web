@@ -2,10 +2,6 @@
 
 namespace App\Query;
 
-use App\Models\Role;
-use App\Models\User;
-use Illuminate\Http\Request;
-
 /**
  * User Query
  */
@@ -15,49 +11,37 @@ class UserQuery
      * Find user by email
      * 
      * @param string $email
-     * @return User|null|false
+     * @return \App\Models\User|null
      */
     public static function findEmail($email)
     {
-        try {
-            return User::where('email', $email)->first();
-        } catch (\Throwable $th) {
-            return false;
-        }
+        return \App\Models\User::where('email', $email)->first();
     }
 
     /**
      * Find user by username
      * 
      * @param string $username
-     * @return User|null|false
+     * @return \App\Models\User|null
      */
     public static function findUsername($username)
     {
-        try {
-            return User::where('username', $username)->first();
-        } catch (\Throwable $th) {
-            return false;
-        }
+        return \App\Models\User::where('username', $username)->first();
     }
 
     /**
      * Create new user
      * 
      * @param array $data
-     * @return User|false
+     * @return \App\Models\User
      */
-    public static function create(Request $request)
+    public static function create(\Illuminate\Http\Request $request)
     {
-        if (UserQuery::findEmail($request->email)) {
-            return false;
-        }
-
-        return User::create([
+        return \App\Models\User::create([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
-            'role_id' => Role::where('name', 'member')->first()->id,
+            'role_id' => \App\Models\Role::where('name', 'member')->first()->id,
             'password' => bcrypt($request->password),
         ]);
     }
@@ -65,17 +49,17 @@ class UserQuery
     /**
      * Update user
      * 
-     * @param User $user
+     * @param \App\Models\User $user
      * @param array $data
-     * @return User|false
+     * @return \App\Models\User|false
      */
-    public static function update(Request $request)
+    public static function update(\Illuminate\Http\Request $request)
     {
         if (UserQuery::findEmail($request->email)) {
             return false;
         }
 
-        $user = new User();
+        $user = new \App\Models\User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
