@@ -39,7 +39,7 @@ class AuthController extends Controller
                 return $this->respondWithToken($token);
             }
 
-            return Response::internalServerError();
+            return Response::error('Failed to register', [], 500);
         } catch (\Throwable $th) {
             return Response::internalServerError($th->getMessage());
         }
