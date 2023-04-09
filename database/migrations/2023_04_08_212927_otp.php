@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Article extends Migration
+class Otp extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class Article extends Migration
      */
     public function up()
     {
-        Schema::create('article', function (Blueprint $table) {
+        Schema::create('otp', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug');
-            $table->text('description');
-            $table->string('thumbnail');
+            $table->string('user_id');
+            $table->string('code');
+            $table->tinyInteger('is_valid')->default(1);
+            $table->timestamp('expired_at')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class Article extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('article');
+        Schema::dropIfExists('otp');
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\Response;
+use App\Models\About;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,3 +41,5 @@ Route::prefix('/user')->middleware('api.auth')->group(function () {
     Route::put('/update', NAMESPACE_API . 'UserController@update')->name('user.update');
     Route::post('/avatar', NAMESPACE_API . 'UserController@updateAvatar')->name('user.update.avatar');
 });
+
+Route::get('/about', fn () => Response::success(About::first()))->middleware('api.auth')->name('about');
