@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SekolahController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,6 +28,9 @@ Route::get('/ppdb', function () {
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/dashboard2', function () {
-    return view('dashboard.admin');
+// Route::get('/sekolah', [SekolahController::class, 'index']);
+
+Route::group(['prefix' => 'sekolah'], function () {
+    Route::get('/', [SekolahController::class, 'index']);
+    Route::get('/nama', [SekolahController::class, 'namaShow']);
 });
