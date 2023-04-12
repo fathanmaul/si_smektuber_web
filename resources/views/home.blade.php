@@ -29,7 +29,9 @@
     />
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+
+    {{-- Contoh di Bawah ini --}}
+    <link href="{{ asset('landing/lib/animate/animate.min.css') }}" rel="stylesheet" />
     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
