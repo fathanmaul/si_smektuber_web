@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Otp extends Model
+class Loker extends Model
 {
     use HasFactory;
 
-    protected $table = 'otp';
+    protected $table = 'loker';
 
     protected $fillable = [
-        'user_id',
-        'code',
-        'is_valid',
-        'expired_at'
+        'slug',
+        'title',
+        'description',
+        'thumbnail',
     ];
 }
