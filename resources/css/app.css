@@ -38,6 +38,8 @@
   }
 
   .sidebar-item-active{
-    @apply text-white bg-slate-700;
+    @apply text-white bg-[#19A7CE];
   }
+
+  
 }

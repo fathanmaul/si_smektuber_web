@@ -1,4 +1,4 @@
-<div class="sidebar min-h-screen bg-white w-[300px] transition-all ease-in-out duration-300 fixed laptop:static mt-20 laptop:mt-0">
+<div class="sidebar min-h-screen bg-white w-[300px] transition-all ease-in-out duration-300 fixed mt-20 laptop:mt-0">
     <div class="flex flex-col w-full">
         <div class="flex flex-row justify-center py-8 items-center gap-4">
             <div>
@@ -17,35 +17,35 @@
                 <ul class="space-y-2 font-medium">
                     <li class="mt-[0.2rem]">
                         <a href="{{ url('dashboard') }}"
-                            class="flex items-center py-4 px-5 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-slate-700 hover:text-white {{ request()->is('dashboard') ? 'sidebar-item-active' : '' }}">
+                            class="flex items-center py-4 px-5 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white {{ request()->is('dashboard') ? 'sidebar-item-active' : '' }}">
                             <i class="fa fa-solid fa-gauge"></i>
                             <span class="ml-4">Dashboard</span>
                         </a>
                     </li>
                     <li class="mt-[0.2rem]">
                         <a href="{{ url('/sekolah') }}"
-                            class="flex items-center py-4 px-5 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-slate-700 hover:text-white {{ request()->segment(1) == 'sekolah' ? 'sidebar-item-active' : '' }}">
+                            class="flex items-center py-4 px-5 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white {{ request()->segment(1) == 'sekolah' ? 'sidebar-item-active' : '' }}">
                             <i class="fa fa-solid fa-school-flag"></i>
                             <span class="ml-4">Profil Sekolah</span>
                         </a>
                     </li>
                     <li class="mt-[0.2rem]">
-                        <a href="#"
-                            class="flex items-center py-4 px-5 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-slate-700 hover:text-white">
+                        <a href="{{ url('/jurusan') }}"
+                            class="flex items-center py-4 px-5 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white {{ request()->segment(1) == 'jurusan' ? 'sidebar-item-active' : '' }}">
                             <i class="fa fa-solid fa-book"></i>
                             <span class="ml-4">Jurusan</span>
                         </a>
                     </li>
                     <li class="mt-[0.2rem]">
                         <a href="#"
-                            class="flex items-center py-4 px-5 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-slate-700 hover:text-white">
+                            class="flex items-center py-4 px-5 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white">
                             <i class="fa fa-solid fa-futbol"></i>
                             <span class="ml-4">Ekstrakurikuler</span>
                         </a>
                     </li>
                     
                     <li class="mt-[0.2rem]">
-                        <button class="flex w-full items-center py-4 px-5 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-slate-700 hover:text-white"
+                        <button class="flex w-full items-center py-4 px-5 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white"
                         aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                             <div class="flex flex-row justify-between w-full">
                                 <div class="">
@@ -79,7 +79,7 @@
                     </li>
                     <li class="mt-[0.2rem]">
                         <a href="#"
-                            class="flex items-center py-4 px-5 text-[1rem] rounded-lg text-slate-700 duration-200 ease-in-out transition-all hover:bg-slate-700 hover:text-white">
+                            class="flex items-center py-4 px-5 text-[1rem] rounded-lg text-slate-700 duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white">
                             <i class="fa fa-regular fa-newspaper"></i>
                             {{-- <i class="fa fa-solid fa-house"></i> --}}
                             <span class="ml-4">Artikel</span>
@@ -87,7 +87,7 @@
                     </li>
                     <li class="mt-[0.2rem]">
                         <a href="#"
-                            class="flex items-center py-4 px-5 text-[1rem] rounded-lg text-slate-700 duration-200 ease-in-out transition-all hover:bg-slate-700 hover:text-white">
+                            class="flex items-center py-4 px-5 text-[1rem] rounded-lg text-slate-700 duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white">
                             <i class="fa fa-brands fa-creative-commons-share"></i>
                             <span class="ml-4">Lowongan Kerja</span>
                         </a>

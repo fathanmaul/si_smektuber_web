@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
+    <title>{{ $title ?? ' SMK 7 JEMBER' }}</title>
     <link rel="shortcut icon" href="{{ asset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -15,10 +15,12 @@
         {{-- Sidebar Start Here --}}
         @include('layouts.sidebar')
         {{-- Sidebar End Here --}}
+
+
         {{-- Main Content Start Here --}}
-        <div class="bg-[#007AC7] w-full absolute h-[19rem] -z-10">
+        <div class="bg-[#19A7CE] w-full absolute h-[19rem] -z-10">
         </div>
-        <div class="min-h-full w-full flex flex-col overflow-y-auto pb-16" id="content">
+        <div class="main-content ml-[300px] min-h-full w-full flex flex-col overflow-y-auto pb-16 transition-all duration-300 ease-in-out" id="content">
             <header class=" w-full bg-slate-100 fixed laptop:bg-transparent laptop:static">
                 <div class="px-8 flex flex-row items-center  justify-between h-20 w-full">
                     <div class="text-white cursor-pointer" id="btnOpen">
@@ -59,22 +61,24 @@
                 @yield('content')
 
             </div>
-
-
         </div>
+        {{-- Main Content End Here --}}
 
 
     </div>
 
 
 
-
+    {{-- If you want to include extra script. Write Down here --}}
+    @yield('script')
+    {{-- End Extra Script --}}
+    
+    <script src="https://kit.fontawesome.com/9aa9764949.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 
-<script src="https://kit.fontawesome.com/9aa9764949.js" crossorigin="anonymous"></script>
-<script src="{{ asset('js/main.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
 
 
 </html>
