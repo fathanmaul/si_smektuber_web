@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => 'Profil Sekolah'])
 
 @section('content')
 
@@ -9,4 +9,8 @@
         <h4 class="mt-2 text-white">Informasi lengkap tentang Sekolah</h4>
     </div>
 </div>
+@endsection
+
+@section('script')
+    
 @endsection
