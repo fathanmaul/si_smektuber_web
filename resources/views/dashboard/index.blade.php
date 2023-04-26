@@ -1,156 +1,148 @@
 @extends('layouts/app', ['title' => 'Dashboard'])
 
 @section('content')
-    <div class="flex flex-row justify-between items-center">
-        <div class="flex flex-col">
-            <h1 class="text-3xl font-bold text-white">Halo, Fathan! <span><i
-                        class="fa-regular fa-hand-peace"></i></span></h1>
-            <h4 class="mt-2 text-white">Selamat Datang di Sistem Informasi SMK Negeri 7 Jember</h4>
-        </div>
-    </div>
-
-    <div class="mt-12 grid grid-cols-1 gap-4 tablet:grid-cols-2 laptop:grid-cols-3">
-        <div class="h-40 w-full bg-white rounded-xl shadow-lg"></div>
-        <div class="h-40 w-full bg-white rounded-xl shadow-lg"></div>
-        <div class="h-40 w-full bg-white rounded-xl shadow-lg"></div>
-    </div>
-
-    <div class="mt-12">
-        <h1 class="text-3xl font-bold text-slate-800">Informasi Sekolah</h1>
-        <h1 class="text-xl mt-6 font-bold text-slate-800">Tentang</h1>
-    </div>
-    <div class="mt-8">
-        <div class="">
-            <div class="w-[400px] h-[400px] float-left mr-5 mb-4">
-                <div class="w-full h-full bg-cover bg-center rounded-xl"
-                    style="background-image: url('https://i.pinimg.com/564x/19/1d/0b/191d0b904102f08057882bc508071f61.jpg')">
+    <div id="content" onclick="closeSidebar()">
+        <div class="container mx-auto flex flex-col w-full pt-4 px-8 min-h-screen">
+            <div class="pb-2 text-slate-100">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="flex flex-col">
+                <div class="">
+                    <h1 class="text-2xl laptop:text-4xl text-white font-bold">Halo, John Doe</h1>
+                </div>
+                <div class="mt-3">
+                    <h5 class=" text-md laptop:text-lg text-white">Selamat Datang di Admin SMK Negeri 7
+                        Jember</h5>
                 </div>
             </div>
-            <p class="text-justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Autem
-                necessitatibus quibusdam, blanditiis accusantium iusto fugit dolor porro consequuntur culpa
-                alias ipsam maxime quos vel quidem sapiente ipsa qui nemo illo impedit praesentium
-                excepturi. Ut autem inventore facere consequatur quasi, facilis sunt tempora consequuntur.
-                Dolores cum hic amet culpa. Aut iusto saepe laudantium, voluptatem, id in sunt voluptatum
-                excepturi nobis nesciunt minima voluptates. Harum illo animi dolorem ut voluptates veniam
-                necessitatibus totam itaque minus aspernatur non, natus consectetur magnam provident rerum
-                nemo cum voluptatum qui? Iste in laudantium quibusdam, accusamus voluptatum voluptatibus,
-                suscipit tenetur aut, corporis delectus officiis eligendi corrupti explicabo. Lorem ipsum
-                dolor sit amet, consectetur adipisicing elit. Commodi atque iusto adipisci quos sed? Libero
-                doloribus odio deleniti, corrupti dolorem nam cumque ipsa aliquid ipsum reiciendis illum
-                nisi harum distinctio nulla, in commodi dolores impedit magnam repudiandae ipsam iste?
-                Aspernatur quis quasi magnam, quo nisi dolor perferendis harum veniam modi ex aliquid rem,
-                iusto ea. Esse unde blanditiis dolorum quas, temporibus tempora deleniti quae sequi quis
-                deserunt voluptas. Quidem, et laboriosam nobis quos fugiat in saepe vero iure, cupiditate
-                ipsam ratione distinctio magni perferendis perspiciatis doloribus natus asperiores sunt aut
-                nisi fugit. Magni nulla veritatis fugit facilis. Voluptates natus modi non repellat, sequi
-                fuga et est ipsam libero minus eligendi numquam sapiente ducimus quasi provident, error
-                accusantium assumenda ratione rerum quisquam vel architecto laborum? Officia nesciunt
-                aperiam quo! Dolore, repellat aspernatur ut enim optio voluptatem cum quibusdam dicta quidem
-                quasi labore voluptate, aperiam in adipisci! Quis quae aperiam, itaque velit molestiae
-                saepe! Necessitatibus, rerum totam aut quis facilis quibusdam, accusamus officia
-                perspiciatis vel odit pariatur earum repellendus esse sequi qui! Quibusdam corrupti,
-                repellendus amet rem suscipit perspiciatis, quas natus porro quam necessitatibus culpa,
-                officia aperiam reprehenderit? Minima aut non nisi neque numquam adipisci asperiores
-                praesentium est magni mollitia, animi nihil eos corrupti, nostrum laudantium ad eaque illo
-                fugit voluptates esse quas eius sunt quis sequi. Dignissimos, assumenda at? Numquam beatae
-                modi commodi quis reprehenderit sint ipsa porro officia eos nulla pariatur facere quos
-                perspiciatis, voluptatibus aut praesentium nesciunt nihil sit possimus error animi
-                commodi magnam totam placeat nesciunt aspernatur dolorem recusandae odio excepturi expedita
-                ipsam quisquam doloribus. Aut, dolores, vero dicta repellendus quis debitis quae accusamus
-                molestiae ab omnis perferendis quaerat? Qui cumque, saepe facilis placeat quaerat aliquam
-                blanditiis libero temporibus sit, ratione debitis eos cum natus deleniti vel praesentium
-                consectetur repellendus officiis obcaecati est veniam! Distinctio ut recusandae sequi eos.
-                Eius excepturi ipsum in, doloremque dicta quos recusandae architecto ducimus minima
-                accusantium hic beatae neque dolorum nobis atque quaerat qui pariatur, obcaecati sapiente
-                iure fuga consectetur. Recusandae, eveniet! Ut alias officia esse nesciunt sapiente illum
-                non voluptas, ex odio dignissimos dolores ipsam pariatur!</p>
-        </div>
+            <div class="mt-9 grid grid-cols-1 gap-8 tablet:grid-cols-2 laptop:grid-cols-3 mb-8">
+                <div class="h-40 w-full bg-white rounded-xl drop-shadow-lg"></div>
+                <div class="h-40 w-full bg-white rounded-xl drop-shadow-lg"></div>
+                <div class="h-40 w-full bg-white rounded-xl drop-shadow-lg"></div>
+            </div>
+            {{-- <div class="card w-full bg-white shadow-xl mt-8">
+                <div class="card-body">
+                    <h2 class="card-title">Artikel Terbaru</h2>
+                    <div class="card w-full bg-white border mt-8">
+                        <div class="card-body flex flex-row gap-8">
+                            
+
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            {{-- <div class="bg-emerald-300 w-[350px] p-[3rem] h-[250px] ">
+                <img src="https://i.pinimg.com/564x/c0/8f/5c/c08f5c1f9d48c088f0fe6aa2fbc2b007.jpg" class="w-full h-full object-cover" alt="">
+            </div> --}}
 
 
+            {{-- <div class="card w-full bg-white drop-shadow-xl mt-8 p-8"> --}}
+            {{-- <h1 class="text-xl">Artikel Terbaru</h1>
+                <div class="card w-full border border-slate-200 my-4 p-5">
+                    <div class="flex flex-col laptop:flex-row h-full">
+                        <div class="h-full w-full laptop:w-[350px]">
+                            <div class="w-full h-[200px]">
+                                <img src="https://i.pinimg.com/564x/c0/8f/5c/c08f5c1f9d48c088f0fe6aa2fbc2b007.jpg" class="w-full h-full object-cover rounded-xl" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="card w-full border border-slate-200 my-4 p-5">
+                    <div class="flex flex-col laptop:flex-row h-full">
+                        <div class="h-full w-full laptop:w-[350px]">
+                            <div class="w-full h-[200px]">
+                                <img src="https://i.pinimg.com/564x/7d/0a/e5/7d0ae57df8ad52b7f24de2e46f089966.jpg" class="w-full h-full object-cover rounded-xl" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+                </div> --}}
+            {{-- </div> --}}
 
 
-    </div>
+            <h1 class="font-bold text-2xl">Artikel / Berita Terbaru</h1>
 
 
-    <div class="mt-8">
-        <div class="grid grid-cols-1 laptop:grid-cols-2 gap-12">
+            {{-- <div
+                class="card w-full bg-white drop-shadow-lg flex flex-col mb-4 p-6
+            tablet:flex-row tablet:gap-8
+            ">
+                <img src="https://i.pinimg.com/564x/4c/50/44/4c5044979bc75ba4f4198737d2d5a89f.jpg" alt=""
+                    class="rounded-lg w-full h-full tablet:h-[200px] tablet:w-[350px] tablet:object-cover tablet:object-center">
 
-            <div class=" w-full bg-white rounded-xl shadow-lg p-8">
-                <h1 class="text-4xl font-black">Visi</h1>
-                <div class="mt-12">
-                    <h4 class="text-start">
-                        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, quam. Lorem
-                        ipsum dolor sit amet consectetur adipisicing elit. Ullam, modi? "
-                    </h4>
+                <div class="details flex flex-col mt-4 tablet:mt-0">
+                    <h1 class="text-xl font-bold">Judul Artikel</h1>
+                    <p class="flex flex-row items-center">
+                        <span>
+                            <i class="fa-solid fa-calendar-days text-slate-600 mr-2 text-sm"></i>
+                        </span>
+                        24 Januari 2023
+                    </p>
+                    <p class="mt-4 tablet:mt-2">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Quisquam
+                        quod, quia, voluptate, voluptates quae quas voluptatibus quibusdam quidem
+                        voluptatum
+                        quos. Quisquam quod, quia, voluptate, voluptates quae quas voluptatibus quibusdam
+                        quidem voluptatum quos.</p>
+                </div>
+            </div> --}}
+
+            <div
+                class="card w-full h-[450px] p-6 bg-white tablet:h-[230px] drop-shadow-lg flex flex-col tablet:flex-row gap-5 tablet:gap-8 my-4">
+                <div class="h-[200px] w-full rounded-xl tablet:h-full tablet:w-[450px]">
+                    <img src="https://i.pinimg.com/564x/c1/45/d1/c145d1b786d6bbb335cc36ba111cd20c.jpg" alt=""
+                        class="w-full h-full object-cover object-center rounded-xl">
+                </div>
+                <div class="h-full w-full flex flex-col">
+                    <h3 class="text-xl font-bold">Judul Artikel</h3>
+                    <p class="flex flex-row items-center">
+                        <span>
+                            <i class="fa-solid fa-calendar-days text-slate-600 mr-2 text-sm"></i>
+                        </span>
+                        24 Januari 2023
+                    </p>
+                    <p class="mt-4 inline-block h-[80px] overflow-hidden text-ellipsis">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta eius fuga porro ea maiores voluptate
+                        iusto modi praesentium necessitatibus suscipit. Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Accusantium, doloremque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
+                        esse! Lorem ipsum dolor membingungkan apa yang harus saya tulis disini.
+                    </p>
+                    <a href="#" class="text-blue-400 hover:text-blue-500 duration-300 transition-all">Baca
+                        Selengkapnya &gt;&gt;</a>
                 </div>
             </div>
-            <div class="w-full bg-white rounded-xl shadow-lg p-8">
-                <h1 class="text-4xl font-black">Misi</h1>
-                <div class="mt-12">
-                    <ul class="list-decimal ml-4">
-                        <li class="mb-4">Membentuk sumber daya
-                            manusia yang siap bekerja
-                            yang didasari rasa Ikhlas,
-                            Iman dan Taqwa.</li>
-                        <li class="mb-4">Membentuk dan membangun
-                            sumber daya manusia yang
-                            bermoral dan berjiwa
-                            wirausaha.</li>
-                        <li class="mb-4">Menyiapkan tamatan yang
-                            beretos kerja tinggi, ulet dan
-                            siap bersaing di dunia kerja.</li>
-                        <li class="mb-4">Menyiapakan tamatan yang
-                            mampu mengembangkan
-                            bakat/minatnya guna bekal
-                            hidup di masyarkat.</li>
-                        <li class="mb-4">Membangun insan yang ber-
-                            perilaku hidup sehat dan
-                            demokratis.</li>
-                    </ul>
+            <div
+                class="card w-full h-[450px] my-4 p-6 bg-white tablet:h-[230px] drop-shadow-lg flex flex-col tablet:flex-row gap-5 tablet:gap-8">
+                <div class="h-[200px] w-full rounded-xl tablet:h-full tablet:w-[450px]">
+                    <img src="https://i.pinimg.com/564x/ec/5d/f1/ec5df1b1afeccd57ffd73f4a4499502f.jpg" alt=""
+                        class="w-full h-full object-cover object-center rounded-xl">
                 </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="mt-8">
-        <div class="flex flex-col w-full">
-            <div class="mb-5">
-                <h1 class="text-4xl font-black text-center">Visi</h1>
-                <div class="mt-8">
-                    <h4 class="text-center text-lg">
-                        “Terwujudnya tamatan yang berwawasan iptek dan imtaq menuju manusia yang
-                        berkepribadian bangsa indonesia. serta berjiwa wirausaha yang berazaskan pancasila.“
-                    </h4>
-                </div>
-            </div>
-            <div class="mb-5 mt-12 laptop:mx-24">
-                <h1 class="text-4xl font-black text-center">Misi</h1>
-                <div class="mt-8">
-                    <ul class="list-decimal ml-4">
-                        <li class="mb-4">Membentuk sumber daya
-                            manusia yang siap bekerja
-                            yang didasari rasa Ikhlas,
-                            Iman dan Taqwa.</li>
-                        <li class="mb-4">Membentuk dan membangun
-                            sumber daya manusia yang
-                            bermoral dan berjiwa
-                            wirausaha.</li>
-                        <li class="mb-4">Menyiapkan tamatan yang
-                            beretos kerja tinggi, ulet dan
-                            siap bersaing di dunia kerja.</li>
-                        <li class="mb-4">Menyiapakan tamatan yang
-                            mampu mengembangkan
-                            bakat/minatnya guna bekal
-                            hidup di masyarkat.</li>
-                        <li class="mb-4">Membangun insan yang ber-
-                            perilaku hidup sehat dan
-                            demokratis.</li>
-                    </ul>
+                <div class="h-full w-full flex flex-col">
+                    <h3 class="text-xl font-bold">Judul Artikel</h3>
+                    <p class="flex flex-row items-center">
+                        <span>
+                            <i class="fa-solid fa-calendar-days text-slate-600 mr-2 text-sm"></i>
+                        </span>
+                        24 Januari 2023
+                    </p>
+                    <p class="mt-4 inline-block h-[80px] overflow-hidden text-ellipsis">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta eius fuga porro ea maiores voluptate
+                        iusto modi praesentium necessitatibus suscipit. Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Accusantium, doloremque? Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos,
+                        esse! Lorem ipsum dolor membingungkan apa yang harus saya tulis disini.
+                    </p>
+                    <a href="#" class="text-blue-400 hover:text-blue-500 duration-300 transition-all">Baca
+                        Selengkapnya &gt;&gt;</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
-    
+    </div>
+@endsection
+
+@section('script')
+    <script type="text/javascript">
+        
+    </script>
 @endsection

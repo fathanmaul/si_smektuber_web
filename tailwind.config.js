@@ -5,7 +5,6 @@ module.exports = {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
-    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     screens:{
@@ -17,6 +16,6 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('flowbite/plugin'),
+    require('daisyui')
   ],
 }
