@@ -15,4 +15,9 @@ class SekolahController extends Controller
     {
         return view('ProfilSekolah.NamaSekolah.index');
     }
+
+    public function sejarah()
+    {
+        return view('ProfilSekolah.sejarah.index');
+    }
 }

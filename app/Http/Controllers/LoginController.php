@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Merger;
-use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -53,5 +52,15 @@ class LoginController extends Controller
         //     $request->session()->regenerate();
         //     return redirect()->intended('/dashboard');
         // }
+
+    }
+    public function destroy()
+    {
+        try {
+            Auth::logout();
+            return redirect()->route('login');
+        } catch (Exception $e) {        
+            dd($e->getMessage());   
+        }
     }
 }
