@@ -11,8 +11,6 @@
 </head>
 
 <body>
-
-
     <div class="h-screen flex flex-row">
         <div class="h-full phone:w-[41%] flex-1 bg-white">
             <div class="h-full flex flex-col items-center justify-center">
@@ -22,7 +20,9 @@
                         <h1 class="ml-3 font-bold text-2xl">SMK Negeri 7 Jember</h1>
                     </div>
                     <h1 class="text-2xl font-bold mb-6">Masuk</h1>
-                    <x-alert />
+                    <div class="mb-4">
+                        <x-alert />
+                    </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <label for="" class="appearance-none my-4 text-sm">Username</label>

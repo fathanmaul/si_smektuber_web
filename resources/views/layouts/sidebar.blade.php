@@ -3,8 +3,9 @@
     id="sidebar">
     <div class="flex flex-col w-full">
         <div class="flex flex-row justify-center py-8 items-center gap-4">
-            <div>
-                <img src="../assets/smk-logo.png" alt="logo" class="w-14">
+            <div class="h-[50px] w-[55px]">
+                <img src="{{ asset('assets/images/logo/logo-smk7.png') }}" alt="logo"
+                    class="w-full h-full object-cover object-center rounded-xl">
             </div>
             <div class="pt-2">
                 <h1 class="font-bold text-md">SMK Negeri 7</h1>
@@ -42,7 +43,7 @@
                                     </span>
                                 </span>
                             </div>
-                            <div class="collapse-content px-0 text-black">
+                            <div class="collapse-content px-0 text-black mt-1">
                                 <div class="w-full">
                                     <ul class="space-y-2 font-medium">
                                         <li class="mt-[0.2rem]">
@@ -53,13 +54,14 @@
                                             </a>
                                         </li>
                                         <li class="mt-[0.2rem]">
-                                            <a href="#"
-                                                class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white">
+                                            <a href="{{ route('sekolah.visi-misi') }}"
+                                                class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white
+                                                {{ request()->segment(2) == 'sekolah' && request()->segment(3) == 'visi-misi' ? 'active' : '' }}">
                                                 <span class="ml-4">Visi & Misi</span>
                                             </a>
                                         </li>
                                         <li class="mt-[0.2rem]">
-                                            <a href="#"
+                                            <a href="{{ route('sekolah.kepala-sekolah') }}"
                                                 class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white">
                                                 <span class="ml-4">Kepala Sekolah</span>
                                             </a>
@@ -89,8 +91,10 @@
                         </a>
                     </li>
                     <li class="mt-[0.2rem]">
-                        <a href="#"
-                            class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white">
+                        <a href="{{ route('prestasi.index') }}"
+                            class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white
+                            {{ request()->segment(2) == 'prestasi' ? 'active' : '' }}
+                            ">
                             <div class="w-5 h-5 p-4 flex justify-center items-center">
                                 <i class="fa-solid fa-trophy"></i>
                             </div>

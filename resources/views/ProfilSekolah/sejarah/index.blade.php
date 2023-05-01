@@ -23,31 +23,33 @@
                             <label class="label">
                                 <span class="label-text">Nama Sekolah</span>
                             </label>
-                            <input type="text" placeholder="Nama" class="input input-bordered w-full" />
+                            <input type="text" placeholder="Nama" name="school_name" value="{{ $profil->name}}" class="input input-bordered w-full" />
                         </div>
                         <div class="form-control w-full">
                             <label class="label">
                                 <span class="label-text">Email Sekolah</span>
                             </label>
-                            <input type="text" placeholder="email@email.com" class="input input-bordered w-full" />
+                            <input type="text" placeholder="email@email.com" name="school_email" value="{{ $profil->email }}" class="input input-bordered w-full" />
                         </div>
                         <div class="form-control w-full">
                             <label class="label">
                                 <span class="label-text">Telepon Sekolah</span>
                             </label>
-                            <input type="text" placeholder="ex. 021xxxx" class="input input-bordered w-full" />
+                            <input type="text" placeholder="ex. 021xxxx" name="school_phone" value="{{ $profil->phone }}" class="input input-bordered w-full" />
                         </div>
                         <div class="form-control w-full">
                             <label class="label">
                                 <span class="label-text">Alamat Sekolah</span>
                             </label>
-                            <input type="text" placeholder="ex. Jl. Gadjah Mada" class="input input-bordered w-full" />
+                            {{-- <input type="text" placeholder="ex. Jl. Gadjah Mada" value="{{ $profil->address }}" class="input input-bordered w-full" /> --}}
+                            <textarea name="address" class="textarea textarea-bordered" name="school_address">{{ $profil->address }}</textarea>
+
                         </div>
                         <div class="form-control w-full">
                             <label class="label">
                                 <span class="label-text">Akreditasi</span>
                             </label>
-                            <input type="text" placeholder="A / B / C" class="input input-bordered w-full" />
+                            <input type="text" placeholder="A / B / C" name="school_accreditation" value="{{ $profil->accreditation }}" class="input input-bordered w-full" />
                         </div>
                     </div>
 
@@ -62,7 +64,7 @@
                                 </span>
                             </label>
                             <input type="text" placeholder="https://www.facebook.com/"
-                                class="input input-bordered w-full" />
+                                name="school_facebook" value="{{ $profil->facebook }}" class="input input-bordered w-full" />
                         </div>
                         <div class="form-control w-full">
                             <label class="label">
@@ -72,7 +74,7 @@
                                 </span>
                             </label>
                             <input type="text" placeholder="https://www.instagram.com/"
-                                class="input input-bordered w-full" />
+                               name="school_instagram" value="{{ $profil->instagram }}" class="input input-bordered w-full" />
                         </div>
                         <div class="form-control w-full">
                             <label class="label">
@@ -82,7 +84,7 @@
                                 </span>
                             </label>
                             <input type="text" placeholder="https://www.twitter.com/"
-                                class="input input-bordered w-full" />
+                                name="school_twitter" value="{{ $profil->twitter }}" class="input input-bordered w-full" />
                         </div>
                     </div>
                     <div class="grid grid-cols-1 gap-8 tablet:grid-cols-2 laptop:grid-cols-2 mb-8">
@@ -94,7 +96,7 @@
                                 </span>
                             </label>
                             <input type="text" placeholder="https://www.youtube.com/"
-                                class="input input-bordered w-full" />
+                                name="school_youtube" value="{{ $profil->youtube }}" class="input input-bordered w-full" />
                         </div>
                         <div class="form-control w-full">
                             <label class="label">
@@ -104,26 +106,31 @@
                                 </span>
                             </label>
                             <input type="text" placeholder="https://www.linkedin.com/"
-                                class="input input-bordered w-full" />
+                            name="school_linkedin" value="{{ $profil->linkedin }}" class="input input-bordered w-full" />
                         </div>
                     </div>
 
                     <h5 class="text-lg mb-4 font-bold">Logo Sekolah</h5>
-                    <div class="h-[150px] w-[150px] tablet:h-[200px] tablet:w-[200px] my-4">
-                        <img src="https://i.pinimg.com/564x/c1/45/d1/c145d1b786d6bbb335cc36ba111cd20c.jpg" alt=""
-                            class="w-full h-full object-cover object-center rounded-xl">
+                    <div class="h-[150px] w-[150px] tablet:h-[200px] tablet:w-fit my-4">
+                        <img src="{{ asset('assets/images/logo/logo-smk7.png') }}" alt=""
+                        class="w-full h-full object-fit object-center rounded-xl">
+                        {{-- <img src="https://i.pinimg.com/564x/bb/59/e1/bb59e1b9f95e5c86bbb1686d911b7411.jpg" alt=""
+                            class="w-full h-full object-fit object-center rounded-xl"> --}}
                     </div>
                     <input type="file" class="file-input file-input-bordered w-full laptop:w-1/3"
-                        accept="image/png, image/jpg, image/jpeg" />
-                    <p class="ml-1">File yang didukung : png/jpg/jpeg | Maksimal ukuran : 5MB</p>
+                        accept="image/png, image/jpg, image/jpeg" name="school_logo" />
+                    <p class="ml-1">File yang didukung : png/jpg/jpeg | Ukuran Foto Maksimal 2 MB / 2048KB</p>
 
+                    <h5 class="text-lg mb-4 font-bold mt-8">Deskripsi Sekolah</h5>
+                    <div class="form-control">
+                        <textarea name="school_description" class="border-sky-900 border"></textarea>
+                    </div>
                     <h5 class="text-lg mb-4 font-bold mt-8">Sejarah Sekolah</h5>
                     <div class="form-control">
-                        <div name="sejarah-sekolah" id="sejarah-sekolah"></div>
-                        <textarea name="sejarah" class="border-sky-900 border"></textarea>
+                        <textarea name="school_history" class="border-sky-900 border"></textarea>
                     </div>
                     <div class="form-control w-full my-8 flex flex-row">
-                        <button type="button" onclick="replace()" id="btn-submit"
+                        <button type="button" id="btn-submit"
                             class="btn btn-success text-white w-full laptop:w-[100px]">SIMPAN</button>
                     </div>
                 </form>
@@ -134,26 +141,10 @@
 
 @section('script')
     <script type="text/javascript">
-        // Quill Editor
-        var toolbarOptions = [
-            ['bold', 'italic', 'underline', 'strike'],
-            [{
-                'list': 'ordered'
-            }, {
-                'list': 'bullet'
-            }]
-        ];
-        var quill = new Quill('#sejarah-sekolah', {
-            theme: 'snow',
-            modules: {
-                toolbar: toolbarOptions
-            }
-        });
+        CKEDITOR.replace('school_description');
+        CKEDITOR.replace('school_history');
 
 
-        // Form Submit  
-        function replace(){
-            
-        }
+        
     </script>
 @endsection
