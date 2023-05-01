@@ -10,4 +10,9 @@ class Achievement extends Model
     use HasFactory;
 
     protected $table = 'achievement';
+    protected $fillable = [
+        'title',
+        'description',
+        'photo',
+    ];
 }

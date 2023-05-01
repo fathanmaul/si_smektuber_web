@@ -21,4 +21,8 @@
     .active{
         @apply bg-[#19A7CE] text-white hover:bg-[#19A7CE] hover:text-white;
     }
+
+    .alert-danger{
+        @apply bg-red-500 text-white;
+    }
 }

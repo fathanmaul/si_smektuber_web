@@ -9,11 +9,13 @@
     <link rel="shortcut icon" href="{{ asset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-    {{-- JQUERY --}}
+    {{-- JQuery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-    <!-- Include stylesheet -->
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    {{-- Toastr CSS --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
+
 </head>
 
 <body class="bg-[#F2F7FF]">
@@ -25,7 +27,7 @@
         <!-- Sidebar End Here -->
 
 
-        <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
+        <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden" id="topbar">
             <div class="bg-[#19A7CE] w-full absolute -z-1 h-[20rem]" onclick="closeSidebar()"></div>
             <main class="z-10">
                 <div class="w-full flex flex-row laptop:flex-row-reverse justify-between px-8 py-6 items-center laptop:static"
@@ -67,10 +69,17 @@
 
     {{-- <script src="https://cdn.ckeditor.com/4.21.0/basic/ckeditor.js"></script> --}}
 
-    <!-- Include the Quill library -->
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    
+    <script src="//cdn.ckeditor.com/4.21.0/basic/ckeditor.js"></script>
+    <script src="{{ asset('/js/main.js') }}"></script>
+    
     @yield('script')
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script type="text/javascript">
+        // const topbar = document.getElementById('topbar');
+        // document.body.onscroll = (event)=>{
+        //     console.log('scrolling');
+        // };
+    </script>
     <script src="https://kit.fontawesome.com/9aa9764949.js" crossorigin="anonymous"></script>
 </body>
 
