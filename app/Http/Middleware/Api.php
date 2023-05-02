@@ -18,7 +18,7 @@ class Api
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check()) {
+        if (!api()->check()) {
             return Response::unauthorized();
         }
         

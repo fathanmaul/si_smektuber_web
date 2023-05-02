@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             Major::class,
             Article::class,
             About::class,
+            Loker::class,
         ]);
     }
 }

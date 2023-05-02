@@ -16,8 +16,8 @@ class Achievement extends Migration
         Schema::create('achievement', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->string('photo');
+            $table->text('description')->nullable();
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

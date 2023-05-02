@@ -35,6 +35,7 @@ class About extends Migration
             $table->string('logo')->nullable();
             $table->string('favicon')->nullable();
             $table->text('school_description')->nullable();
+            $table->text('school_history')->nullable();
             $table->string('school_photo')->nullable();
             $table->string('school_quote')->nullable();
             $table->timestamps();

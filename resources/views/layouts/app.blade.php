@@ -5,76 +5,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
+    <title>{{ $title ?? ' SMK 7 JEMBER' }}</title>
     <link rel="shortcut icon" href="{{ asset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    {{-- JQuery --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    {{-- Toastr CSS --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
+
 </head>
 
-<body class="bg-[#f2f7ff]">
-    <div class="min-h-screen flex flex-row">
-        {{-- Sidebar Start Here --}}
+<body class="bg-[#F2F7FF]">
+    <noscript>You need to enable JavaScript to run this app.....</noscript>
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar Goes Here -->
         @include('layouts.sidebar')
-        {{-- Sidebar End Here --}}
-        {{-- Main Content Start Here --}}
-        <div class="bg-[#007AC7] w-full absolute h-[19rem] -z-10">
-        </div>
-        <div class="min-h-full w-full flex flex-col overflow-y-auto pb-16" id="content">
-            <header class=" w-full bg-slate-100 fixed laptop:bg-transparent laptop:static">
-                <div class="px-8 flex flex-row items-center  justify-between h-20 w-full">
-                    <div class="text-white cursor-pointer" id="btnOpen">
-                        <span>
-                            <i class="fa fa-solid fa-bars text-lg text-slate-800 laptop:text-white"></i>
-                        </span>
+        <!-- Sidebar End Here -->
+
+
+        <div class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden" id="topbar">
+            <div class="bg-[#19A7CE] w-full absolute -z-1 h-[20rem]" onclick="closeSidebar()"></div>
+            <main class="z-10">
+                <div class="w-full flex flex-row laptop:flex-row-reverse justify-between px-8 py-6 items-center laptop:static"
+                    id="navbar">
+                    <div class="text-white block laptop:hidden" id="toggle-sidebar">
+                        <i class="fa fa-solid fa-bars text-xl"></i>
                     </div>
-                    <div class="flex flex-row items-center">
-                        <button id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-                            class="text-slate-800 hover:text-slate-600 laptop:text-white laptop:hover:text-white font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
-                            type="button">{{ 'user' }} <svg class="w-4 h-4 ml-2" aria-hidden="true"
-                                fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 9l-7 7-7-7">
-                                </path>
-                            </svg></button>
-                        <!-- Dropdown menu -->
-                        <div id="dropdown"
-                            class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200"
-                                aria-labelledby="dropdownDefaultButton">
+                    <div class="justify-end">
+                        <div class="dropdown dropdown-end">
+                            <label tabindex="0" class="flex flex-row gap-4 cursor-pointer">
+                                <span>
+                                    <h1 class="text-white font-semibold">Fathan Maulana</h1>
+                                </span>
+                                <span class="text-white">
+                                    <i class="fa fa-solid fa-caret-down"></i>
+                                </span>
+                            </label>
+                            <ul tabindex="0" class="dropdown-content menu p-4 shadow bg-base-100 rounded-box w-52">
+                                <li><a class="active:bg-slate-200 active:text-black">Profil Saya</a></li>
                                 <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Profil
-                                        Saya</a>
-                                </li>
-                                <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-red-200 text-red-600 dark:hover:bg-gray-600 dark:hover:text-white">Keluar</a>
+                                    {{-- <a
+                                        class="active:bg-red-100 active:text-red-600 text-red-600 hover:bg-red-100">Keluar</a> --}}
+                                    <form action="{{ route('logout') }}" method="POST"
+                                        class="hover:bg-red-100 active:bg-red-200">
+                                        @csrf
+                                        <button type="submit" class="text-red-600">Keluar Akun</button>
+                                    </form>
                                 </li>
                             </ul>
                         </div>
                     </div>
                 </div>
-            </header>
-            <div class="mt-28 container laptop:mt-4">
+
                 @yield('content')
-
-            </div>
-
-
+            </main>
         </div>
-
-
     </div>
 
 
+    {{-- <script src="https://cdn.ckeditor.com/4.21.0/basic/ckeditor.js"></script> --}}
 
-
+    
+    <script src="//cdn.ckeditor.com/4.21.0/basic/ckeditor.js"></script>
+    <script src="{{ asset('/js/main.js') }}"></script>
+    
+    @yield('script')
+    <script type="text/javascript">
+        // const topbar = document.getElementById('topbar');
+        // document.body.onscroll = (event)=>{
+        //     console.log('scrolling');
+        // };
+    </script>
+    <script src="https://kit.fontawesome.com/9aa9764949.js" crossorigin="anonymous"></script>
 </body>
-
-
-<script src="https://kit.fontawesome.com/9aa9764949.js" crossorigin="anonymous"></script>
-<script src="{{ asset('js/main.js') }}"></script>
-<script src="{{ asset('js/app.js') }}"></script>
-
 
 </html>

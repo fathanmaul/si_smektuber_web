@@ -43,14 +43,22 @@ return [
     // ],
 
     'defaults' => [
-        'guard' => 'api',
+        'guard' => 'web',
         'passwords' => 'users',
     ],
-    
-    
+
+
     'guards' => [
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
         'api' => [
             'driver' => 'jwt',
+            'provider' => 'api',
+        ],
+        'web' => [
+            'driver' => 'session',
             'provider' => 'users',
         ],
     ],
@@ -73,15 +81,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'api' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'users' => [
+            'driver' => 'database',
+            'table' => 'users',
+        ],
     ],
 
     /*
