@@ -42,6 +42,9 @@ Route::get('/ppdb', function () {
 Route::get('/article', function () {
     return view('article');
 });
+Route::get('/konsultasi', function () {
+    return view('konsultasi');
+});
 
 /**
  * 
