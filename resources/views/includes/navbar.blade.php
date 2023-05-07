@@ -20,7 +20,7 @@
             <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
             <a href="/about" class="nav-item nav-link {{ Request::is('about') ? 'active' : '' }}">About</a>
             <a href="/ppdb" class="nav-item nav-link {{ Request::is('ppdb') ? 'active' : '' }}">PPDB</a>
-            <a href="/artikel" class="nav-item nav-link {{ Request::is('artikel') ? 'active' : '' }}">Artikel</a>
+            <a href="/article" class="nav-item nav-link {{ Request::is('article') ? 'active' : '' }}">Artikel</a>
 
             <a href="/konsultasi" class="nav-item nav-link">Konsultasi</a>
         </div>
