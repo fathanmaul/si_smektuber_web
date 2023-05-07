@@ -30,19 +30,17 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('LandingPage.home.index');
+    return view('home');
 })->name('landing.index');
 Route::get('/about', function () {
-    return view('LandingPage.about.index');
+    return view('about');
 });
 Route::get('/ppdb', function () {
-    return view('LandingPage.ppdb.index');
+    return view('ppdb');
 });
+
 Route::get('/article', function () {
-    return view('LandingPage.article.index');
-});
-Route::get('/contactUs', function () {
-    return view('LandingPage.konsultasi.index');
+    return view('article');
 });
 
 /**
