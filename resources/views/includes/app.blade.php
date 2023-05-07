@@ -3,14 +3,13 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>SMKN 7 Jember</title>
-    <link rel="shortcut icon" href="{{ asset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
+    <title>SMK N 7 Jember</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    {{-- <meta content="" name="keywords" />
-    <meta content="" name="description" /> --}}
+    <meta content="" name="keywords" />
+    <meta content="" name="description" />
 
     <!-- Favicon -->
-    {{-- <link href="img/favicon.ico" rel="icon" /> --}}
+    <link href="img/favicon.ico" rel="icon" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -33,6 +32,9 @@
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('landing/css/style.css') }}" rel="stylesheet" />
+
+    <!-- Font Awesome Stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
