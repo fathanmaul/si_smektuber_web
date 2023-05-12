@@ -15,11 +15,11 @@ class Major extends Migration
     {
         Schema::create('major', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->string('photo');
-            $table->string('facility');
-            $table->foreignId('achievement_id')->nullable()->constrained('achievement')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('major_name');
+            $table->text('major_description');
+            $table->string('major_logo');
+            $table->string('picture_1');
+            $table->string('picture_2');
             $table->timestamps();
         });
     }

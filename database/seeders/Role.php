@@ -15,27 +15,32 @@ class Role extends Seeder
     {
         \App\Models\Role::insert([
             [
-                'name' => 'admin',
+                'role_name' => 'admin root',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'name' => 'kepala sekolah',
+                'role_name' => 'admin',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            // [
+            //     'name' => 'kepala sekolah',
+            //     'created_at' => now(),
+            //     'updated_at' => now()
+            // ],
+            // [
+            //     'name' => 'tata usaha',
+            //     'created_at' => now(),
+            //     'updated_at' => now()
+            // ],
+            [
+                'role_name' => 'siswa',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'name' => 'tata usaha',
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'siswa',
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'name' => 'member',
+                'role_name' => 'member',
                 'created_at' => now(),
                 'updated_at' => now()
             ],

@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
+// localStorage.theme = 'light'
 module.exports = {
   mode: 'jit',
+  darkMode: "class",
   content: [
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
@@ -13,9 +15,12 @@ module.exports = {
       'laptop': '1024px',
       'desktop': '1280px',
     },
-    extend: {},
+    extend: {
+      
+    },
   },
   plugins: [
-    require('daisyui')
+    require('daisyui'),
+    // require('flowbite/plugin')
   ],
 }

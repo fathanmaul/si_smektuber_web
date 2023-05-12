@@ -7,6 +7,7 @@
     body{
         font-family: 'Nunito', sans-serif;
     }
+    
     button{
         background-color: aqua;
     }
@@ -23,6 +24,13 @@
     }
 
     .alert-danger{
-        @apply bg-red-500 text-white;
+        @apply text-red-800 bg-red-50;
     }
+    .alert-success{
+        @apply text-green-800 bg-emerald-100;
+    }
+    .alert-warning{
+        @apply text-yellow-800 bg-yellow-50;
+    }
+
 }

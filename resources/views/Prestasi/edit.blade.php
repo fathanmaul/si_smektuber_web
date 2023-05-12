@@ -51,8 +51,9 @@
                         </p>
                     @enderror
                 </div>
-                <div class="form-control flex flex-row-reverse">
+                <div class="form-control flex flex-col laptop:flex-row-reverse gap-4">
                     <button class="btn w-full laptop:w-[100px]" type="submit">SIMPAN</button>
+                    <a href="{{ route('prestasi.index') }}" class="btn btn-error text-white w-full laptop:w-[100px]" type="button">KEMBALI</a>
                 </div>
             </form>
         </div>

@@ -1,10 +1,18 @@
 @if (session()->has('flash'))
     <div @class([
-        'p-4 text-md rounded-lg',
-        'text-red-800 bg-red-50' => session('flash')['type'] == 'danger',
-        'text-yellow-800 bg-yellow-50' => session('flash')['type'] == 'warning',
-        'text-green-800 bg-green-50' => session('flash')['type'] == 'success',
+        'p-4 text-md rounded-lg my-4 flex flex-row gap-3 items-center',
+        'alert-danger' => session('flash')['type'] == 'danger',
+        'alert-warning' => session('flash')['type'] == 'warning',
+        'alert-success' => session('flash')['type'] == 'success',
     ])>
+        <span>
+            <i @class([
+                'fa', 
+                'fa-solid fa-circle-check' => session('flash')['type'] == 'success',
+                'fa-solid fa-circle-xmark' => session('flash')['type'] == 'danger',
+                'fa-solid fa-triangle-exclamation' => session('flash')['type'] == 'warning',
+            ])></i>
+        </span>
         <span class="text-base">{{ session('flash')['message'] ?? '' }}</span>
     </div>
 @endif

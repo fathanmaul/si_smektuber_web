@@ -18,9 +18,10 @@ class DatabaseSeeder extends Seeder
             User::class,
             Achievement::class,
             Major::class,
-            Article::class,
+            // Article::class,
             About::class,
-            Loker::class,
+            // Loker::class,
+            Extracurricular::class,
         ]);
     }
 }

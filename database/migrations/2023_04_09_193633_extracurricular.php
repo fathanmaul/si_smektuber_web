@@ -17,7 +17,7 @@ class Extracurricular extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->foreignId('achievement_id')->nullable()->constrained('achievement')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
