@@ -12,12 +12,12 @@ class EkstrakurikulerController extends Controller
     public function index()
     {
         $data = Extracurricular::paginate(10);
-        return view('Ekstrakurikuler.index', ['extracurricular' => $data]);
+        return view('admin.Ekstrakurikuler.index', ['extracurricular' => $data]);
     }
 
     public function create()
     {
-        return view('Ekstrakurikuler.create');
+        return view('admin.Ekstrakurikuler.create');
     }
 
     public function destroy($id)

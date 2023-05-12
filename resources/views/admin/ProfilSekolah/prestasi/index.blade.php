@@ -1,0 +1,1 @@
+@extends('admin.layouts.app', ['title' => 'Prestasi Sekolah'])

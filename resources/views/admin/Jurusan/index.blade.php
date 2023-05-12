@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Jurusan'])
+@extends('admin.layouts.app', ['title' => 'Jurusan'])
 
 
 @section('content')
