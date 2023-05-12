@@ -12,7 +12,6 @@ class LoginController extends Controller
 
     public function create()
     {
-        // dd(Auth::user());
         return view('login.index');
     }
 
@@ -20,38 +19,31 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'username' => 'required',
-            'password' => 'required'
+            'password_1' => 'required'
         ], [
-            'required' => ':attribute tidak boleh kosong!',
-            'exists' => ':attribute tidak ditemukan!'
+            'username.required' => 'Username tidak boleh kosong!',
+            'password_1.required' => 'Password tidak boleh kosong!',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $loginData = [
+            'username' => $request->username,
+            'password' => $request->password_1
+        ];
+
+        if (Auth::attempt($loginData)) {
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
-            // dd(auth()->user());
-        }
+        };
 
-        return redirect()->route('login')->with('flash', [
-            'type' => 'danger',
-            'message' => 'Username atau Password Salah!',
-        ]);
-
-
-
-        // dd('Berhasil Login');
-        // $credentials = $request->validate([
-        //     'username' => 'required',
-        //     'password' => 'required'
-        // ], [
-        //     'required' => ':attribute tidak boleh kosong!',
-        //     'exists' => ':attribute tidak ditemukan!'
+        // return redirect()->route('login')->with('flash', [
+        //     'type' => 'danger',
+        //     'message' => 'Username atau Password Salah!',
+        //     'value' => $request->username   
         // ]);
 
-        // if(Auth::attempt($credentials)){
-        //     $request->session()->regenerate();
-        //     return redirect()->intended('/dashboard');
-        // }
+        return redirect()->route('login')->withErrors([
+            'username' => 'Username dan Password tidak terdaftar'
+        ])->withInput($request->only('username'));
 
     }
     public function destroy()

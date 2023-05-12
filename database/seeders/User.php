@@ -14,38 +14,49 @@ class User extends Seeder
     public function run()
     {
         \App\Models\User::insert([
-            // admin
+            // admin root (super admin)
             [
-                'name' => 'admin',
-                'username' => 'admin',
-                'email' => 'admin@nekoid.com',
+                'name' => 'admin root',
+                'username' => 'developer',
+                'email' => 'dev@nekoid.com',
                 'password' => bcrypt('Nekoid123'),
                 'role_id' => 1,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
 
-            // kepala sekolah
+            // admin
             [
-                'name' => 'kepala sekolah',
-                'username' => 'ks',
-                'email' => 'ks@nekoid.com',
+                'name' => 'admin',
+                'username' => 'admin',
+                'email' => 'admin@nekoid.com',
                 'password' => bcrypt('Nekoid123'),
                 'role_id' => 2,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
 
+            // kepala sekolah
+            // [
+            //     'name' => 'kepala sekolah',
+            //     'username' => 'ks',
+            //     'email' => 'ks@nekoid.com',
+            //     'password' => bcrypt('Nekoid123'),
+            //     'role_id' => 2,
+            //     'created_at' => now(),
+            //     'updated_at' => now()
+            // ],
+
             // tata usaha
-            [
-                'name' => 'tata usaha',
-                'username' => 'tu',
-                'email' => 'tu@nekoid.com',
-                'password' => bcrypt('Nekoid123'),
-                'role_id' => 3,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
+            // [
+            //     'name' => 'tata usaha',
+            //     'username' => 'tu',
+            //     'email' => 'tu@nekoid.com',
+            //     'password' => bcrypt('Nekoid123'),
+            //     'role_id' => 3,
+            //     'created_at' => now(),
+            //     'updated_at' => now()
+            // ],
 
             // siswa
             [
@@ -53,7 +64,7 @@ class User extends Seeder
                 'username' => '1234567890',
                 'email' => 'siswa@nekoid.com',
                 'password' => bcrypt('Nekoid123'),
-                'role_id' => 4,
+                'role_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -64,7 +75,7 @@ class User extends Seeder
                 'username' => '1234567891',
                 'email' => 'member@nekoid.com',
                 'password' => bcrypt('Nekoid123'),
-                'role_id' => 5,
+                'role_id' => 4,
                 'created_at' => now(),
                 'updated_at' => now()
             ],

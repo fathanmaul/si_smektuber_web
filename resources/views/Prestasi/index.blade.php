@@ -15,22 +15,13 @@
                 </div>
             </div>
             <div class="card bg-white p-5 my-4">
-                {{-- @if (session('flash'))
-                    @component('components.alert')
-                        @slot('type')
-                            {{ session('flash')['type'] }}
-                        @endslot
-
-                        @slot('message')
-                            {{ session('flash')['message'] }}
-                        @endslot
-                    @endcomponent
-                @endif --}}
                 <x-alert />
                 <div class="w-full flex flex-row items-center gap-4 mb-4 @if (session('flash')) mt-6 @endif">
-                    <div class="flex relative w-full items-center leading-[28px]">
+                    <div class="flex relative w-full items-center">
                         <span class="absolute left-4"><i class="fa-solid fa-magnifying-glass"></i></span>
-                        <input type="text" class="w-full h-[40px] py-5 pl-10 border-2 rounded-lg outline-none bg-slate-100 text-slate-800" placeholder="Cari Prestasi">
+                        <input type="text"
+                            class="w-full h-[40px] py-[1.40rem] pl-10 border-2 rounded-lg outline-none  text-slate-800 transition-all ease-in-out duration-300 hover:shadow-lg focus:shadow-lg"
+                            placeholder="Cari Prestasi">
                     </div>
                     {{-- <input type="text" id="input-search"
                         class="input border-slate-500 font-thin decoration-inherit w-full" placeholder="Cari Prestasi"> --}}
@@ -45,7 +36,7 @@
                 <div class="flex flex-row items-center w-full 
                  mb-6">
                     <a href="{{ route('prestasi.create') }}"
-                        class="btn flex flex-row items-center gap-2 justify-center w-full laptop:w-auto"><span><i
+                        class="btn btn-success text-white flex flex-row items-center gap-2 justify-center w-full laptop:w-auto"><span><i
                                 class="fa-solid fa-plus"></i></span>Tambah</a>
                 </div>
                 {{-- <div class="overflow-x-auto">
@@ -88,7 +79,7 @@
                                     <td class="border px-4 py-2 max-w-xs overflow-hidden text-ellipsis">
                                         {{ $achievements->title }}</td>
                                     <td class="w-full flex flex-row gap-3 justify-center">
-                                        <div class="tooltip" data-tip="Lihat Foto">
+                                        {{-- <div class="tooltip" data-tip="Lihat Foto">
                                             <a target="_blank"
                                                 href="
                                             @if ($achievements->photo != null) {{ asset('storage/' . $achievements->photo) }}
@@ -97,9 +88,9 @@
                                             "
                                                 class="btn btn-sm btn-success text-white"><i
                                                     class="fa-solid fa-image"></i></a>
-                                        </div>
+                                        </div> --}}
                                         <div class="tooltip" data-tip="Edit Prestasi">
-                                            <a href="{{ route('prestasi.edit', [$achievements->id])}}"
+                                            <a href="{{ route('prestasi.edit', [$achievements->id]) }}"
                                                 class="btn btn-sm"><span><i
                                                         class="fa-solid fa-pen-to-square"></i></span></a>
                                         </div>
@@ -114,11 +105,8 @@
                             @endforeach
                         </tbody>
                     </table>
-
-                    <div class="w-full">
-                        {{ $achievement->links() }}
-                    </div>
                 </div>
+                {{ $achievement->links('components.pagination') }}
             </div>
         </div>
     </div>
@@ -136,7 +124,7 @@
             </div>
             <div class="modal-action">
                 <label for="my-modal" class="btn">BATAL</label>
-                <button class="btn btn-error text-white" type="submit">HAPUS</button>
+                <button class="btn btn-error text-white" type="submit" id="submit-delete" onclick="closeModal()">HAPUS</button>
             </div>
         </form>
     </div>
@@ -145,14 +133,20 @@
 @section('script')
     <script>
         function deleteModal(event, props) {
+            const modalToggle = document.querySelector('input#my-modal');
             event.preventDefault();
             const url = props.getAttribute('href');
             const title = props.getAttribute('data-nama');
             const modal = document.querySelector('.modal');
-            const modalToggle = document.querySelector('input#my-modal');
             modalToggle.checked = true;
             modal.querySelector('form.modal-box').setAttribute('action', url);
             document.querySelector('#delete-title').innerHTML = title;
         }
+
+        document.querySelector('#submit-delete').addEventListener('click', function(){
+            const modalToggle = document.querySelector( 'input#my-modal');
+            modalToggle.checked = false;
+        });
+
     </script>
 @endsection

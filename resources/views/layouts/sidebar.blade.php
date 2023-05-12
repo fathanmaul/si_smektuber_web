@@ -1,5 +1,5 @@
 <aside
-    class="absolute left-0 top-0 z-[9999] flex min-h-screen w-[280px] flex-col drop-shadow-lg overflow-y-hidden bg-white duration-300 ease-in-out laptop:static laptop:translate-x-0 -translate-x-full"
+    class="absolute left-0 top-0 z-[9999] flex min-h-screen max-h-screen w-[280px] flex-col drop-shadow-lg overflow-y-hidden bg-white duration-300 ease-in-out laptop:static laptop:translate-x-0 -translate-x-full"
     id="sidebar">
     <div class="flex flex-col w-full">
         <div class="flex flex-row justify-center py-8 items-center gap-4">
@@ -28,9 +28,10 @@
                             <span class="ml-4">Dashboard</span>
                         </a>
                     </li>
-                    <li class="mt-[0.2rem]">
+                    {{-- <li class="mt-[0.2rem]">
                         <div class="collapse">
-                            <input type="checkbox" class="peer" />
+                            <input type="checkbox" class="peer"
+                                {{ request()->segment(2) == 'sekolah' ? 'checked' : '' }} />
                             <div
                                 class="collapse-title flex items-center p-3 text-[1rem] w-full rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white {{ request()->segment(2) == 'sekolah' ? 'active' : '' }}">
                                 <div class="w-5 h-5 p-4 flex justify-center items-center">
@@ -71,6 +72,63 @@
                             </div>
 
                         </div>
+                    </li> --}}
+                    {{-- Informasi Sekolah --}}
+                    <li class="mt-[0.2rem]">
+                        <div class="collapse">
+                            <input type="checkbox" class="peer"
+                                {{ request()->segment(2) == 'sekolah' ? 'checked' : '' }} />
+                            <div
+                                class="collapse-title flex items-center p-3 text-[1rem] w-full rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white {{ request()->segment(2) == 'sekolah' ? 'active' : '' }}">
+                                <div class="w-5 h-5 p-4 flex justify-center items-center">
+                                    <i class="fa fa-solid fa-school"></i>
+                                </div>
+                                <span class="ml-4 w-full flex flex-row justify-between items-center pr-3">
+                                    <span>Informasi Sekolah</span>
+                                    <span>
+                                        <i class="fa fa-solid fa-caret-down"></i>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="collapse-content px-0 text-black mt-1">
+                                <div class="w-full">
+                                    <ul class="space-y-2 font-medium">
+                                        <li class="mt-[0.2rem]">
+                                            <a href="{{ route('sekolah.umum') }}"
+                                                class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white
+                                                 {{ request()->segment(2) == 'sekolah' && request()->segment(3) == 'umum' ? 'active' : '' }}">
+                                                <span class="ml-4">Informasi Umum</span>
+                                            </a>
+                                        </li>
+                                        <li class="mt-[0.2rem]">
+                                            <a href="{{ route('sekolah.visi-misi') }}"
+                                                class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white
+                                                {{ request()->segment(2) == 'sekolah' && request()->segment(3) == 'visi-misi' ? 'active' : '' }}">
+                                                <span class="ml-4">Visi & Misi</span>
+                                            </a>
+                                        </li>
+                                        <li class="mt-[0.2rem]">
+                                            <a href="{{ route('sekolah.kepala-sekolah') }}"
+                                                class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white {{ request()->segment(2) == 'sekolah' && request()->segment(3) == 'kepala-sekolah' ? 'active' : '' }}">
+                                                <span class="ml-4">Kepala Sekolah</span>
+                                            </a>
+                                        </li>
+                                        <li class="mt-[0.2rem]">
+                                            <a href="{{ route('sekolah.prestasi') }}"
+                                                class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white {{ request()->segment(2) == 'sekolah' && request()->segment(3) == 'prestasi-sekolah' ? 'active' : '' }}">
+                                                <span class="ml-4">Prestasi Sekolah</span>
+                                            </a>
+                                        </li>
+                                        <li class="mt-[0.2rem]">
+                                            <a href="{{ route('sekolah.ekstrakurikuler') }}"
+                                                class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white {{ request()->segment(2) == 'sekolah' && request()->segment(3) == 'ekstrakurikuler' ? 'active' : '' }}">
+                                                <span class="ml-4">Ekstrakurikuler</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                     <li class="mt-[0.2rem]">
                         <a href="{{ url('admin/jurusan') }}"
@@ -82,8 +140,10 @@
                         </a>
                     </li>
                     <li class="mt-[0.2rem]">
-                        <a href="#"
-                            class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white">
+                        <a href="{{ route('ekstrakurikuler.index') }}"
+                            class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white
+                            {{ request()->segment(2) == 'ekstrakurikuler' ? 'active' : '' }}
+                            ">
                             <div class="w-5 h-5 p-4 flex justify-center items-center">
                                 <i class="fa fa-solid fa-futbol"></i>
                             </div>
@@ -101,7 +161,6 @@
                             <span class="ml-4">Prestasi</span>
                         </a>
                     </li>
-
                     <li class="mt-[0.2rem]">
                         <div class="collapse">
                             <input type="checkbox" class="peer" />
@@ -138,16 +197,17 @@
 
                         </div>
                     </li>
-                    <li class="mt-[0.2rem]">
-                        <a href="#"
-                            class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white">
-                            <div class="w-5 h-5 p-4 flex justify-center items-center">
-                                <i class="fa-solid fa-newspaper"></i>
-                            </div>
-                            <span class="ml-4">Artikel</span>
-                        </a>
-                    </li>
-                </ul>
+                    <li cz
+                        @if (Auth::user()->role_id == 1) <li class="mt-[0.2rem]">
+                            <a href="#"
+                                class="flex items-center p-3 text-[1rem] rounded-lg duration-200 ease-in-out transition-all hover:bg-[#19A7CE] hover:text-white">
+                                <div class="w-5 h-5 p-4 flex justify-center items-center">
+                                    <i class="fa-solid fa-user-gear"></i>
+                                </div>
+                                <span class="ml-4">Admin</span>
+                            </a>
+                        </li> @endif
+                        </ul>
             </div>
         </div>
 

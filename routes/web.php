@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PrestasiController;
@@ -68,29 +69,35 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('/auth/login', [LoginController::class, 'create'])->name('login');
     Route::post('/auth/login', [LoginController::class, 'store'])->name('login.store');
 });
-Route::post('/auth/logout', [LoginController::class, 'destroy'])->name('logout');
 
-
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/auth/logout', [LoginController::class, 'moveToDashboard']);
+    Route::post('/auth/logout', [LoginController::class, 'destroy'])->name('logout');
+});
 
 Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::group(['prefix' => 'sekolah'], function () {
         Route::redirect('/', '/admin/dashboard')->name('sekolah');
-        Route::get('/sejarah', [SekolahController::class, 'sejarah'])->name('sekolah.sejarah');
+        // Route::get('/sejarah', [SekolahController::class, 'sejarah'])->name('sekolah.sejarah');
+        Route::group(['prefix' => 'umum'], function () {
+            Route::get('/', [SekolahController::class, 'index'])->name('sekolah.umum');
+            Route::post('/', [SekolahController::class, 'store'])->name('sekolah.umum.put');
+            Route::get('/kontak', [SekolahController::class, 'kontak'])->name('sekolah.kontak');
+            Route::post('/kontak', [SekolahController::class, 'kontakPut'])->name('sekolah.kontak.put');
+        });
         Route::get('/visi-misi', [SekolahController::class, 'visiMisi'])->name('sekolah.visi-misi');
-        Route::get('/kepala-sekolah', [SekolahController::class, 'kepalaSekolah'])->name('sekolah.kepala-sekolah');
+        Route::post('/visi-misi', [SekolahController::class, 'visiMisiStore'])->name('sekolah.visi-misi.store');
+        Route::group(['prefix' => 'kepala-sekolah'], function(){
+            Route::get('/', [SekolahController::class, 'kepalaSekolah'])->name('sekolah.kepala-sekolah');
+            Route::post('/', [SekolahController::class, 'kepalaSekolahPut'])->name('sekolah.kepala-sekolah.put');
+        });
+        Route::get('/prestasi-sekolah', [SekolahController::class, 'prestasiSekolah'])->name('sekolah.prestasi');
+        Route::get('/ekstrakurikuler', [SekolahController::class, 'ekstrakurikuler'])->name('sekolah.ekstrakurikuler');
     });
     Route::group(['prefix' => 'jurusan', 'as' => 'jurusan.'], function () {
         Route::get('/', [JurusanController::class, 'index'])->name('index');
-        Route::post('/store', function (Request $request) {
-            $text = $request->textarea1;
-            $text = strip_tags($text, '<b><strong><ul><li><em><s><pre><br>');
-            // $text = preg_replace('/[^A-Za-z0-9\-]/', '', $text);
-            $text = preg_replace('<script>', '', $text);
-            $text = preg_replace('</script>', '', $text);
-            return $text;
-        })->name('store');
-        Route::get('/nama', [JurusanController::class, 'create'])->name('jurusan.create');
+        Route::get('/tambah', [JurusanController::class, 'create'])->name('create');
     });
     Route::group(['prefix' => 'prestasi'], function () {
         Route::get('/', [PrestasiController::class, 'index'])->name('prestasi.index');
@@ -99,9 +106,16 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
         Route::get('/{id}/edit', [PrestasiController::class, 'edit'])->name('prestasi.edit');
         Route::post('/{id}/edit', [PrestasiController::class, 'put'])->name('prestasi.put');
         Route::delete('/{id}', [PrestasiController::class, 'destroy'])->name('prestasi.destroy');
+    });
 
+    Route::group(['prefix' => 'ekstrakurikuler'], function () {
+        Route::get('/', [EkstrakurikulerController::class, 'index'])->name('ekstrakurikuler.index');
+        Route::get('/tambah', [EkstrakurikulerController::class, 'create'])->name('ekstrakurikuler.create');
+        Route::delete('/{id}', [EkstrakurikulerController::class, 'destroy'])->name('ekstrakurikuler.destroy');
     });
 });
+
+
 
 // Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function(){
 //     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
