@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Visi Misi'])
+@extends('admin.layouts.app', ['title' => 'Visi Misi'])
 
 @section('content')
     <div id="content" onclick="closeSidebar()">

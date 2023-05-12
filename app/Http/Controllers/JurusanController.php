@@ -11,12 +11,12 @@ class JurusanController extends Controller
     public function index()
     {
         $jurusans = Major::paginate(5);
-        return view('jurusan.index', ['jurusans' => $jurusans]);
+        return view('admin.jurusan.index', ['jurusans' => $jurusans]);
     }
 
 
     public function create()
     {
-        return view('jurusan.create');
+        return view('admin.jurusan.create');
     }
 }

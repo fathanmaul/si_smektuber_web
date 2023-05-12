@@ -17,7 +17,7 @@ class SekolahController extends Controller
         $dataProfil = About::first(['school_name', 'school_address', 'school_accreditation', 'school_slogan', 'school_history']);
         // dd($dataProfil);
         // echo $dataProfil;
-        return view('ProfilSekolah.umum.index', ['profil' => $dataProfil]);
+        return view('admin.ProfilSekolah.umum.index', ['profil' => $dataProfil]);
     }
 
     public function store(Request $request)
@@ -78,7 +78,7 @@ class SekolahController extends Controller
     public function kontak()
     {
         $dataKontak = About::first(['school_phone', 'school_email', 'school_whatsapp', 'school_facebook', 'school_instagram', 'school_twitter', 'school_youtube']);
-        return view('ProfilSekolah.umum.kontak.index', ['kontak' => $dataKontak]);
+        return view('admin.ProfilSekolah.umum.kontak.index', ['kontak' => $dataKontak]);
     }
 
     public function kontakPut(Request $request)
@@ -145,24 +145,24 @@ class SekolahController extends Controller
 
     public function namaShow()
     {
-        return view('ProfilSekolah.NamaSekolah.index');
+        return view('admin.ProfilSekolah.NamaSekolah.index');
     }
 
     public function sejarah()
     {
         $dataProfil = About::first();
-        return view('ProfilSekolah.sejarah.index', ['profil' => $dataProfil]);
+        return view('admin.ProfilSekolah.sejarah.index', ['profil' => $dataProfil]);
     }
 
     public function visiMisi()
     {
         $dataVisiMisi = About::first(['school_vision', 'school_mission']);
-        return view('ProfilSekolah.visi-misi.index', ['visiMisi' => $dataVisiMisi]);
+        return view('admin.ProfilSekolah.visi-misi.index', ['visiMisi' => $dataVisiMisi]);
     }
 
     public function kepalaSekolah()
     {
-        return view('ProfilSekolah.kepalaSekolah.index');
+        return view('admin.ProfilSekolah.kepalaSekolah.index');
     }
 
     public function kepalaSekolahPut(Request $request)
@@ -187,6 +187,6 @@ class SekolahController extends Controller
 
     public function prestasiSekolah()
     {
-        return view('ProfilSekolah.prestasi.index');
+        return view('admin.ProfilSekolah.prestasi.index');
     }
 }

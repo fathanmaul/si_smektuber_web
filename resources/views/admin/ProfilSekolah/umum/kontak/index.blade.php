@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Informasi Umum'])
+@extends('admin.layouts.app', ['title' => 'Informasi Umum'])
 
 @section('content')
     <div id="content" onclick="closeSidebar()">
@@ -16,7 +16,7 @@
             </div>
 
             <div class="card bg-white p-8 my-5">
-                @include('ProfilSekolah.umum.layouts.tabs')
+                @include('admin.ProfilSekolah.umum.layouts.tabs')
                 <x-alert />
                 <form action="{{ route('sekolah.kontak.put') }}" method="POST" class="">
                     @csrf

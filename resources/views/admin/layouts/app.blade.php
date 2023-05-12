@@ -28,7 +28,7 @@
 
     <div class="flex h-screen overflow-hidden">
         <!-- Sidebar Goes Here -->
-        @include('layouts.sidebar')
+        @include('admin.layouts.sidebar')
         <!-- Sidebar End Here -->
 
 

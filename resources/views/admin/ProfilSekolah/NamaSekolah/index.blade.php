@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Nama Sekolah'])
+@extends('admin.layouts.app', ['title' => 'Nama Sekolah'])
 
 @section('content')
     {{-- <div class="flex flex-row justify-between items-center">

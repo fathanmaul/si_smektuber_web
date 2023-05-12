@@ -12,12 +12,12 @@ class PrestasiController extends Controller
     {
 
         $prestasi = Achievement::paginate(10);
-        return view('Prestasi.index', ['achievement' => $prestasi]);
+        return view('admin.Prestasi.index', ['achievement' => $prestasi]);
     }
 
     public function create()
     {
-        return view('Prestasi.create');
+        return view('admin.Prestasi.create');
     }
 
     public function store(Request $request)
@@ -82,7 +82,7 @@ class PrestasiController extends Controller
                 'message' => 'Prestasi tidak ditemukan!',
             ]);
         }
-        return view('Prestasi.edit', ['achievement' => $prestasi]);
+        return view('admin.Prestasi.edit', ['achievement' => $prestasi]);
     }
 
     public function put(Request $request, $id)
