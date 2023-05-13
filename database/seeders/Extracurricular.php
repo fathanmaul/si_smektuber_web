@@ -15,11 +15,15 @@ class Extracurricular extends Seeder
      */
     public function run()
     {
-        ModelsExtracurricular::insert([
-            'name' => 'Pramuka',
-            'description' => Str::random(100),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        $extracurricular = ['Pramuka', 'Basket', 'Futsal', 'Volly', 'Paskibra', 'Pencak Silat', 'Karate', 'Taekwondo'];
+
+        foreach($extracurricular as $key => $value){
+            ModelsExtracurricular::insert([
+                'extracurricular_name' => $value,
+                'extracurricular_description' => Str::random(100),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
     }
 }
