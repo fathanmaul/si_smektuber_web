@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Loker extends Migration
+class SchoolYear extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class Loker extends Migration
      */
     public function up()
     {
-        Schema::create('loker', function (Blueprint $table) {
+        Schema::create('school_year', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
-            $table->string('title');
-            $table->string('description');
-            $table->string('thumbnail');
+            $table->year('school_year')->unique();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class Loker extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('loker');
+        //
     }
 }

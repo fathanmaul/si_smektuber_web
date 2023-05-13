@@ -15,9 +15,12 @@ class Registration extends Migration
     {
         Schema::create('registration', function (Blueprint $table) {
             $table->id();
-            $table->date('year');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->foreignId('school_year')->constrained('school_year')->onDelete('cascade');
+            $table->text('registration_description');
+            $table->string('registration_poster')->nullable();
+            $table->date('registration_date_start');
+            $table->date('registration_date_end');
+            $table->tinyInteger('registration_status')->default(0);
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class Registration extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('registration');
+        //
     }
 }

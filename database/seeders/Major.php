@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Major as ModelsMajor;
 use Illuminate\Database\Seeder;
 
 class Major extends Seeder
@@ -13,52 +14,22 @@ class Major extends Seeder
      */
     public function run()
     {
-        \App\Models\Major::insert([
-            [
-                'id' => 1,
-                'name' => 'Teknik Kendaraan Ringan',
-                'description' => 'Teknik Kendaraan Ringan',
-                'photo' => 'https://picsum.photos/200/300',
-                'facility' => 'Laboratorium',
+        $major = [
+            'Teknik Kendaraan Ringan',
+            'Teknik Sepeda Motor',
+            'Teknik Komputer dan Jaringan',
+            'Multimedia',
+            'Tata Kecantikan Kulit dan Rambut'
+        ];
+        $lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum';
+
+        foreach ($major as $key => $value) {
+            ModelsMajor::insert([
+                'major_name' => $value,
+                'major_description' => $lorem,
                 'created_at' => now(),
                 'updated_at' => now()
-            ],
-            [
-                'id' => 2,
-                'name' => 'Teknik Sepeda Motor',
-                'description' => 'Teknik Sepeda Motor',
-                'photo' => 'https://picsum.photos/200/300',
-                'facility' => 'Laboratorium',
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'id' => 3,
-                'name' => 'Teknik Komputer dan Jaringan',
-                'description' => 'Teknik Komputer dan Jaringan',
-                'photo' => 'https://picsum.photos/200/300',
-                'facility' => 'Laboratorium',
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'id' => 4,
-                'name' => 'Multimedia',
-                'description' => 'Multimedia',
-                'photo' => 'https://picsum.photos/200/300',
-                'facility' => 'Laboratorium',
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'id' => 5,
-                'name' => 'Tata Kecantikan Kulit dan Rambut',
-                'description' => 'Tata Kecantikan Kulit dan Rambut',
-                'photo' => 'https://picsum.photos/200/300',
-                'facility' => 'Laboratorium',
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ]);
+            ]);
+        }
     }
 }
