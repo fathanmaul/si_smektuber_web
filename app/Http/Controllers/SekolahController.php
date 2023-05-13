@@ -17,13 +17,14 @@ class SekolahController extends Controller
         $dataProfil = About::first(['school_name', 'school_address', 'school_accreditation', 'school_slogan', 'school_history']);
         // dd($dataProfil);
         // echo $dataProfil;
-        return view('admin.ProfilSekolah.umum.index', ['profil' => $dataProfil]);
+        // return view('admin.ProfilSekolah.umum.index', ['profil' => $dataProfil]);
+        return view('admin.ProfilSekolah.new.umum-profil', ['profil' => $dataProfil]);
     }
 
     public function store(Request $request)
     {
 
-        return Response::json($request->all());
+        // return Response::json($request->all());
 
         // return 'Test';
         $request->validate([
@@ -78,7 +79,8 @@ class SekolahController extends Controller
     public function kontak()
     {
         $dataKontak = About::first(['school_phone', 'school_email', 'school_whatsapp', 'school_facebook', 'school_instagram', 'school_twitter', 'school_youtube']);
-        return view('admin.ProfilSekolah.umum.kontak.index', ['kontak' => $dataKontak]);
+        // return view('admin.ProfilSekolah.umum.kontak.index', ['kontak' => $dataKontak]);
+        return view('admin.ProfilSekolah.new.umum-kontak', ['kontak' => $dataKontak]);
     }
 
     public function kontakPut(Request $request)
@@ -157,12 +159,43 @@ class SekolahController extends Controller
     public function visiMisi()
     {
         $dataVisiMisi = About::first(['school_vision', 'school_mission']);
-        return view('admin.ProfilSekolah.visi-misi.index', ['visiMisi' => $dataVisiMisi]);
+        return view('admin.ProfilSekolah.new.visi-misi', ['visiMisi' => $dataVisiMisi]);
+    }
+
+    public function visiMisiPut(Request $request)
+    {
+        $request->validate([
+            'school_vision' => 'required|max:255',
+            'school_mission' => 'required|max:1000'
+        ], [
+            'school_vision.required' => 'Harap isi Visi Sekolah!',
+            'school_vision.max' => 'Visi Sekolah terlalu panjang!',
+            'school_mission.required' => 'Harap isi Misi Sekolah!',
+            'school_mission.max' => 'Misi Sekolah terlalu panjang!',
+        ]);
+
+        try {
+            About::where('id', 1)->update([
+                'school_vision' => $request->school_vision,
+                'school_mission' => $request->school_mission,
+            ]);
+
+            return redirect()->route('sekolah.visi-misi')->with('flash', [
+                'type' => 'success',
+                'message' => 'Visi dan Misi Sekolah berhasil diubah!',
+            ]);
+        } catch (\Throwable $th) {
+            return redirect()->route('sekolah.visi-misi')->with('flash', [
+                'type' => 'danger',
+                'message' => 'Sepertinya ada kesalahan!',
+            ]);
+        }
     }
 
     public function kepalaSekolah()
     {
-        return view('admin.ProfilSekolah.kepalaSekolah.index');
+        $kepala_sekolah = About::first(['school_headmaster_name', 'school_headmaster_quote', 'school_headmaster_picture']);
+        return view('admin.ProfilSekolah.new.kepala-sekolah', compact('kepala_sekolah'));
     }
 
     public function kepalaSekolahPut(Request $request)
@@ -171,7 +204,7 @@ class SekolahController extends Controller
             'school_headmaster_name' => 'required|max:70',
             'school_headmaster_quote' => 'required|max:255',
             'school_headmaster_photo' => 'required|image|mimes:jpeg,png,jpg|max:1024',
-        ],[ 
+        ], [
             'school_headmaster_name.required' => 'Harap isi Nama Kepala Sekolah!',
             'school_headmaster_name.max' => 'Nama Kepala Sekolah terlalu panjang!',
             'school_headmaster_quote.max' => 'Kutipan Kepala Sekolah terlalu panjang!',
@@ -181,7 +214,6 @@ class SekolahController extends Controller
             'school_headmaster_photo.max' => 'Foto Kepala Sekolah terlalu besar!',
             'school_headmaster_photo.required' => 'Harap isi Foto Kepala Sekolah!',
         ]);
-
     }
 
 

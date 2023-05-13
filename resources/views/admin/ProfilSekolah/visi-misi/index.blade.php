@@ -14,7 +14,6 @@
 
             <div class="card bg-white p-8 my-5">
                 <form action="#">
-
                     <div class="mb-1 flex flex-row items-center justify-between">
                         <h1 class="text-xl font-bold">Visi</h1>
                     </div>
