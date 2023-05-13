@@ -1,11 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900;1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base{
     body{
-        font-family: 'Nunito', sans-serif;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        @apply bg-[#e6e7e7]
     }
     
     button{
@@ -33,4 +35,19 @@
         @apply text-yellow-800 bg-yellow-50;
     }
 
+    .nav-item{
+        @apply text-gray-900 hover:text-primary hover:bg-[#19a7ce2f];
+    }
+
+    .nav-active{
+        @apply bg-[#19a7ce2f] text-primary hover:bg-[#19a7ce2f];
+    }
+
+    .nav-icon{
+        @apply w-5 h-5 text-gray-900;
+    }
+
+    .sub-menu-hide{
+        @apply hidden;
+    }
 }

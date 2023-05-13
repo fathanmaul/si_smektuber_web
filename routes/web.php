@@ -76,16 +76,17 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::group(['prefix' => 'sekolah'], function () {
         Route::redirect('/', '/admin/dashboard')->name('sekolah');
-        // Route::get('/sejarah', [SekolahController::class, 'sejarah'])->name('sekolah.sejarah');
         Route::group(['prefix' => 'umum'], function () {
             Route::get('/', [SekolahController::class, 'index'])->name('sekolah.umum');
             Route::post('/', [SekolahController::class, 'store'])->name('sekolah.umum.put');
             Route::get('/kontak', [SekolahController::class, 'kontak'])->name('sekolah.kontak');
             Route::post('/kontak', [SekolahController::class, 'kontakPut'])->name('sekolah.kontak.put');
         });
-        Route::get('/visi-misi', [SekolahController::class, 'visiMisi'])->name('sekolah.visi-misi');
-        Route::post('/visi-misi', [SekolahController::class, 'visiMisiStore'])->name('sekolah.visi-misi.store');
-        Route::group(['prefix' => 'kepala-sekolah'], function(){
+        Route::group(['prefix' => 'visi-misi'], function () {
+            Route::get('/', [SekolahController::class, 'visiMisi'])->name('sekolah.visi-misi');
+            Route::post('/', [SekolahCoidentroller::class, 'visiMisiPut'])->name('sekolah.visi-misi.put');
+        });
+        Route::group(['prefix' => 'kepala-sekolah'], function () {
             Route::get('/', [SekolahController::class, 'kepalaSekolah'])->name('sekolah.kepala-sekolah');
             Route::post('/', [SekolahController::class, 'kepalaSekolahPut'])->name('sekolah.kepala-sekolah.put');
         });
