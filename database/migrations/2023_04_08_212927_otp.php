@@ -15,7 +15,7 @@ class Otp extends Migration
     {
         Schema::create('otp', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->string('code');
             $table->tinyInteger('is_valid')->default(1);
             $table->timestamp('expired_at')->nullable();

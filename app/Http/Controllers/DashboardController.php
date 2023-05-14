@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -13,6 +14,8 @@ class DashboardController extends Controller
     }
     public function index()
     {
-        return view('dashboard.index');
+        // dd(auth()->user());
+        // return view('admin.dashboard.index');
+        return view('admin.dashboard.new.index');
     }
 }
