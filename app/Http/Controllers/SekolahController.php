@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\About;
 use App\Models\Major;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -200,20 +201,95 @@ class SekolahController extends Controller
 
     public function kepalaSekolahPut(Request $request)
     {
-        $request->validate([
-            'school_headmaster_name' => 'required|max:70',
-            'school_headmaster_quote' => 'required|max:255',
-            'school_headmaster_photo' => 'required|image|mimes:jpeg,png,jpg|max:1024',
-        ], [
-            'school_headmaster_name.required' => 'Harap isi Nama Kepala Sekolah!',
-            'school_headmaster_name.max' => 'Nama Kepala Sekolah terlalu panjang!',
-            'school_headmaster_quote.max' => 'Kutipan Kepala Sekolah terlalu panjang!',
-            'school_headmaster_quote.required' => 'Harap isi Kutipan Kepala Sekolah!',
-            'school_headmaster_photo.image' => 'Harap isi Foto Kepala Sekolah dengan benar!',
-            'school_headmaster_photo.mimes' => 'Format yang didukung hanya .jpeg, .png, .jpg!',
-            'school_headmaster_photo.max' => 'Foto Kepala Sekolah terlalu besar!',
-            'school_headmaster_photo.required' => 'Harap isi Foto Kepala Sekolah!',
-        ]);
+        $data = About::first(['school_headmaster_picture']);
+
+
+        if ($data->school_headmaster_picture == null) {
+            $request->validate([
+                'school_headmaster_name' => 'required|max:70',
+                'school_headmaster_quote' => 'required|max:255',
+                'school_headmaster_picture' => 'required|image|mimes:jpeg,png,jpg|max:1024',
+            ], [
+                'school_headmaster_name.required' => 'Harap isi Nama Kepala Sekolah!',
+                'school_headmaster_name.max' => 'Nama Kepala Sekolah terlalu panjang!',
+                'school_headmaster_quote.max' => 'Kutipan Kepala Sekolah terlalu panjang!',
+                'school_headmaster_quote.required' => 'Harap isi Kutipan Kepala Sekolah!',
+                'school_headmaster_picture.image' => 'Harap isi Foto Kepala Sekolah dengan benar!',
+                'school_headmaster_picture.mimes' => 'Format yang didukung hanya .jpeg, .png, .jpg!',
+                'school_headmaster_picture.max' => 'Ukuran Foto Kepala Sekolah terlalu besar!',
+                'school_headmaster_picture.required' => 'Harap isi Foto Kepala Sekolah!',
+            ]);
+
+            try {
+                $file = $request->file('school_headmaster_picture');
+                $path = public_path('storage\\');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '_school_headmaster_picture' . '.' . $extension;
+                $file->storeAs('informasi-sekolah/kepala-sekolah/photo', $filename);
+
+                About::where('id', 1)->update([
+                    'school_headmaster_name' => $request->school_headmaster_name,
+                    'school_headmaster_quote' => $request->school_headmaster_quote,
+                    'school_headmaster_picture' => 'informasi-sekolah/kepala-sekolah/photo/' . $filename,
+                ]);
+                return redirect()->route('sekolah.kepala-sekolah')->with('flash', [
+                    'type' => 'success',
+                    'message' => 'Kepala Sekolah berhasil disimpan!',
+                ]);
+            } catch (\Throwable $th) {
+                return redirect()->route('sekolah.kepala-sekolah')->with('flash', [
+                    'type' => 'danger',
+                    'message' => 'Sepertinya ada kesalahan!',
+                ]);
+            }
+        } else {
+            $request->validate([
+                'school_headmaster_name' => 'required|max:70',
+                'school_headmaster_quote' => 'required|max:255',
+                'school_headmaster_picture' => 'image|mimes:jpeg,png,jpg|max:1024',
+            ], [
+                'school_headmaster_name.required' => 'Harap isi Nama Kepala Sekolah!',
+                'school_headmaster_name.max' => 'Nama Kepala Sekolah terlalu panjang!',
+                'school_headmaster_quote.max' => 'Kutipan Kepala Sekolah terlalu panjang!',
+                'school_headmaster_quote.required' => 'Harap isi Kutipan Kepala Sekolah!',
+                'school_headmaster_picture.image' => 'Harap isi Foto Kepala Sekolah dengan benar!',
+                'school_headmaster_picture.mimes' => 'Format yang didukung hanya .jpeg, .png, .jpg!',
+                'school_headmaster_picture.max' => 'Ukuran Foto Kepala Sekolah terlalu besar!',
+            ]);
+
+            if ($request->file('school_headmaster_picture')) {
+                $file = $request->file('school_headmaster_picture');
+                $path = public_path('storage\\');
+                if (File::exists($path . $data->school_headmaster_picture)) {
+                    File::delete($path . $data->school_headmaster_picture);
+                }
+                $extension = $file->getClientOriginalExtension();
+                $filename = time() . '_school_headmaster_picture' . '.' . $extension;
+                $file->storeAs('informasi-sekolah/kepala-sekolah/photo', $filename);
+
+                About::where('id', 1)->update([
+                    'school_headmaster_name' => $request->school_headmaster_name,
+                    'school_headmaster_quote' => $request->school_headmaster_quote,
+                    'school_headmaster_picture' => 'informasi-sekolah/kepala-sekolah/photo/' . $filename,
+                ]);
+                return redirect()->route('sekolah.kepala-sekolah')->with('flash', [
+                    'type' => 'success',
+                    'message' => 'Kepala Sekolah berhasil diubah!',
+                ]);
+            }else{
+                About::where('id', 1)->update([
+                    'school_headmaster_name' => $request->school_headmaster_name,
+                    'school_headmaster_quote' => $request->school_headmaster_quote,
+                ]);
+                return redirect()->route('sekolah.kepala-sekolah')->with('flash', [
+                    'type' => 'success',
+                    'message' => 'Kepala Sekolah berhasil diubah!',
+                ]);
+            }
+        }
+        // $fileSize = $request->file('school_headmaster_picture')->getSize();
+
+
     }
 
 

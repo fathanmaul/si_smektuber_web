@@ -84,18 +84,22 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
         });
         Route::group(['prefix' => 'visi-misi'], function () {
             Route::get('/', [SekolahController::class, 'visiMisi'])->name('sekolah.visi-misi');
-            Route::post('/', [SekolahCoidentroller::class, 'visiMisiPut'])->name('sekolah.visi-misi.put');
+            Route::post('/', [SekolahController::class, 'visiMisiPut'])->name('sekolah.visi-misi.put');
         });
         Route::group(['prefix' => 'kepala-sekolah'], function () {
             Route::get('/', [SekolahController::class, 'kepalaSekolah'])->name('sekolah.kepala-sekolah');
             Route::post('/', [SekolahController::class, 'kepalaSekolahPut'])->name('sekolah.kepala-sekolah.put');
         });
-        Route::get('/prestasi-sekolah', [SekolahController::class, 'prestasiSekolah'])->name('sekolah.prestasi');
-        Route::get('/ekstrakurikuler', [SekolahController::class, 'ekstrakurikuler'])->name('sekolah.ekstrakurikuler');
+        // Route::get('/prestasi-sekolah', [SekolahController::class, 'prestasiSekolah'])->name('sekolah.prestasi');
+        // Route::get('/ekstrakurikuler', [SekolahController::class, 'ekstrakurikuler'])->name('sekolah.ekstrakurikuler');
     });
     Route::group(['prefix' => 'jurusan', 'as' => 'jurusan.'], function () {
         Route::get('/', [JurusanController::class, 'index'])->name('index');
         Route::get('/tambah', [JurusanController::class, 'create'])->name('create');
+        Route::post('/tambah', [JurusanController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [JurusanController::class, 'edit'])->name('edit');
+        Route::post('/{id}/edit', [JurusanController::class, 'put'])->name('put');
+        Route::delete('/{id}', [JurusanController::class, 'destroy'])->name('destroy');
     });
     Route::group(['prefix' => 'prestasi'], function () {
         Route::get('/', [PrestasiController::class, 'index'])->name('prestasi.index');
@@ -104,6 +108,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
         Route::get('/{id}/edit', [PrestasiController::class, 'edit'])->name('prestasi.edit');
         Route::post('/{id}/edit', [PrestasiController::class, 'put'])->name('prestasi.put');
         Route::delete('/{id}', [PrestasiController::class, 'destroy'])->name('prestasi.destroy');
+        
     });
 
     Route::group(['prefix' => 'ekstrakurikuler'], function () {
