@@ -80,11 +80,11 @@
                 {{-- Jurusan --}}
                 <li>
                     <div
-                        class="collapse fill-current transition-colors rounded hover:bg-[#19a7ce2f] {{ request()->segment(2) == 'sekolah' ? 'hover:bg-transparent' : '' }}">
+                        class="collapse fill-current transition-colors rounded hover:bg-[#19a7ce2f] {{ request()->segment(2) == 'jurusan' ? 'hover:bg-transparent' : '' }}">
                         <input type="checkbox" class="peer"
-                            {{ request()->segment(2) == 'sekolah' ? 'checked' : '' }} />
+                            {{ request()->segment(2) == 'jurusan' ? 'checked' : '' }} />
                         <div
-                            class="hover:bg-[#19a7ce2f] collapse-title p-3 w-full text-gray-900  flex flex-row items-center text-sm gap-1  py-0 fill-current {{ request()->segment(2) == 'sekolah' ? 'nav-active text-primary hover:bg-transparent' : '' }}">
+                            class="hover:bg-[#19a7ce2f] collapse-title p-3 w-full text-gray-900  flex flex-row items-center text-sm gap-1  py-0 fill-current {{ request()->segment(2) == 'jurusan' ? 'nav-active text-primary hover:bg-transparent' : '' }}">
                             <span class="pl-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"
                                     class="w-5 h-5 flex justify-center items-center">
@@ -93,7 +93,7 @@
                                 </svg>
                             </span>
                             <span
-                                class="ml-2 text-sm font-semibold w-full flex items-center justify-between {{ request()->segment(2) == 'sekolah' ? 'nav-active bg-transparent hover:bg-transparent' : '' }} ">
+                                class="ml-2 text-sm font-semibold w-full flex items-center justify-between {{ request()->segment(2) == 'jurusan' ? 'nav-active bg-transparent hover:bg-transparent' : '' }} ">
                                 Jurusan
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-3 h-3">
                                     <path
@@ -104,17 +104,14 @@
                         <div class="collapse-content text-sm">
                             <div class="sub-menu pt-2">
                                 <ul
-                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'sekolah' ? 'border-primary' : '' }}">
-                                    <li><a href="{{ route('sekolah.umum') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ request()->segment(3) == 'umum' ? 'nav-active' : '' }}">Daftar
+                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'jurusan' ? 'border-primary' : '' }}">
+                                    <li><a href="{{ route('jurusan.index') }}"
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ request()->segment(2) == 'jurusan' ? 'nav-active' : '' }}">Daftar
                                             Jurusan</a>
                                     </li>
                                     <li><a href="{{ route('sekolah.visi-misi') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ request()->segment(3) == 'visi-misi' ? 'nav-active' : '' }}">Prestasi
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ request()->segment(2) == 'jurusan' && request()->segment(3) == 'prestasi' ? 'nav-active' : '' }}">Prestasi
                                             Jurusan</a></li>
-                                    <li><a href="{{ route('sekolah.kepala-sekolah') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ request()->segment(3) == 'kepala-sekolah' ? 'nav-active' : '' }}">Kepala
-                                            Sekolah</a></li>
                                 </ul>
                             </div>
                         </div>
