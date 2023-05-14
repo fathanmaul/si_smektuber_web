@@ -32,20 +32,21 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('home');
+    return view('landing.index');
 })->name('landing.index');
+
 Route::get('/about', function () {
-    return view('about');
+    return view('landing.about');
 });
 Route::get('/ppdb', function () {
-    return view('ppdb');
+    return view('landing.ppdb');
 });
 
 Route::get('/article', function () {
-    return view('article');
+    return view('landing.article');
 });
 Route::get('/konsultasi', function () {
-    return view('konsultasi');
+    return view('landing.konsultasi');
 });
 
 /**
@@ -118,7 +119,6 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
     //     Route::delete('/{id}', [PrestasiController::class, 'destroy'])->name('prestasi.destroy');
         
     // });
-
     Route::group(['prefix' => 'ekstrakurikuler', 'as' => 'ekstrakurikuler.'], function () {
         Route::get('/', [EkstrakurikulerController::class, 'index'])->name('index');
         Route::get('/tambah', [EkstrakurikulerController::class, 'create'])->name('create');

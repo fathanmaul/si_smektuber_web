@@ -18,6 +18,7 @@
         <x-alert />
         <h2 class="font-bold text-lg">Informasi Kepala Sekolah</h2>
         <div class="divider my-0 h-0 mb-4 mt-4"></div>
+
         <form action="{{ route('sekolah.kepala-sekolah.put') }}" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-control">

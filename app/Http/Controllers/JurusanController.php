@@ -17,6 +17,7 @@ class JurusanController extends Controller
         }
         $jurusan = Major::paginate(10);
         return view('admin.Jurusan.new.index', compact('jurusan'));
+
     }
 
 
