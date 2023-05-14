@@ -1,3 +1,6 @@
+@php
+    $route = Route::currentRouteName();
+@endphp
 <div
     class="sidebar w-[280px] h-full top-0 bottom-0 bg-white text-white rounded-md fixed overflow-y-auto lg:translate-x-0 transition-all ease-in-out duration-300 -translate-x-full z-[100]">
     <div class="max-h-[calc(100vh - 9rem)] overflow-y-auto">
@@ -105,12 +108,18 @@
                             <div class="sub-menu pt-2">
                                 <ul
                                     class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'jurusan' ? 'border-primary' : '' }}">
-                                    <li><a href="{{ route('jurusan.index') }}"
+                                    <li>
+                                        {{-- <a href="{{ route('jurusan.index') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ request()->segment(2) == 'jurusan' ? 'nav-active' : '' }}">Daftar
-                                            Jurusan</a>
+                                            Jurusan
+                                        </a> --}}
+                                        <a href="{{ route('jurusan.index') }}"
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'jurusan.index' || $route == 'jurusan.create' || $route == 'jurusan.edit' ? 'nav-active' : '' }}">Daftar
+                                            Jurusan
+                                        </a>
                                     </li>
-                                    <li><a href="{{ route('sekolah.visi-misi') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ request()->segment(2) == 'jurusan' && request()->segment(3) == 'prestasi' ? 'nav-active' : '' }}">Prestasi
+                                    <li><a href="{{ route('jurusan.prestasi.index') }}"
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'jurusan.prestasi.index' || $route == 'jurusan.prestasi.create' || $route == 'jurusan.prestasi.edit' ? 'nav-active' : '' }}">Prestasi
                                             Jurusan</a></li>
                                 </ul>
                             </div>
@@ -118,6 +127,45 @@
                     </div>
                 </li>
 
+                {{-- Ekstrakurikuler --}}
+                <li>
+                    <div
+                        class="collapse fill-current transition-colors rounded hover:bg-[#19a7ce2f] {{ request()->segment(2) == 'ekstrakurikuler' ? 'hover:bg-transparent' : '' }}">
+                        <input type="checkbox" class="peer"
+                            {{ request()->segment(2) == 'ekstrakurikuler' ? 'checked' : '' }} />
+                        <div
+                            class="hover:bg-[#19a7ce2f] collapse-title p-3 w-full text-gray-900  flex flex-row items-center text-sm gap-1  py-0 fill-current {{ request()->segment(2) == 'ekstrakurikuler' ? 'nav-active text-primary hover:bg-transparent' : '' }}">
+                            <span class="pl-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 flex justify-center items-center"><path d="M417.3 360.1l-71.6-4.8c-5.2-.3-10.3 1.1-14.5 4.2s-7.2 7.4-8.4 12.5l-17.6 69.6C289.5 445.8 273 448 256 448s-33.5-2.2-49.2-6.4L189.2 372c-1.3-5-4.3-9.4-8.4-12.5s-9.3-4.5-14.5-4.2l-71.6 4.8c-17.6-27.2-28.5-59.2-30.4-93.6L125 228.3c4.4-2.8 7.6-7 9.2-11.9s1.4-10.2-.5-15l-26.7-66.6C128 109.2 155.3 89 186.7 76.9l55.2 46c4 3.3 9 5.1 14.1 5.1s10.2-1.8 14.1-5.1l55.2-46c31.3 12.1 58.7 32.3 79.6 57.9l-26.7 66.6c-1.9 4.8-2.1 10.1-.5 15s4.9 9.1 9.2 11.9l60.7 38.2c-1.9 34.4-12.8 66.4-30.4 93.6zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm14.1-325.7c-8.4-6.1-19.8-6.1-28.2 0L194 221c-8.4 6.1-11.9 16.9-8.7 26.8l18.3 56.3c3.2 9.9 12.4 16.6 22.8 16.6h59.2c10.4 0 19.6-6.7 22.8-16.6l18.3-56.3c3.2-9.9-.3-20.7-8.7-26.8l-47.9-34.8z"/></svg>
+                            </span>
+                            <span
+                                class="ml-2 text-sm font-semibold w-full flex items-center justify-between {{ request()->segment(2) == 'ekstrakurikuler' ? 'nav-active bg-transparent hover:bg-transparent' : '' }} ">
+                                Ekstrakurikuler
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-3 h-3">
+                                    <path
+                                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="collapse-content text-sm">
+                            <div class="sub-menu pt-2">
+                                <ul
+                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'ekstrakurikuler' ? 'border-primary' : '' }}">
+                                    <li><a href="{{ route('ekstrakurikuler.index') }}"
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ekstrakurikuler.index' || $route == 'ekstrakurikuler.create' || $route == 'ekstrakurikuler.edit' ? 'nav-active' : '' }}">Daftar
+                                            Ekstrakurikuler</a>
+                                    </li>
+                                    <li><a href="{{ route('sekolah.visi-misi') }}"
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ekstrakurikuler.prestasi.index' || $route == 'ekstrakurikuler.prestasi.create' || $route == 'ekstrakurikuler.prestasi.edit' ? 'nav-active' : '' }}">Prestasi
+                                            Ekstrakurikuler</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+
+                {{-- Admin --}}
                 <li class="">
                     <a href="#"
                         class="nav-item flex flex-row items-center gap-3 text-sm font-semibold px-4  py-4 rounded fill-current">

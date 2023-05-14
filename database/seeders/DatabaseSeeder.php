@@ -16,8 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             Role::class,
             User::class,
+            About::class,
             // Major::class,
-            // About::class,
             // PostCategory::class,
             // Extracurricular::class,
         ]);

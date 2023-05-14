@@ -9,15 +9,25 @@ class EkstrakurikulerController extends Controller
 {
     //
 
-    public function index()
+    public function index(Request $request)
     {
-        $data = Extracurricular::paginate(10);
-        return view('admin.Ekstrakurikuler.index', ['extracurricular' => $data]);
+        if ($request->has('cari')) {
+            $extracurricular = Extracurricular::where('extracurricular_name', 'LIKE', '%' . $request->cari . '%')->paginate(10);
+            return view('admin.Ekstrakurikuler.new.index', compact('extracurricular'));
+            // return $jurusan;
+        }
+        $extracurricular = Extracurricular::paginate(10);
+        return view('admin.Ekstrakurikuler.new.index', compact('extracurricular'));
     }
 
     public function create()
     {
-        return view('admin.Ekstrakurikuler.create');
+        return view('admin.Ekstrakurikuler.new.create');
+    }
+
+    public function store(Request $request)
+    {
+        
     }
 
     public function destroy($id)
