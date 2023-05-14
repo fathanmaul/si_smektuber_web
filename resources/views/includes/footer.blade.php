@@ -46,7 +46,7 @@
                     style="width: 100px"
                   />
                 </h1> -->
-                <img src="img/Logo_smektuber.png" alt="" />
+                <img src="landing/img/Logo_smektuber.png" alt="" />
             </div>
             <div class="col-lg-4 col-md-6">
                 <h5 class="mb-4">Tentang Kami</h5>

@@ -31,20 +31,20 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('home');
+    return view('landing.home.index');
 })->name('landing.index');
 Route::get('/about', function () {
-    return view('about');
+    return view('landing.about.index');
 });
 Route::get('/ppdb', function () {
-    return view('ppdb');
+    return view('landing.ppdb.index');
 });
 
 Route::get('/article', function () {
-    return view('article');
+    return view('landing.article.index');
 });
 Route::get('/konsultasi', function () {
-    return view('konsultasi');
+    return view('landing.konsultasi.index');
 });
 
 /**
