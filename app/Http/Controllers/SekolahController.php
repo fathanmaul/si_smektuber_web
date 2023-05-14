@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\About;
 use App\Models\Major;
+
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
@@ -288,7 +289,6 @@ class SekolahController extends Controller
             }
         }
         // $fileSize = $request->file('school_headmaster_picture')->getSize();
-
 
     }
 

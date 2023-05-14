@@ -3693,6 +3693,24 @@ button{
   border-radius: 9999px;
   padding: 0px;
 }
+.textarea-md{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  line-height: 2;
+}
+.textarea-lg{
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  line-height: 2;
+}
 .avatar.online:before{
   content: "";
   position: absolute;
@@ -3904,6 +3922,7 @@ button{
 .right-2{
   right: 0.5rem;
 }
+>>>>>>> develop
 .right-4{
   right: 1rem;
 }
@@ -3930,6 +3949,12 @@ button{
 }
 .z-\[9999\]{
   z-index: 9999;
+}
+.z-30{
+  z-index: 30;
+}
+.-z-0{
+  z-index: 0;
 }
 .order-first{
   order: -9999;
@@ -5761,6 +5786,7 @@ button{
   .lg\:text-center{
     text-align: center;
   }
+>>>>>>> develop
   .lg\:text-3xl{
     font-size: 1.875rem;
     line-height: 2.25rem;

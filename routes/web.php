@@ -31,20 +31,21 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('home');
+    return view('landing.index');
 })->name('landing.index');
+
 Route::get('/about', function () {
-    return view('about');
+    return view('landing.about');
 });
 Route::get('/ppdb', function () {
-    return view('ppdb');
+    return view('landing.ppdb');
 });
 
 Route::get('/article', function () {
-    return view('article');
+    return view('landing.article');
 });
 Route::get('/konsultasi', function () {
-    return view('konsultasi');
+    return view('landing.konsultasi');
 });
 
 /**
@@ -103,6 +104,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
         Route::get('/{id}/edit', [JurusanController::class, 'edit'])->name('edit');
         Route::post('/{id}/edit', [JurusanController::class, 'put'])->name('put');
         Route::delete('/{id}', [JurusanController::class, 'destroy'])->name('destroy');
+
     });
     Route::group(['prefix' => 'prestasi'], function () {
         Route::get('/', [PrestasiController::class, 'index'])->name('prestasi.index');
@@ -111,7 +113,6 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
         Route::get('/{id}/edit', [PrestasiController::class, 'edit'])->name('prestasi.edit');
         Route::post('/{id}/edit', [PrestasiController::class, 'put'])->name('prestasi.put');
         Route::delete('/{id}', [PrestasiController::class, 'destroy'])->name('prestasi.destroy');
-        
     });
 
     Route::group(['prefix' => 'ekstrakurikuler'], function () {
