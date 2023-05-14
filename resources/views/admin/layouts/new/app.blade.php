@@ -25,7 +25,7 @@
     @include('admin.layouts.new.sidebar')
     <div class="ml-0 lg:ml-[280px]">
         {{-- Header Goes Here --}}
-        <div class="navbar bg-base-100 px-4 z-20 justify-between fixed lg:static">
+        <div class="navbar shadow-lg lg:shadow-none bg-base-100 px-4 z-20 justify-between fixed lg:static">
             <div class="flex-1">
                 <button class="btn btn-square btn-ghost lg:hidden" id="test">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

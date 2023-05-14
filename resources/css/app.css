@@ -50,4 +50,8 @@
     .sub-menu-hide{
         @apply hidden;
     }
+
+    .btn{
+        @apply rounded-md;
+    }
 }
