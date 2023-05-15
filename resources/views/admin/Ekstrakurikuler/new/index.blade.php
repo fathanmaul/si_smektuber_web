@@ -17,17 +17,14 @@
     <div class="card rounded p-6 drop-shadow-lg bg-white">
         <x-alert />
 
-        <form action="{{ route('jurusan.index') }}" method="GET">
+        <form action="{{ route('ekstrakurikuler.index') }}" method="GET">
             <div class="flex flex-col lg:flex-row items-center gap-2">
                 <div class="flex relative w-full items-center">
                     <span class="absolute left-4 text-gray-900">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </span>
                     <input type="text"
-                        class="input input-bordered 
-                        @error('school_email')
-                        input-error
-                        @enderror w-full px-11 dark:bg-white"
+                        class="input input-bordered w-full px-11 dark:bg-white"
                         placeholder="Cari Ekstrakurikuler" name="cari"
                         @if (request()->has('cari')) value="{{ request()->cari }}"
                             @else
@@ -66,12 +63,12 @@
                                 <td class="max-w-xs overflow-hidden text-ellipsis">{{ $value->extracurricular_name }}</td>
                                 <td>
                                     <div class="flex gap-2">
-                                        <a href="{{ route('jurusan.edit', $value->id) }}"
+                                        <a href="{{ route('ekstrakurikuler.edit', $value->id) }}"
                                             class="btn btn-square btn-sm btn-warning text-white">
                                             <i class="fa-solid fa-pencil"></i>
                                         </a>
-                                        <a href="{{ route('jurusan.destroy', $value->id) }}"
-                                            onclick="destroyMajor(event, this)"
+                                        <a href="{{ route('ekstrakurikuler.destroy', $value->id) }}"
+                                            onclick="destroyExtra(event, this)"
                                             class="btn btn-square btn-sm btn-error text-white"><i class="fa-solid fa-trash"
                                                 data-title="{{ $value->extracurricular_name }}"></i></a>
 
@@ -89,4 +86,37 @@
             {{ $extracurricular->links() }}
         </div>
     </div>
+    <!-- Put this part before </body> tag -->
+    <input type="checkbox" id="my-modal" class="modal-toggle" />
+    <div class="modal">
+        <form class="modal-box rounded" method="POST">
+            @csrf
+            @method('DELETE')
+            <h3 class="font-bold text-lg">Yakin ingin menghapus ekstrakurikuler ini?</h3>
+            {{-- <p class="py-4">Prestasi yang dimiliki oleh ekstrakurikuler ini akan otomatis terhapus!</p> --}}
+            <div class="modal-action">
+                <label for="my-modal" class="btn rounded">KEMBALI</label>
+                <button class="btn btn-outline btn-error rounded" type="submit" id="button_close">HAPUS</button>
+            </div>
+        </form>
+    </div>
+@endsection
+
+@section('script')
+    <script>
+        function destroyExtra(event, props) {
+            const modalToggle = document.querySelector('input#my-modal');
+            event.preventDefault();
+            const url = props.getAttribute('href');
+            const title = props.getAttribute('data-title');
+            const modal = document.querySelector('.modal');
+            modalToggle.checked = true;
+            modal.querySelector('form.modal-box').setAttribute('action', url);
+        }
+
+        document.querySelector('#button_close').addEventListener('click', function() {
+            const modalToggle = document.querySelector('input#my-modal');
+            modalToggle.checked = false;
+        });
+    </script>
 @endsection

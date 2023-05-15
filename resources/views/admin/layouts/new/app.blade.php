@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+        <link rel="shortcut icon" href="{{ asset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     {{-- JQuery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
