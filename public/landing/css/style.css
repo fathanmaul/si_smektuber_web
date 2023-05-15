@@ -140,7 +140,7 @@ h6,
 }
 
 /*** Header ***/
-.hero-header .breadcrumb-item + .breadcrumb-item::before {
+.hero-header .breadcrumb-item+.breadcrumb-item::before {
   color: var(--secondary);
 }
 

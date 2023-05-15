@@ -31,8 +31,8 @@
                     <div class="h-100">
                         <h1 class="display-6">Tentang Kami</h1>
                         <!-- <p class="text-primary fs-5 mb-4">
-                        The Most Trusted Cryptocurrency Platform
-                      </p> -->
+                            The Most Trusted Cryptocurrency Platform
+                          </p> -->
                         <p>
                             Penerimaan Peserta Didik Baru untuk SMK Negeri se Jawa Timur termasuk di dalamnya SMK Negeri
                             7 Jember, akan dibuka tahapannya mulai tanggal 20 Juni 2023 dan terintegrasi dalam sistem

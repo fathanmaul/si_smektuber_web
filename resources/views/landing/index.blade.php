@@ -35,8 +35,8 @@
                     <div class="h-100">
                         <h1 class="display-6">Tentang Kami</h1>
                         <!-- <p class="text-primary fs-5 mb-4">
-                            The Most Trusted Cryptocurrency Platform
-                          </p> -->
+                                            The Most Trusted Cryptocurrency Platform
+                                          </p> -->
                         <p>
                             SMKN 7 JEMBER adalah Sekolah Menengah Kejuruan yang terletak di
                             jalan PB.Sudirman No 16 Jatiroto Lor,. Sekolah ini berdiri pada
@@ -98,7 +98,7 @@
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Ini artikel menarik cuman masih dami</h4>
 
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Selengkapnya</a>
+                            <a href="/blog" class="btn btn-primary px-4 mx-auto my-2">Selengkapnya</a>
                         </div>
                     </div>
                 </div>
@@ -110,7 +110,7 @@
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Ini artikel menarik cuman masih dami</h4>
 
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Selengkapnya</a>
+                            <a href="/blog" class="btn btn-primary px-4 mx-auto my-2">Selengkapnya</a>
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Ini artikel menarik cuman masih dami</h4>
 
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Selengkapnya</a>
+                            <a href="/blog" class="btn btn-primary px-4 mx-auto my-2">Selengkapnya</a>
                         </div>
                     </div>
                 </div>
