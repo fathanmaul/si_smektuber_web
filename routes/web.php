@@ -147,7 +147,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
     });
 
     Route::group(['prefix' => 'ppdb', 'as' => 'ppdb.'], function () {
-        Route::group(['prefix' => 'tahun-ajaran', 'as' => 'tahun_ajaran.'], function () {
+        Route::group(['prefix' => 'tahun-ajaran', 'as' => 'tahun_ajaran.'], function(){
             Route::get('/', [TahunAjaranController::class, 'index'])->name('index');
             Route::get('/tambah', [TahunAjaranController::class, 'create'])->name('create');
             Route::post('/tambah', [TahunAjaranController::class, 'store'])->name('store');
@@ -155,7 +155,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
             Route::post('/{id}/edit', [TahunAjaranController::class, 'put'])->name('put');
             Route::delete('/{id}', [TahunAjaranController::class, 'destroy'])->name('destroy');
         });
-        Route::group(['prefix' => 'daftar', 'as' => 'daftar.'], function () {
+        Route::group(['prefix' => 'daftar', 'as' => 'daftar.'], function(){
             Route::get('/', [PpdbController::class, 'index'])->name('index');
             Route::get('/tambah', [PpdbController::class, 'create'])->name('create');
         });

@@ -17,9 +17,9 @@ class Major extends Migration
             $table->id();
             $table->string('major_name');
             $table->text('major_description');
-            $table->string('major_logo');
-            $table->string('picture_1');
-            $table->string('picture_2');
+            $table->string('major_logo')->nullable();
+            $table->string('picture_1')->nullable();
+            $table->string('picture_2')->nullable();
             $table->timestamps();
         });
     }

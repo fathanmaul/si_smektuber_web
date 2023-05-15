@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+        <link rel="shortcut icon" href="{{ asset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     {{-- JQuery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -25,7 +26,7 @@
     @include('admin.layouts.new.sidebar')
     <div class="ml-0 lg:ml-[280px]">
         {{-- Header Goes Here --}}
-        <div class="navbar bg-base-100 px-4 z-20 justify-between fixed lg:static">
+        <div class="navbar shadow-lg lg:shadow-none bg-base-100 px-4 z-20 justify-between fixed lg:static">
             <div class="flex-1">
                 <button class="btn btn-square btn-ghost lg:hidden" id="test">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"

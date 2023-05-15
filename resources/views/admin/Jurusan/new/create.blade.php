@@ -18,15 +18,13 @@
         </div>
     </div>
     <div class="flex justify-center w-full mb-10">
-
-
         <div class="card rounded p-6 drop-shadow-lg bg-white mt-4 lg:w-3/5 ">
             <h2 class="text-sm lg:text-base font-bold lg:text-center">Masukkan data mengenai Jurusan yang akan ditambahkan!
             </h2>
-
+            <div class="divider"></div>
             <form action="{{ route('jurusan.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="flex flex-col gap-2 mt-4">
+                <div class="flex flex-col gap-2">
                     <label for="#" class="appearance-none text-sm lg:text-base">Nama Jurusan</label>
                     <input type="text" name="major_name" id=""
                         class="input @error('major_name')
@@ -37,6 +35,7 @@
                         <p class="text-red-500 text-sm">{{ $message }}</p>
                     @enderror
                 </div>
+                
                 <div class="flex flex-col gap-2 mt-4">
                     <label for="#" class="appearance-none text-sm lg:text-base">Deskripsi Jurusan &nbsp; (Maksimal
                         1000 karakter)</label>
@@ -49,7 +48,7 @@
                         <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="flex flex-col gap-2 mt-4">
+                <div class="flex flex-col gap-2 mt-6">
                     <label for="#" class="appearance-none text-sm lg:text-base">Logo Jurusan &nbsp; (Ukuran Maksimal: 1MB | Format: jpg, jpeg, png)</label>
                     <input type="file"
                         class="file-input file-input-bordered @error('major_logo') input-error @enderror w-full border-gray-400 rounded"
@@ -58,7 +57,7 @@
                         <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="flex flex-col gap-2 mt-4">
+                <div class="flex flex-col gap-2 mt-6">
                     <label for="#" class="appearance-none text-sm lg:text-base">Foto Jurusan 1 &nbsp; (Ukuran Maksimal: 1MB | Format: jpg, jpeg, png)</label>
                     <input type="file"
                         class="file-input file-input-bordered @error('picture_1') input-error @enderror w-full border-gray-400 rounded"
@@ -67,7 +66,7 @@
                         <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="flex flex-col gap-2 mt-4">
+                <div class="flex flex-col gap-2 mt-6">
                     <label for="#" class="appearance-none text-sm lg:text-base">Foto Jurusan 2 &nbsp; (Ukuran Maksimal: 1MB | Format: jpg, jpeg, png)</label>
                     <input type="file"
                         class="file-input file-input-bordered @error('picture_2') input-error @enderror w-full border-gray-400 rounded"
