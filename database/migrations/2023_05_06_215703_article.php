@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Posts extends Migration
+class Article extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class Posts extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('article', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('thumbnail', 500)->nullable();
-            $table->text('content')->nullable();
-            $table->foreignId('category_id')->nullable()->constrained('post_category')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('picture_1', 500)->nullable();
-            $table->string('picture_2', 500)->nullable();
-            $table->tinyInteger('status')->default(1);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

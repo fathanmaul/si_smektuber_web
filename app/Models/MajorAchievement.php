@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class MajorAchievement extends Model
 {
     use HasFactory;
+    protected $table = "major_achievement";
 }
