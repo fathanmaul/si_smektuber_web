@@ -17,9 +17,9 @@ class Extracurricular extends Migration
             $table->id();
             $table->string('extracurricular_name');
             $table->text('extracurricular_description');
-            $table->string('extracurricular_logo');
-            $table->string('extracurricular_photo_1');
-            $table->string('extracurricular_photo_2');
+            $table->string('extracurricular_logo')->nullable();
+            $table->string('extracurricular_photo_1')->nullable();
+            $table->string('extracurricular_photo_2')->nullable();
             $table->timestamps();
         });
     }

@@ -15,7 +15,7 @@ class SchoolYear extends Migration
     {
         Schema::create('school_year', function (Blueprint $table) {
             $table->id();
-            $table->year('school_year')->unique();
+            $table->string('school_year', 10)->unique();
             $table->timestamps();
         });
     }

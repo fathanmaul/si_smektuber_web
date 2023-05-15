@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class SchoolYear extends Model
 {
     use HasFactory;
+
+    protected $table = "school_year";
+
+    protected $fillable = [
+        'school_year',
+        'created_at',
+        'updated_at'
+    ];
 }

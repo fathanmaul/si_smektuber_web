@@ -24,7 +24,7 @@
             <h2 class="text-sm lg:text-base font-bold lg:text-center">Masukkan data mengenai Jurusan yang akan ditambahkan!
             </h2>
 
-            <form action="{{ route('jurusan.put', $jurusan->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('jurusan.put', $jurusan->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="flex flex-col gap-2 mt-4">
                     <label for="#" class="appearance-none text-sm lg:text-base">Nama Jurusan</label>
@@ -55,15 +55,16 @@
                     @enderror
                 </div>
                 <div class="flex flex-col gap-2 mt-4">
-                    <label for="#" class="appearance-none text-sm lg:text-base">Logo Jurusan &nbsp; (Ukuran Maksimal:
-                        1MB | Format: jpg, jpeg, png)</label>
                     @if ($jurusan->major_logo)
-                    <div class="w-64">
-                        <img src="{{ asset('storage/' . $jurusan->major_logo) }}" alt="" />
-                    </div>
+                        <p class="text-sm">Logo sebelumnya : </p>
+                        <div class="w-64">
+                            <img src="{{ asset('storage/' . $jurusan->major_logo) }}" alt="" />
+                        </div>
                     @else
                         <p class="text-sm text-gray-500">Logo tidak tersedia!</p>
                     @endif
+                    <label for="#" class="appearance-none text-sm lg:text-base">Logo Jurusan &nbsp; (Ukuran Maksimal:
+                        1MB | Format: jpg, jpeg, png)</label>
                     <input type="file"
                         class="file-input file-input-bordered @error('major_logo') input-error @enderror w-full border-gray-400 rounded"
                         name="major_logo" />
@@ -72,15 +73,16 @@
                     @enderror
                 </div>
                 <div class="flex flex-col gap-2 mt-4">
-                    <label for="#" class="appearance-none text-sm lg:text-base">Foto Jurusan 1 &nbsp; (Ukuran
-                        Maksimal: 1MB | Format: jpg, jpeg, png)</label>
                     @if ($jurusan->picture_1)
-                    <div class="w-64">
-                        <img src="{{ asset('storage/' . $jurusan->picture_1) }}" alt="" />
-                    </div>
+                        <div class="w-64">
+                            <p class="text-sm">Foto Jurusan 1 sebelumnya : </p>
+                            <img src="{{ asset('storage/' . $jurusan->picture_1) }}" alt="" />
+                        </div>
                     @else
                         <p class="text-sm text-gray-500">Foto tidak tersedia!</p>
                     @endif
+                    <label for="#" class="appearance-none text-sm lg:text-base">Foto Jurusan 1 &nbsp; (Ukuran
+                        Maksimal: 1MB | Format: jpg, jpeg, png)</label>
                     <input type="file"
                         class="file-input file-input-bordered @error('picture_1') input-error @enderror w-full border-gray-400 rounded"
                         name="picture_1" />
@@ -89,15 +91,16 @@
                     @enderror
                 </div>
                 <div class="flex flex-col gap-2 mt-4">
-                    <label for="#" class="appearance-none text-sm lg:text-base">Foto Jurusan 2 &nbsp; (Ukuran
-                        Maksimal: 1MB | Format: jpg, jpeg, png)</label>
-                        @if ($jurusan->picture_2)
+                    @if ($jurusan->picture_2)
+                        <p class="text-sm">Foto Jurusan 2 sebelumnya : </p>
                         <div class="w-64">
                             <img src="{{ asset('storage/' . $jurusan->picture_2) }}" alt="" />
                         </div>
                     @else
                         <p class="text-sm text-gray-500">Foto tidak tersedia!</p>
                     @endif
+                    <label for="#" class="appearance-none text-sm lg:text-base">Foto Jurusan 2 &nbsp; (Ukuran
+                        Maksimal: 1MB | Format: jpg, jpeg, png)</label>
                     <input type="file"
                         class="file-input file-input-bordered @error('picture_2') input-error @enderror w-full border-gray-400 rounded"
                         name="picture_2" />

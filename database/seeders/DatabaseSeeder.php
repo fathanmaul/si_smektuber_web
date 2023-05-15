@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
             Role::class,
             User::class,
             About::class,
-            // Major::class,
+            Major::class,
+            Extracurricular::class,
             // PostCategory::class,
-            // Extracurricular::class,
         ]);
     }
 }
