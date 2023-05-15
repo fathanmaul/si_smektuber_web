@@ -18,7 +18,9 @@
         <x-alert />
         <h2 class="font-bold text-lg">Informasi Kepala Sekolah</h2>
         <div class="divider my-0 h-0 mb-4 mt-4"></div>
-        <form action="{{ route('sekolah.kepala-sekolah.put') }}" method="post">
+
+        <form action="{{ route('sekolah.kepala-sekolah.put') }}" method="post" enctype="multipart/form-data">
+            @csrf
             <div class="form-control">
                 <label for="#" class="appearance-none">Nama Kepala Sekolah</label>
                 <div class="flex relative w-full items-center mt-3">
@@ -55,17 +57,27 @@
                 @enderror
             </div>
             <div class="form-control mt-4 gap-2">
-                <label for="" class="appearance-none">Foto Kepala Sekolah &nbsp; &nbsp; <a href="#"
-                        class="hover:underline text-sm">Lihat Foto
-                        <span>
-                            <i class="fa-solid fa-window-restore text-xs"></i>
-                        </span>
-                    </a>
+                <label for="" class="appearance-none">Foto Kepala Sekolah {!! $kepala_sekolah->school_headmaster_picture != null
+                    ? '&nbsp; &nbsp; <a href="' .
+                        asset('storage/' . $kepala_sekolah->school_headmaster_picture) .
+                        '" class="hover:underline text-sm" target="_blank">Lihat Foto <span><i class="fa-solid fa-window-restore text-xs"></i></span></a>'
+                    : '' !!}
                 </label>
-                <input type="file" class="file-input file-input-bordered w-full laptop:w-3/5" />
+                <input type="file"
+                    class="file-input file-input-bordered @error('school_headmaster_picture') file-input-error @enderror w-full laptop:w-3/5"
+                    accept="image/png, image/jpg, image/jpeg" name="school_headmaster_picture" />
                 <label class="label">
                     <span class="label-text-alt">Ukuran foto maksimal 1MB | Format yang dibolehkan : jpg, jpeg, png</span>
                 </label>
+                @error('school_headmaster_picture')
+                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="flex justify-end w-full mt-8">
+                <button class="btn w-full laptop:w-auto flex flex-row gap-2 items-center" type="submit">
+                    <span><i class="fa-solid fa-floppy-disk"></i></span>
+                    SIMPAN
+                </button>
             </div>
         </form>
     </div>
