@@ -52,6 +52,17 @@ Route::get('/konsultasi', function () {
     return view('landing.konsultasi');
 });
 
+Route::get('/jurusan', function () {
+    return view('landing.detail.jurusan');
+});
+
+Route::get('/ekstra', function () {
+    return view('landing.detail.ekstra');
+});
+
+Route::get('/blog', function () {
+    return view('landing.detail.blog');
+});
 /**
  * 
  * 

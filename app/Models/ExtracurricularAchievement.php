@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class ExtracurricularAchievement extends Model
 {
     use HasFactory;
+    protected $table = "extracurricular_achievement";
 }

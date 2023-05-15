@@ -19,7 +19,11 @@ class DatabaseSeeder extends Seeder
             About::class,
             Major::class,
             Extracurricular::class,
-            // PostCategory::class,
+            Article::class,
+            SchoolYear::class,
+            PpdbRegistration::class,
+            Loker::class,
+
         ]);
     }
 }
