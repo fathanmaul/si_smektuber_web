@@ -1,10 +1,11 @@
 <?php
 
+use App\Models\Loker as ModelsLoker;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class PostCategory extends Migration
+class Loker extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +14,12 @@ class PostCategory extends Migration
      */
     public function up()
     {
-        Schema::create('post_category', function (Blueprint $table) {
+        Schema::create('loker', function (Blueprint $table) {
             $table->id();
-            $table->string('category_name');
+            $table->string('title')->nullable();
+            $table->string('slug')->nullable();
+            $table->text('description')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->timestamps();
         });
     }

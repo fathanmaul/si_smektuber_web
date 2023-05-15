@@ -15,7 +15,7 @@ class Role extends Seeder
     {
         \App\Models\Role::insert([
             [
-                'role_name' => 'admin root',
+                'role_name' => 'developer',
                 'created_at' => now(),
                 'updated_at' => now()
             ],

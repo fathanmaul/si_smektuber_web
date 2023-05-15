@@ -16,10 +16,9 @@ class MajorAchievement extends Migration
         Schema::create('major_achievement', function(Blueprint $table){
             $table->id();
             $table->foreignId('major_id')->constrained('major')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('achievement_name');
-            $table->text('achievement_description');
-            $table->string('achievement_photo_1')->nullable();
-            $table->string('achievement_photo_2')->nullable();
+            $table->string('name');
+            $table->text('description');
+            $table->string('photo')->nullable();
         });
     }
 
