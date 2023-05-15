@@ -48,6 +48,14 @@ Route::get('/konsultasi', function () {
     return view('landing.konsultasi');
 });
 
+Route::get('/ekstra', function () {
+    return view('landing.detail.ekstra');
+});
+
+Route::get('/jurusan', function () {
+    return view('landing.detail.jurusan');
+});
+
 /**
  * 
  * 
@@ -115,10 +123,26 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
         Route::delete('/{id}', [PrestasiController::class, 'destroy'])->name('prestasi.destroy');
     });
 
+<<<<<<< Updated upstream
     Route::group(['prefix' => 'ekstrakurikuler'], function () {
         Route::get('/', [EkstrakurikulerController::class, 'index'])->name('ekstrakurikuler.index');
         Route::get('/tambah', [EkstrakurikulerController::class, 'create'])->name('ekstrakurikuler.create');
         Route::delete('/{id}', [EkstrakurikulerController::class, 'destroy'])->name('ekstrakurikuler.destroy');
+=======
+    Route::group(['prefix' => 'ppdb', 'as' => 'ppdb.'], function () {
+        Route::group(['prefix' => 'tahun-ajaran', 'as' => 'tahun_ajaran.'], function () {
+            Route::get('/', [TahunAjaranController::class, 'index'])->name('index');
+            Route::get('/tambah', [TahunAjaranController::class, 'create'])->name('create');
+            Route::post('/tambah', [TahunAjaranController::class, 'store'])->name('store');
+            Route::get('/{id}/edit', [TahunAjaranController::class, 'edit'])->name('edit');
+            Route::post('/{id}/edit', [TahunAjaranController::class, 'put'])->name('put');
+            Route::delete('/{id}', [TahunAjaranController::class, 'destroy'])->name('destroy');
+        });
+        Route::group(['prefix' => 'daftar', 'as' => 'daftar.'], function () {
+            Route::get('/', [PpdbController::class, 'index'])->name('index');
+            Route::get('/tambah', [PpdbController::class, 'create'])->name('create');
+        });
+>>>>>>> Stashed changes
     });
 });
 

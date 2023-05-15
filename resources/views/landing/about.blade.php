@@ -111,7 +111,7 @@
                         <div class="position-relative overflow-hidden">
                             <img class="img-fluid w-100" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
                             <div class="d-flex justify-content-center">
-                                <a href="" class="btn btn-primary px-4 my-2">Selengkapnya</a>
+                                <a href="/jurusan" class="btn btn-primary px-4 my-2">Selengkapnya</a>
                             </div>
                         </div>
                     </div>
@@ -156,7 +156,7 @@
                             <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
                             <div class="card-body bg-light text-center p-4">
                                 <h4 class="">Judul Ekstra</h4>
-                                <a href="" class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
+                                <a href="/ekstra" class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
 
                             </div>
                         </div>
