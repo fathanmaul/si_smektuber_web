@@ -16,7 +16,7 @@
 
     <div class="card p-6 rounded bg-white mt-2 drop-shadow-lg">
         <x-alert />
-        <form action="{{ route('ekstrakurikuler.index') }}" method="GET">
+        <form action="{{ route('ppdb.daftar.index') }}" method="GET">
             <div class="flex flex-col lg:flex-row items-center gap-2">
                 <div class="flex relative w-full items-center">
                     <span class="absolute left-4 text-gray-900">
@@ -31,7 +31,7 @@
                         <button class="btn btn-sm text-sm" type="submit">Cari</button>
                     </span>
                 </div>
-                <a href="{{ route('ekstrakurikuler.create') }}"
+                <a href="{{ route('ppdb.daftar.create') }}"
                     class="btn btn-success text-white flex gap-2 w-full lg:w-fit items-center">
                     <span>
                         <i class="fa-solid fa-plus"></i>

@@ -10,4 +10,7 @@ class PpdbController extends Controller
     {
         return view('admin.Ppdb.new.daftar-ppdb.index');
     }
+    public function create(){
+        return view('admin.Ppdb.new.daftar-ppdb.create');
+    }
 }
