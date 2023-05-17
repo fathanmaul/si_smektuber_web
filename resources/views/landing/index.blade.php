@@ -50,7 +50,7 @@
                             peringatan HUT RI setiap tahunnya.
                         </p>
 
-                        <a class="btn btn-primary py-3 px-4" href="">Selengkapnya</a>
+                        <a class="btn btn-primary py-3 px-4" href="/about">Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -63,17 +63,17 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6 text-center wow fadeIn" data-wow-delay="0.1s">
-                    <img class="img-fluid mb-4" src="{{ asset('landing/img/icon-9.png') }}" alt="" />
+                    <img class="img-fluid mb-4" src="{{ asset('landing/img/futbol.svg') }}" alt="" style="width: 30%; height: 30%;" />
                     <h1 class="display-4" data-toggle="counter-up">5</h1>
                     <p class="fs-5 text-primary mb-0">Total Jurusan</p>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center wow fadeIn" data-wow-delay="0.3s">
-                    <img class="img-fluid mb-4"src="{{ asset('landing/img/icon-10.png') }}" alt="" />
+                    <img class="img-fluid mb-4" src="{{ asset('landing/img/futbol.svg') }}" alt="" style="width: 30%; height: 30%;" />
                     <h1 class="display-4" data-toggle="counter-up">5</h1>
                     <p class="fs-5 text-primary mb-0">Total Ekstrakulikuler</p>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center wow fadeIn" data-wow-delay="0.5s">
-                    <img class="img-fluid mb-4" src="{{ asset('landing/img/icon-2.png') }}" alt="" />
+                    <img class="img-fluid mb-4" src="{{ asset('landing/img/futbol.svg') }}" alt="" style="width: 30%; height: 30%;" />
                     <h1 class="display-4" data-toggle="counter-up">100</h1>
                     <p class="fs-5 text-primary mb-0">Total Prestasi</p>
                 </div>
