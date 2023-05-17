@@ -24,8 +24,8 @@
 
             <a href="/konsultasi" class="nav-item nav-link">Konsultasi</a>
         </div>
-        <a href="" class="btn btn-primary px-4">Sign in </a>
-
+        <a href="/login" class="btn btn-primary px-4">Sign in </a>
+        
     </div>
 </nav>
 <!-- Navbar End -->

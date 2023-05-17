@@ -53,11 +53,69 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        @foreach ($registrations as $index => $registration)
+                            <tr>
+                                <td>{{ $registrations->firstItem() + $index }}</td>
+                                <td>{{ $registration->schoolYear->school_year }}</td>
+                                <td>{{ $registration->created_at }}</td>
+                                <td>
+                                    <a href="{{ route('ppdb.daftar.edit', $registration->id) }}"
+                                        class="btn btn-square btn-sm btn-warning text-white">
+                                            <i class="fa-solid fa-pencil"></i>
+                                    </a>
+                                    {{-- <form action="{{ route('ppdb.daftar.destroy', $registration->id) }}"
+                                        method="POST" class="inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm"
+                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
+                                            Hapus
+                                        </button>
+                                    </form> --}}
+                                    <a href="{{ route('ppdb.daftar.destroy', $registration->id) }}"
+                                        onclick="destroySchoolYear(event, this)"
+                                        class="btn btn-square btn-sm btn-error text-white"><i class="fa-solid fa-trash"
+                                            data-title="{{ $registration->tahun_ajaran }}"></i></a>
+                                </td>
+                            </tr>
+                            @endforeach
                     </tbody>
                 </table>
 
             </div>
         </div>
     </div>
+    {{-- !-- Put this part before </body> tag --> --}}
+    <input type="checkbox" id="my-modal" class="modal-toggle" />
+    <div class="modal">
+        <form class="modal-box rounded" method="POST">
+            @csrf
+            @method('DELETE')
+            <h3 class="font-bold text-lg">Yakin ingin menghapus Tahun Ajaran ini?</h3>
+            {{-- <p class="py-4">Prestasi yang dimiliki oleh ekstrakurikuler ini akan otomatis terhapus!</p> --}}
+            <div class="modal-action">
+                <label for="my-modal" class="btn rounded">KEMBALI</label>
+                <button class="btn btn-outline btn-error rounded" type="submit" id="button_close">HAPUS</button>
+            </div>
+        </form>
+    </div>
+@endsection
+
+@section('script')
+<script>
+    function destroySchoolYear(event, props) {
+        const modalToggle = document.querySelector('input#my-modal');
+        event.preventDefault();
+        const url = props.getAttribute('href');
+        const title = props.getAttribute('data-title');
+        const modal = document.querySelector('.modal');
+        modalToggle.checked = true;
+        modal.querySelector('form.modal-box').setAttribute('action', url);
+    }
+
+    document.querySelector('#button_close').addEventListener('click', function() {
+        const modalToggle = document.querySelector('input#my-modal');
+        modalToggle.checked = false;
+    });
+</script>
 @endsection

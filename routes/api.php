@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Response;
 use App\Models\About;
+use App\Models\Registration;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,3 +44,6 @@ Route::prefix('/user')->middleware('api.auth')->group(function () {
 });
 
 Route::get('/about', fn () => Response::success(About::first()))->middleware('api.auth')->name('about');
+
+Route::get('/ppdb', fn () => Response::success(Registration::first()))->middleware('api.auth')->name('ppdb');
+Route::post('/ppdb', NAMESPACE_API . 'PPDBController@create')->middleware('api.auth')->name('ppdb.create');
