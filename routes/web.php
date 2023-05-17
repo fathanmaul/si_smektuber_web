@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\PrestasiEkstrakurikulerController;
@@ -163,6 +164,11 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
             Route::get('/{id}/edit',[PpdbController::class, 'edit'])->name('edit');
             Route::put('/{id}/edit',[PpdbController::class, 'put'])->name('put');
             Route::delete('/{id}',[PpdbController::class, 'destroy'])->name('destroy');
+        });
+        Route::group(['prefix' => 'pendaftar', 'as' => 'pendaftar.'], function(){
+            Route::get('/', [PendaftarController::class, 'index'])->name('index');
+            Route::get('/{id}', [PendaftarController::class, 'show'])->name('show');
+            Route::put('/{id}', [PendaftarController::class, 'update'])->name('update');
         });
     });
 });

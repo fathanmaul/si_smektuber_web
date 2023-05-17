@@ -14,7 +14,7 @@ class PpdbController extends Controller
         // return view('admin.Ppdb.new.daftar-ppdb.index');
         $search = $request->query('cari');
 
-    $registrations = Registration::with('schoolYear')
+        $registrations = Registration::with('schoolYear')
         ->when($search, function ($query, $search) {
             $query->whereHas('schoolYear', function ($query) use ($search) {
                 $query->where('school_year', 'like', "%$search%");

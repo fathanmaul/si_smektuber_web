@@ -208,8 +208,8 @@
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == $ppdb_daftar ? 'nav-active' : '' }}">Daftar
                                             PPDB</a>
                                     </li>
-                                    <li><a href="{{ route('ekstrakurikuler.prestasi.index') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ekstrakurikuler.prestasi.index' || $route == 'ekstrakurikuler.prestasi.create' || $route == 'ekstrakurikuler.prestasi.edit' ? 'nav-active' : '' }}">Data
+                                    <li><a href="{{ route('ppdb.pendaftar.index') }}"
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ppdb.pendaftar.index'  || $route == 'ppdb.pendaftar.edit' ? 'nav-active' : '' }}">Data
                                             Pendaftar</a></li>
                                 </ul>
                             </div>
@@ -256,8 +256,8 @@
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == $ppdb_daftar ? 'nav-active' : '' }}">Daftar
                                             PPDB</a>
                                     </li>
-                                    <li><a href="{{ route('ekstrakurikuler.prestasi.index') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ekstrakurikuler.prestasi.index' || $route == 'ekstrakurikuler.prestasi.create' || $route == 'ekstrakurikuler.prestasi.edit' ? 'nav-active' : '' }}">Data
+                                    <li><a href="{{ route('ppdb.pendaftar.index') }}"
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ppdb.pendaftar.index' || $route == 'ppdb.pendaftar.edit' ? 'nav-active' : '' }}">Data
                                             Pendaftar</a></li>
                                 </ul>
                             </div>
