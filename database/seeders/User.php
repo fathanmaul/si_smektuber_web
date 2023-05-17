@@ -16,7 +16,7 @@ class User extends Seeder
         \App\Models\User::insert([
             // admin root (super admin)
             [
-                'name' => 'admin root',
+                'name' => 'developer',
                 'username' => 'developer',
                 'email' => 'dev@nekoid.com',
                 'password' => bcrypt('Nekoid123'),
