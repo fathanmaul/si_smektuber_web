@@ -91,8 +91,7 @@
         <form class="modal-box rounded" method="POST">
             @csrf
             @method('DELETE')
-            <h3 class="font-bold text-lg">Yakin ingin menghapus Tahun Ajaran ini?</h3>
-            {{-- <p class="py-4">Prestasi yang dimiliki oleh ekstrakurikuler ini akan otomatis terhapus!</p> --}}
+            <h3 class="font-bold text-lg">Yakin ingin menghapus PPDB pada Tahun Ajaran ini?</h3>
             <div class="modal-action">
                 <label for="my-modal" class="btn rounded">KEMBALI</label>
                 <button class="btn btn-outline btn-error rounded" type="submit" id="button_close">HAPUS</button>

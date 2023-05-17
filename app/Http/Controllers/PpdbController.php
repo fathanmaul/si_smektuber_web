@@ -48,9 +48,10 @@ class PpdbController extends Controller
             $registration->poster = $posterPath;
         }
 
-        $registration->save();
+        // $registration->save();
 
-        return redirect()->route('ppdb.daftar.index')->with('success', 'Informasi PPDB berhasil ditambahkan.');
+        // return redirect()->route('ppdb.daftar.index')->with('success', 'Informasi PPDB berhasil ditambahkan.');
+        
         
     }
     public function edit($id)
@@ -86,14 +87,33 @@ class PpdbController extends Controller
             $registration->poster = $posterPath;
         }
 
-        $registration->save();
+        // $registration->save();
 
-        return redirect()->route('ppdb.daftar.index')->with('success', 'Informasi PPDB berhasil diperbarui.');
+        // return redirect()->route('ppdb.daftar.index')->with('success', 'Informasi PPDB berhasil diperbarui.');
+        if ($registration->save()) {
+            return $this->backWithSuccess_1('Informasi PPDB berhasil diperbarui.');
+        } else {
+            return $this->backWithError_1('Gagal memperbarui informasi PPDB.');
+        }
     }
     public function destroy($id){
         $registration = Registration::findOrFail($id);
         $registration->delete();
 
         return redirect()->route('ppdb.daftar.index')->with('success', 'Informasi PPDB berhasil dihapus.');
+    }
+
+    private function backWithSuccess_1($message)
+    {
+        return redirect()->route('ppdb.daftar.index')->with('flash', [
+            'type' => 'success',
+            'message' => $message
+        ]);
+    }
+    private function backWithError_1($message){
+        return redirect()->route('ppdb.daftar.index')->with('flash', [
+                    'type' => 'danger',
+                    'message' => $message
+                ]);
     }
 }
