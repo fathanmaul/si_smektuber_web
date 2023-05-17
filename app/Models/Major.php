@@ -20,4 +20,9 @@ class Major extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function detailRegistrations()
+    {
+        return $this->hasMany(DetailRegistration::class);
+    }
 }

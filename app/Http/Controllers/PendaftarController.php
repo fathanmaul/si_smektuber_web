@@ -40,6 +40,11 @@ class PendaftarController extends Controller
     public function show($id)
     {
         //
+        $registration = DetailRegistration::findOrFail($id);
+        // Jika menggunakan Eloquent, gunakan "findOrFail" untuk menemukan pendaftaran berdasarkan ID atau lemparkan pengecualian jika tidak ditemukan
+    
+        return view('admin.Ppdb.new.pendaftar.edit', compact('registration'));
+        
     }
 
     /**
@@ -49,9 +54,14 @@ class PendaftarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateStatus(Request $request, $id)
     {
         //
+        $registration = DetailRegistration::findOrFail($id);
+        $registration->user_registration_status = $request->status;
+        $registration->save();
+    
+        return redirect()->route('ppdb.pendaftar.index')->with('success', 'Status pendaftar berhasil diperbarui.');
     }
 
     /**

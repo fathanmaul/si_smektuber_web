@@ -63,15 +63,6 @@
                                         class="btn btn-square btn-sm btn-warning text-white">
                                             <i class="fa-solid fa-pencil"></i>
                                     </a>
-                                    {{-- <form action="{{ route('ppdb.daftar.destroy', $registration->id) }}"
-                                        method="POST" class="inline-block">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm"
-                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                                            Hapus
-                                        </button>
-                                    </form> --}}
                                     <a href="{{ route('ppdb.daftar.destroy', $registration->id) }}"
                                         onclick="destroySchoolYear(event, this)"
                                         class="btn btn-square btn-sm btn-error text-white"><i class="fa-solid fa-trash"
