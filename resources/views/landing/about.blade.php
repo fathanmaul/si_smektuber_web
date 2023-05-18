@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>
-    <div class="container py-5">
+    <div class="container ">
         <div class="row">
             <div class="col-lg-12">
                 <h3 class="display-10 text-center mb-5">Visi</h3>
@@ -90,8 +90,7 @@
         </div>
     </div>
     <!-- Misi End -->
-
-    <!-- Gallery Start -->
+    <!-- carousel start -->
     <div class="container-fluid pt-5">
         <div class="container">
             <div class="text-center pb-2">
@@ -102,105 +101,115 @@
                 </p>
                 <h1 class="mb-4">Profile Jurusan</h1>
             </div>
-        </div>
-        <div class="container-fluid pt-5 pb-3">
-            <div class="container">
-                <div class="row portfolio-container">
+            <div class="row pb-2">
+                <!-- Card -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm mb-2">
+                        <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
+                        <div class="card-body bg-light text-center p-4">
+                            <h4 class="">Jurusan</h4>
+                            <a href="/jurusan" class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
 
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
-                            <div class="d-flex justify-content-center">
-                                <a href="/jurusan" class="btn btn-primary px-4 my-2">Selengkapnya</a>
-                            </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
-                            <div class="d-flex justify-content-center">
-                                <a href="" class="btn btn-primary px-4 my-2">Selengkapnya</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mb-4 portfolio-item">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
-                            <div class="d-flex justify-content-center">
-                                <a href="" class="btn btn-primary px-4 my-2">Selengkapnya</a>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+                <!-- end Card -->
+                <!-- Card -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm mb-2">
+                        <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
+                        <div class="card-body bg-light text-center p-4">
+                            <h4 class="">Jurusan</h4>
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end Card -->
+                <!-- Card -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card border-0 shadow-sm mb-2">
+                        <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
+                        <div class="card-body bg-light text-center p-4">
+                            <h4 class="">Jurusan</h4>
+                            <a href="" class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end Card -->
             </div>
-        </div>
-        <!-- Gallery End -->
-        <!-- carousel start -->
-        <div class="container-fluid pt-5">
-            <div class="container">
-                <div class="text-center pb-2">
-                    <p class="section-title px-5">
-                        <span class="px-2 text-primary">_______</span>
-                        <span class="px-2">Kegiatan</span>
-                        <span class="px-2 text-primary">_______</span>
-                    </p>
-                    <h1 class="mb-4">Ekstrakulikuler</h1>
-                </div>
-                <div class="row owl-carousel pb-2">
-                    <!-- Card -->
-                    <div class="col-lg-4 mb-4">
-                        <div class="card border-0 shadow-sm mb-2">
-                            <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
-                            <div class="card-body bg-light text-center p-4">
-                                <h4 class="">Judul Ekstra</h4>
-                                <a href="/ekstra" class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
 
+            <!-- carousel end -->
+            <!-- carousel start -->
+            <div class="container-fluid pt-5">
+                <div class="container">
+                    <div class="text-center pb-2">
+                        <p class="section-title px-5">
+                            <span class="px-2 text-primary">_______</span>
+                            <span class="px-2">Kegiatan</span>
+                            <span class="px-2 text-primary">_______</span>
+                        </p>
+                        <h1 class="mb-4">Ekstrakulikuler</h1>
+                    </div>
+                    <div class="row pb-2">
+                        <!-- Card -->
+                        <div class="col-lg-4 mb-4">
+                            <div class="card border-0 shadow-sm mb-2">
+                                <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}"
+                                    alt="" />
+                                <div class="card-body bg-light text-center p-4">
+                                    <h4 class="">Judul Ekstra</h4>
+                                    <a href="/ekstra"
+                                        class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
+
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- end Card -->
-                    <!-- Card -->
-                    <div class="col-lg-4 mb-4">
-                        <div class="card border-0 shadow-sm mb-2">
-                            <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
-                            <div class="card-body bg-light text-center p-4">
-                                <h4 class="">Judul Ekstra</h4>
-                                <a href="" class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
+                        <!-- end Card -->
+                        <!-- Card -->
+                        <div class="col-lg-4 mb-4">
+                            <div class="card border-0 shadow-sm mb-2">
+                                <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}"
+                                    alt="" />
+                                <div class="card-body bg-light text-center p-4">
+                                    <h4 class="">Judul Ekstra</h4>
+                                    <a href=""
+                                        class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- end Card -->
-                    <!-- Card -->
-                    <div class="col-lg-4 mb-4">
-                        <div class="card border-0 shadow-sm mb-2">
-                            <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}"
-                                alt="" />
-                            <div class="card-body bg-light text-center p-4">
-                                <h4 class="">Judul Ekstra</h4>
-                                <a href="" class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
+                        <!-- end Card -->
+                        <!-- Card -->
+                        <div class="col-lg-4 mb-4">
+                            <div class="card border-0 shadow-sm mb-2">
+                                <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}"
+                                    alt="" />
+                                <div class="card-body bg-light text-center p-4">
+                                    <h4 class="">Judul Ekstra</h4>
+                                    <a href=""
+                                        class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- end Card -->
-                    <!-- Card -->
-                    <div class="col-lg-4 mb-4">
-                        <div class="card border-0 shadow-sm mb-2">
-                            <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}"
-                                alt="" />
-                            <div class="card-body bg-light text-center p-4">
-                                <h4 class="">Judul Ekstra</h4>
-                                <a href="" class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
+                        <!-- end Card -->
+                        <!-- Card -->
+                        <div class="col-lg-4 mb-4">
+                            <div class="card border-0 shadow-sm mb-2">
+                                <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}"
+                                    alt="" />
+                                <div class="card-body bg-light text-center p-4">
+                                    <h4 class="">Judul Ekstra</h4>
+                                    <a href=""
+                                        class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
 
+                                </div>
                             </div>
                         </div>
+                        <!-- end Card -->
                     </div>
-                    <!-- end Card -->
-                </div>
 
-                <!-- carousel end -->
-            @endsection
+                    <!-- carousel end -->
+                @endsection
