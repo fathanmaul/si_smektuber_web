@@ -45,6 +45,7 @@
                 <label class="appearance-none text-sm lg:text-base font-bold">Jurusan Yang diminati</label>
                 <ul class="list-disc pl-6">
                     <li class="mb-2">Pilihan Jurusan 1 : {{ $registration->major1->name }}</li>
+                    @dd($registration->major1->name)
                     <li class="mb-2">Pilihan Jurusan 2 : {{ $registration->major2->name }}</li>
                 </ul>
             <div class="flex flex-col gap-2 mt-4">

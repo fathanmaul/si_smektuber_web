@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetailRegistration;
+use App\Models\Major;
 use Illuminate\Http\Request;
 
 class PendaftarController extends Controller
@@ -41,8 +42,10 @@ class PendaftarController extends Controller
     {
         //
         $registration = DetailRegistration::findOrFail($id);
+        $major = Major::where('id',$registration->major_id_1);
+        // dd($major);
         // Jika menggunakan Eloquent, gunakan "findOrFail" untuk menemukan pendaftaran berdasarkan ID atau lemparkan pengecualian jika tidak ditemukan
-    
+        
         return view('admin.Ppdb.new.pendaftar.edit', compact('registration'));
         
     }

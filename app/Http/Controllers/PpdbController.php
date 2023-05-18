@@ -29,6 +29,7 @@ class PpdbController extends Controller
         return view('admin.Ppdb.new.daftar-ppdb.create', compact('schoolYears'));
     }
     public function store(Request $request){
+        // return $this->backWithSuccess('')
         $request->validate([
             'school_year' => 'required|exists:school_year,id',
             'description' => 'required|string',
@@ -46,12 +47,16 @@ class PpdbController extends Controller
         if ($request->hasFile('poster')) {
             $posterPath = $request->file('poster')->store('posters', 'public');
             $registration->poster = $posterPath;
-        }
+        }   
 
         // $registration->save();
 
         // return redirect()->route('ppdb.daftar.index')->with('success', 'Informasi PPDB berhasil ditambahkan.');
-        
+        if ($registration->save()) {
+            return $this->backWithSuccess_1('Informasi PPDB berhasil diperbarui.');
+        } else {
+            return $this->backWithError_1('Gagal memperbarui informasi PPDB.');
+        }
         
     }
     public function edit($id)
