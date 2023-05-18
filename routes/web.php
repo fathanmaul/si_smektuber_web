@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PendaftarController;
+use App\Http\Controllers\PostCategoryController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\PpdbController;
 use App\Http\Controllers\PrestasiController;
 use App\Http\Controllers\PrestasiEkstrakurikulerController;
@@ -89,7 +92,7 @@ Route::group(['middleware' => 'guest'], function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/auth/logout', [LoginController::class, 'moveToDashboard']);
+    // Route::get('/auth/logout', [LoginController::class, 'moveToDashboard']);
     Route::post('/auth/logout', [LoginController::class, 'destroy'])->name('logout');
 });
 
@@ -149,7 +152,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
     });
 
     Route::group(['prefix' => 'ppdb', 'as' => 'ppdb.'], function () {
-        Route::group(['prefix' => 'tahun-ajaran', 'as' => 'tahun_ajaran.'], function(){
+        Route::group(['prefix' => 'tahun-ajaran', 'as' => 'tahun_ajaran.'], function () {
             Route::get('/', [TahunAjaranController::class, 'index'])->name('index');
             Route::get('/tambah', [TahunAjaranController::class, 'create'])->name('create');
             Route::post('/tambah', [TahunAjaranController::class, 'store'])->name('store');
@@ -157,7 +160,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
             Route::post('/{id}/edit', [TahunAjaranController::class, 'put'])->name('put');
             Route::delete('/{id}', [TahunAjaranController::class, 'destroy'])->name('destroy');
         });
-        Route::group(['prefix' => 'daftar', 'as' => 'daftar.'], function(){
+        Route::group(['prefix' => 'daftar', 'as' => 'daftar.'], function () {
             Route::get('/', [PpdbController::class, 'index'])->name('index');
             Route::get('/tambah', [PpdbController::class, 'create'])->name('create');
             Route::post('/store', [PpdbController::class, 'store'])->name('store');
@@ -170,6 +173,16 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
             Route::get('/{id}', [PendaftarController::class, 'show'])->name('show');
             Route::patch('/{id}', [PendaftarController::class, 'updateStatus'])->name('update');
         });
+    });
+
+    Route::group(['prefix' => 'artikel', 'as' => 'artikel.'], function () {
+        Route::get('/', [ArtikelController::class, 'index'])->name('index');
+        Route::get('/{slug}/show', [ArtikelController::class, 'show'])->name('show');
+        Route::get('/tambah', [ArtikelController::class, 'create'])->name('create');
+        Route::post('/tambah', [ArtikelController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [ArtikelController::class, 'edit'])->name('edit');
+        Route::put('/{id}/edit', [ArtikelController::class, 'put'])->name('put');
+        Route::delete('/{id}', [ArtikelController::class, 'destroy'])->name('destroy');
     });
 });
 

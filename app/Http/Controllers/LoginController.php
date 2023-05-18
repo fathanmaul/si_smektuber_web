@@ -50,7 +50,7 @@ class LoginController extends Controller
     {
         try {
             Auth::logout();
-            return redirect()->route('login');
+            return $this->backWithSuccess('login', 'Anda berhasil logout!');
         } catch (Exception $e) {        
             dd($e->getMessage());   
         }

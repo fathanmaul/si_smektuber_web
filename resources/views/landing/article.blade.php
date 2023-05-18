@@ -51,7 +51,7 @@
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Ini artikel menarik cuman masih dami</h4>
 
-                            <a href="" class="btn btn-primary px-4 mx-auto my-2">Selengkapnya</a>
+                            <a href="/blog" class="btn btn-primary px-4 mx-auto my-2">Selengkapnya</a>
                         </div>
                     </div>
                 </div>
