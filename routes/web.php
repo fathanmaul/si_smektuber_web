@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PpdbController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\PrestasiJurusanController;
 use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\TahunAjaranController;
 use App\Models\About;
+use Database\Seeders\PpdbRegistration;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -161,6 +163,15 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
         Route::group(['prefix' => 'daftar', 'as' => 'daftar.'], function () {
             Route::get('/', [PpdbController::class, 'index'])->name('index');
             Route::get('/tambah', [PpdbController::class, 'create'])->name('create');
+            Route::post('/store', [PpdbController::class, 'store'])->name('store');
+            Route::get('/{id}/edit',[PpdbController::class, 'edit'])->name('edit');
+            Route::put('/{id}/edit',[PpdbController::class, 'put'])->name('put');
+            Route::delete('/{id}',[PpdbController::class, 'destroy'])->name('destroy');
+        });
+        Route::group(['prefix' => 'pendaftar', 'as' => 'pendaftar.'], function(){
+            Route::get('/', [PendaftarController::class, 'index'])->name('index');
+            Route::get('/{id}', [PendaftarController::class, 'show'])->name('show');
+            Route::patch('/{id}', [PendaftarController::class, 'updateStatus'])->name('update');
         });
     });
 
