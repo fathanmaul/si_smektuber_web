@@ -1,7 +1,7 @@
 @php
     $route = Route::currentRouteName();
-    
     $ppdb_daftar = Route::currentRouteNamed('ppdb.daftar.*');
+    $artikel = Route::currentRouteNamed('artikel.*');
 @endphp
 <div
     class="sidebar w-[280px] h-full top-0 bottom-0 bg-white text-white rounded-md fixed overflow-y-auto lg:translate-x-0 transition-all ease-in-out duration-300 -translate-x-full z-[100] shadow-lg">
@@ -65,7 +65,7 @@
                         <div class="collapse-content text-sm">
                             <div class="sub-menu pt-2">
                                 <ul
-                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'sekolah' ? 'border-primary' : '' }}">
+                                    class="list-none flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'sekolah' ? 'border-primary' : '' }}">
                                     <li><a href="{{ route('sekolah.umum') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ request()->segment(3) == 'umum' ? 'nav-active' : '' }}">Informasi
                                             Umum</a>
@@ -109,8 +109,8 @@
                         <div class="collapse-content text-sm">
                             <div class="sub-menu pt-2">
                                 <ul
-                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'jurusan' ? 'border-primary' : '' }}">
-                                    <li>
+                                    class="list-none flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'jurusan' ? 'border-primary' : '' }}">
+                                    <li class="list-none">
                                         {{-- <a href="{{ route('jurusan.index') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ request()->segment(2) == 'jurusan' ? 'nav-active' : '' }}">Daftar
                                             Jurusan
@@ -156,7 +156,7 @@
                         <div class="collapse-content text-sm">
                             <div class="sub-menu pt-2">
                                 <ul
-                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'ekstrakurikuler' ? 'border-primary' : '' }}">
+                                    class="list-none flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'ekstrakurikuler' ? 'border-primary' : '' }}">
                                     <li><a href="{{ route('ekstrakurikuler.index') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ekstrakurikuler.index' || $route == 'ekstrakurikuler.create' || $route == 'ekstrakurikuler.edit' ? 'nav-active' : '' }}">Daftar
                                             Ekstrakurikuler</a>
@@ -196,7 +196,7 @@
                         <div class="collapse-content text-sm">
                             <div class="sub-menu pt-2">
                                 <ul
-                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'ppdb' ? 'border-primary' : '' }}">
+                                    class="list-none flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'ppdb' ? 'border-primary' : '' }}">
                                     <li><a href="{{ route('ppdb.tahun_ajaran.index') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ppdb.tahun_ajaran.index' || $route == 'ppdb.tahun_ajaran.create' || $route == 'ppdb.tahun_ajaran.edit' ? 'nav-active' : '' }}">Tahun
                                             Ajaran</a>
@@ -220,21 +220,17 @@
                 {{-- Post / Artikel --}}
                 <li>
                     <div
-                        class="collapse fill-current transition-colors rounded hover:bg-[#19a7ce2f] {{ request()->segment(2) == 'ppdb' ? 'hover:bg-transparent' : '' }}">
+                        class="collapse fill-current transition-colors rounded hover:bg-[#19a7ce2f] {{ request()->segment(2) == 'artikel' ? 'hover:bg-transparent' : '' }}">
                         <input type="checkbox" class="peer"
-                            {{ request()->segment(2) == 'ppdb' ? 'checked' : '' }} />
+                            {{ request()->segment(2) == 'artikel' ? 'checked' : '' }} />
                         <div
-                            class="hover:bg-[#19a7ce2f] collapse-title p-3 w-full text-gray-900  flex flex-row items-center text-sm gap-1  py-0 fill-current {{ request()->segment(2) == 'ppdb' ? 'nav-active text-primary hover:bg-transparent' : '' }}">
+                            class="hover:bg-[#19a7ce2f] collapse-title p-3 w-full text-gray-900  flex flex-row items-center text-sm gap-1  py-0 fill-current {{ request()->segment(2) == 'artikel' ? 'nav-active text-primary hover:bg-transparent' : '' }}">
                             <span class="pl-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
-                                    class="w-5 h-5 flex justify-center items-center">
-                                    <path
-                                        d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V285.7l-86.8 86.8c-10.3 10.3-17.5 23.1-21 37.2l-18.7 74.9c-2.3 9.2-1.8 18.8 1.3 27.5H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128zM549.8 235.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-29.4 29.4-71-71 29.4-29.4c15.6-15.6 40.9-15.6 56.6 0zM311.9 417L441.1 287.8l71 71L382.9 487.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z" />
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 flex justify-center items-center"><path d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"/></svg>
                             </span>
                             <span
-                                class="ml-2 text-sm font-semibold w-full flex items-center justify-between {{ request()->segment(2) == 'ppdb' ? 'nav-active bg-transparent hover:bg-transparent' : '' }} ">
-                                Post
+                                class="ml-2 text-sm font-semibold w-full flex items-center justify-between {{ request()->segment(2) == 'artikel' ? 'nav-active bg-transparent hover:bg-transparent' : '' }} ">
+                                Artikel
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-3 h-3">
                                     <path
                                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
@@ -244,21 +240,13 @@
                         <div class="collapse-content text-sm">
                             <div class="sub-menu pt-2">
                                 <ul
-                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'ppdb' ? 'border-primary' : '' }}">
-                                    <li><a href="{{ route('ppdb.tahun_ajaran.index') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ppdb.tahun_ajaran.index' || $route == 'ppdb.tahun_ajaran.create' || $route == 'ppdb.tahun_ajaran.edit' ? 'nav-active' : '' }}">Tahun
-                                            Ajaran</a>
-                                    </li>
+                                    class="list-none flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'artikel' ? 'border-primary' : '' }}">
                                     {{-- <li><a href="{{ route('ppdb.daftar.index') }}"
                                         class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ppdb.' || $route == 'ppdb.' || $route == 'ppdb.' ? 'nav-active' : '' }}">Daftar PPDB</a>
                                 </li> --}}
-                                    <li><a href="{{ route('ppdb.daftar.index') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == $ppdb_daftar ? 'nav-active' : '' }}">Daftar
-                                            PPDB</a>
+                                    <li><a href="{{ route('artikel.index') }}"
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == $artikel ? 'nav-active' : '' }}">Daftar Artikel</a>
                                     </li>
-                                    <li><a href="{{ route('ekstrakurikuler.prestasi.index') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ekstrakurikuler.prestasi.index' || $route == 'ekstrakurikuler.prestasi.create' || $route == 'ekstrakurikuler.prestasi.edit' ? 'nav-active' : '' }}">Data
-                                            Pendaftar</a></li>
                                 </ul>
                             </div>
                         </div>
