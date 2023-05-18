@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="flex w-full justify-center">
-
         <div class="flex flex-col lg:ml-2 w-full lg:w-3/5 px-4 py-3 lg:px-0 lg:gap-2">
             <div class="flex-1">
                 <h1 class="text-2xl lg:text-3xl font-bold text-white">
@@ -58,20 +57,11 @@
                     @enderror
                 </div>
                 <div class="flex flex-col gap-2 mt-6">
-                    <label for="#" class="appearance-none text-sm lg:text-base">Foto Jurusan 1 &nbsp; (Ukuran Maksimal: 1MB | Format: jpg, jpeg, png)</label>
+                    <label for="#" class="appearance-none text-sm lg:text-base">Foto Jurusan &nbsp; (Ukuran Maksimal: 1MB | Format: jpg, jpeg, png)</label>
                     <input type="file"
                         class="file-input file-input-bordered @error('picture_1') input-error @enderror w-full border-gray-400 rounded"
                         name="picture_1" />
                     @error('picture_1')
-                        <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="flex flex-col gap-2 mt-6">
-                    <label for="#" class="appearance-none text-sm lg:text-base">Foto Jurusan 2 &nbsp; (Ukuran Maksimal: 1MB | Format: jpg, jpeg, png)</label>
-                    <input type="file"
-                        class="file-input file-input-bordered @error('picture_2') input-error @enderror w-full border-gray-400 rounded"
-                        name="picture_2" />
-                    @error('picture_2')
                         <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                     @enderror
                 </div>

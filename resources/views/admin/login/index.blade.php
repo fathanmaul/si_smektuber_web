@@ -17,7 +17,7 @@
                 <div class="m-24">
                     <div class="flex flex-col justify-center items-center gap-4 -mt-8 mb-8">
                         <img src="{{ asset('assets/favicon/smk-logo.png') }}" class="w-24" alt="">
-                        <h1 class="ml-3 font-bold text-2xl">SMK Negeri 7 Jember</h1>
+                        <h1 class="ml-3 font-bold text-2xl">{{ $school_name ?? 'Silahkan Login!' }}</h1>
                     </div>
                     <h1 class="text-2xl font-bold mb-6">Masuk</h1>
                     <div class="mb-4">
