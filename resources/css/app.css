@@ -64,4 +64,8 @@
     .input{
         @apply dark:bg-white;
     }
+
+    .card{
+        @apply rounded;
+    }
 }
