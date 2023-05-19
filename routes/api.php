@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Response;
 use App\Models\About;
+use App\Models\Registration;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -56,3 +57,6 @@ Route::prefix('/extracurricular')->middleware('api.auth')->group(function () {
     Route::get('/', 'ExtraController@index')->name('api.extracurricular.list');
     Route::get('/{id}', 'ExtraController@show')->name('api.extra-urricular.detail');
 });
+
+Route::get('/ppdb', fn () => Response::success(Registration::first()))->middleware('api.auth')->name('ppdb');
+Route::post('/ppdb', 'PPDBController@create')->middleware('api.auth')->name('ppdb.create');
