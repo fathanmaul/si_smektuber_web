@@ -23,6 +23,9 @@ class ArticleController extends Controller
     public function show($id)
     {
         try {
+            if (!Article::find($id)) {
+                return Response::error('Article not found', [], 404);
+            }
             return Response::success(Article::find($id));
         } catch (\Throwable $th) {
             return Response::internalServerError($th->getMessage());
