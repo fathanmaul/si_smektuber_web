@@ -23,24 +23,34 @@ class UserController extends Controller
         }
 
         try {
-            if (auth()->user()->username != $request->username && UserQuery::findUsername($request->username) instanceof User) {
+            if (api()->user()->username != $request->username && UserQuery::findUsername($request->username) instanceof User) {
                 return Response::error('Username already exists', [], 409);
             }
 
-            if (auth()->user()->email != $request->email && UserQuery::findEmail($request->email)) {
+            if (api()->user()->email != $request->email && UserQuery::findEmail($request->email)) {
                 return Response::error('Email already exists', [], 409);
             }
 
-            $user = auth()->user();
-            $user->username = $request->username;
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->save();
+            $this->doUpdate($request);
 
             return Response::success(formatUser(), 'Profile updated successfully');
         } catch (\Throwable $th) {
             return Response::internalServerError($th->getMessage());
         }
+    }
+
+    public function doUpdate(Request $request)
+    {
+        $user = api()->user();
+        $user->username = $request->username;
+        $user->name = $request->name;
+        $user->email = $request->email;
+
+        if (api()->user()->email != $request->email) {
+            $user->email_verified_at = null;
+        }
+
+        $user->save();
     }
 
     public function updateAvatar(Request $request)
@@ -52,12 +62,13 @@ class UserController extends Controller
         if ($validate->fails()) {
             return Response::error('Validation failed', ['message' => $validate->errors()->first()]);
         }
+        
+        $mime = $request->file('avatar')->getMimeType();
 
         try {
-            $user = auth()->user();
-            $user->avatar = $request->file('avatar')->storeAs('avatars', $user->id . '.jpg');
+            $user = api()->user();
+            $user->avatar = $request->file('avatar')->storeAs('avatars', $user->id . '.' . explode('/', $mime)[1]);
             $user->save();
-
 
             return Response::success(formatUser(), 'Avatar updated successfully');
         } catch (\Throwable $th) {

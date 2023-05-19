@@ -15,31 +15,44 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-define('NAMESPACE_API', 'App\\Http\\Controllers\\Api\\');
-
 Route::prefix('/auth')->group(function () {
-    Route::post('/register', NAMESPACE_API . 'AuthController@register')->name('register');
-    Route::post('/login', NAMESPACE_API . 'AuthController@login')->name('login');
+    Route::post('/register', 'AuthController@register')->name('api.auth.register');
+    Route::post('/login', 'AuthController@login')->name('api.auth.login');
 
     Route::middleware('api.auth')->group(function () {
-        Route::post('/logout', NAMESPACE_API . 'AuthController@logout')->name('logout');
-        Route::post('/refresh', NAMESPACE_API . 'AuthController@refresh')->name('refresh');
-        Route::put('/update-password', NAMESPACE_API . 'AuthController@updatePassword')->name('reset-password');
+        Route::post('/logout', 'AuthController@logout')->name('api.auth.logout');
+        Route::post('/refresh', 'AuthController@refresh')->name('api.auth.refresh');
+        Route::put('/update-password', 'AuthController@updatePassword')->name('api.auth.reset-password');
     });
 
-    Route::post('/forgot-password', NAMESPACE_API . 'AuthController@forgotPassword')->name('forgot-password');
-    Route::post('/otp', NAMESPACE_API . 'AuthController@otp')->name('otp');
+    Route::post('/forgot-password', 'AuthController@forgotPassword')->name('api.auth.forgot-password');
+    Route::post('/otp', 'AuthController@validateOtp')->name('api.auth.otp');
 });
 
 Route::prefix('/article')->middleware('api.auth')->group(function () {
-    Route::get('/', NAMESPACE_API . 'ArticleController@index')->name('article.index');
-    Route::get('/{id}', NAMESPACE_API . 'ArticleController@show')->name('article.show');
+    Route::get('/', 'ArticleController@index')->name('api.article.list');
+    Route::get('/{id}', 'ArticleController@show')->name('api.article.detail');
 });
 
 Route::prefix('/user')->middleware('api.auth')->group(function () {
-    Route::get('/detail', NAMESPACE_API . 'UserController@show')->name('user.show');
-    Route::put('/update', NAMESPACE_API . 'UserController@update')->name('user.update');
-    Route::post('/avatar', NAMESPACE_API . 'UserController@updateAvatar')->name('user.update.avatar');
+    Route::get('/detail', 'UserController@show')->name('api.user.detail');
+    Route::put('/update', 'UserController@update')->name('api.user.update');
+    Route::post('/avatar', 'UserController@updateAvatar')->name('api.user.update-avatar');
 });
 
-Route::get('/about', fn () => Response::success(About::first()))->middleware('api.auth')->name('about');
+Route::get('/about', fn () => Response::success(About::first()))->middleware('api.auth')->name('api.about');
+
+Route::prefix('/major')->middleware('api.auth')->group(function () {
+    Route::get('/', 'MajorController@getListMajor')->name('api.major.list');
+    Route::get('/{id}', 'MajorController@show')->name('api.major.detail');
+});
+
+Route::prefix('/jobs')->middleware('api.auth')->group(function () {
+    Route::get('/', 'JobController@index')->name('api.job.list');
+    Route::get('/{id}', 'JobController@show')->name('api.job.detail');
+});
+
+Route::prefix('/extracurricular')->middleware('api.auth')->group(function () {
+    Route::get('/', 'ExtraController@index')->name('api.extracurricular.list');
+    Route::get('/{id}', 'ExtraController@show')->name('api.extra-urricular.detail');
+});

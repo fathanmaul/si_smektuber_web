@@ -27,6 +27,9 @@ class Major extends Seeder
             ModelsMajor::insert([
                 'major_name' => $value,
                 'major_description' => $lorem,
+                'major_logo' => 'https://via.placeholder.com/150',
+                'picture_1' => 'https://via.placeholder.com/150',
+                'picture_2' => 'https://via.placeholder.com/150',
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
