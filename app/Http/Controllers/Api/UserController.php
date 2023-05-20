@@ -13,7 +13,7 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'username' => 'required|numeric',
+            'username' => 'required|string',
             'name' => 'required|string',
             'email' => 'required|email',
         ], errorMsg());

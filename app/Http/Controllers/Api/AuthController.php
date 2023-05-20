@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validate = Validator::make($request->all(), [
-            'username' => 'required|numeric',
+            'username' => 'required|string',
             'name' => 'required|string',
             'email' => 'required|email',
             'password' => 'required|string|min:6',
@@ -55,7 +55,7 @@ class AuthController extends Controller
     public function login()
     {
         $validate = Validator::make(request()->all(), [
-            'username' => 'required|numeric',
+            'username' => 'required|string',
             'password' => 'required|string',
         ], errorMsg());
 

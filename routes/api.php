@@ -41,7 +41,8 @@ Route::prefix('/user')->middleware('api.auth')->group(function () {
     Route::post('/avatar', 'UserController@updateAvatar')->name('api.user.update-avatar');
 });
 
-Route::get('/about', fn () => Response::success(About::first()))->middleware('api.auth')->name('api.about');
+// Route::get('/about', fn () => Response::success(About::first()))->middleware('api.auth')->name('api.about');
+Route::get('/about','AboutSchoolController@show')->middleware('api.auth')->name('api.about');
 
 Route::prefix('/major')->middleware('api.auth')->group(function () {
     Route::get('/', 'MajorController@getListMajor')->name('api.major.list');
@@ -58,5 +59,6 @@ Route::prefix('/extracurricular')->middleware('api.auth')->group(function () {
     Route::get('/{id}', 'ExtraController@show')->name('api.extra-urricular.detail');
 });
 
-Route::get('/ppdb', fn () => Response::success(Registration::first()))->middleware('api.auth')->name('ppdb');
+// Route::get('/ppdb', fn () => Response::success(Registration::first()))->middleware('api.auth')->name('ppdb');
+Route::get('/ppdb', 'PPDBController@show')->middleware('api.auth')->name('ppdb');
 Route::post('/ppdb', 'PPDBController@create')->middleware('api.auth')->name('ppdb.create');

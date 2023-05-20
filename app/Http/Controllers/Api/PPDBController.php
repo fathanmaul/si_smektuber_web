@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\DetailRegistration;
+use App\Models\Major;
 use App\Models\Registration;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -12,13 +14,28 @@ use Illuminate\Validation\Rule;
 
 class PPDBController extends Controller
 {
-    
+    public function show()
+    {
+        try {
+            $registration = Registration::first();
+            
+            if ($registration) {
+                return Response::success($registration);
+            } else {
+                return Response::error('No registration data found', [], 404);
+            }
+        } catch (\Exception $e) {
+            return Response::internalServerError($e->getMessage());
+        }
+    }
+
     public function create(Request $request)
     {
         try{
             $validator = Validator::make($request->all(), [
                 'nisn' => 'required|string',
                 'full_name' => 'required|string',
+                'place_birth'=> 'required|string',
                 'date_birth' => 'required|date',
                 'address' => 'required|string',
                 'phone' => 'required|string',
@@ -42,19 +59,25 @@ class PPDBController extends Controller
                 return Response::error('Validation Error', $validator->errors(), 422);
             }
     
-            $user = auth()->user();
-    
+            $user = api()->user();
+            // dd($user);
             // Check if user_id is already registered
-            $isRegistered = Registration::where('user_id', $user->id)->exists();
+            $isRegistered = DetailRegistration::where('user_id', $user->user_id)->exists();
             if ($isRegistered) {
                 return Response::error('User is already registered', [], 400);
             }
-            
-    
+             // Ambil data registrasi pertama yang tersedia 
+            $registration = Registration::first();
+            // $major1 = Major::where('major_name', $request->major_name_1);
+            // $major2 = Major::where('major_name', $request->major_name_2);
+
+            // dd($major1);
             $data= DetailRegistration::create([
                 'user_id' => $user->id,
+                'registration_id' => $registration->id,
                 'nisn' => $request->nisn,
                 'full_name' => $request->full_name,
+                'place_birth' => $request->place_birth,
                 'date_birth' => $request->date_birth,
                 'address' => $request->address,
                 'phone' => $request->phone,
@@ -66,10 +89,10 @@ class PPDBController extends Controller
                 'major_id_1' => $request->major_id_1,
                 'major_id_2' => $request->major_id_2,
             ]);
-        
-            return Response::success($data, 'Registration successful', 200);
+
+            return Response::success($data, 'Registration successful');
         } catch (\Exception $e) {
-            return Response::error('internal server error', [], 500);
+            return Response::internalServerError($e->getMessage());
         }
     
     }

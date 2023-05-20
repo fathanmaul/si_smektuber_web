@@ -16,8 +16,10 @@ class DetailRegistration extends Model
     protected $table = "detail_registration";
     protected $fillable = [
         'user_id',
+        'registration_id',
         'nisn',
         'full_name',
+        'place_birth',
         'date_birth',
         'address',
         'phone',

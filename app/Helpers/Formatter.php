@@ -34,7 +34,7 @@ function errorMsg()
         // auth
         'name.required' => 'Name is required',
         'username.required' => 'Username is required',
-        'username.numeric' => 'Username must be numeric',
+        'username.string' => 'Username must be string',
         'email.required' => 'Email is required',
         'email.email' => 'Email is not valid',
         'password.required' => 'Password is required',
