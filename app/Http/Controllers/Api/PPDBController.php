@@ -12,7 +12,23 @@ use Illuminate\Validation\Rule;
 
 class PPDBController extends Controller
 {
-    
+    public function show()
+    {
+        // $registration = Registration::first();
+        // return Response::success($registration);
+        try {
+            $registration = Registration::first();
+            
+            if ($registration) {
+                return Response::success($registration);
+            } else {
+                return Response::error('No registration data found', [], 404);
+            }
+        } catch (\Exception $e) {
+            return Response::internalServerError($e->getMessage());
+        }
+    }
+
     public function create(Request $request)
     {
         try{
@@ -43,16 +59,17 @@ class PPDBController extends Controller
             }
     
             $user = auth()->user();
-    
+            dd($user);
             // Check if user_id is already registered
             $isRegistered = Registration::where('user_id', $user->id)->exists();
             if ($isRegistered) {
                 return Response::error('User is already registered', [], 400);
             }
-            
-    
+            // 'registration_id'=>
+            // 'user_id' => $user->id,
             $data= DetailRegistration::create([
                 'user_id' => $user->id,
+               
                 'nisn' => $request->nisn,
                 'full_name' => $request->full_name,
                 'date_birth' => $request->date_birth,
@@ -66,10 +83,12 @@ class PPDBController extends Controller
                 'major_id_1' => $request->major_id_1,
                 'major_id_2' => $request->major_id_2,
             ]);
-        
+
             return Response::success($data, 'Registration successful', 200);
         } catch (\Exception $e) {
-            return Response::error('internal server error', [], 500);
+            // return Response::error('internal server error', [], 500);
+            // return Response::internalServerError();
+            return Response::internalServerError($e->getMessage());
         }
     
     }
