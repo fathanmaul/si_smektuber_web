@@ -23,7 +23,7 @@ class Extracurricular extends Seeder
                 'extracurricular_description' => Str::random(100),
                 'extracurricular_logo' => 'https://via.placeholder.com/150',
                 'extracurricular_photo_1' => 'https://via.placeholder.com/150',
-                'extracurricular_photo_2' => 'https://via.placeholder.com/150',
+                // 'extracurricular_photo_2' => 'https://via.placeholder.com/150',
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

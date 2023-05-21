@@ -29,7 +29,7 @@ class Major extends Seeder
                 'major_description' => $lorem,
                 'major_logo' => 'https://via.placeholder.com/150',
                 'picture_1' => 'https://via.placeholder.com/150',
-                'picture_2' => 'https://via.placeholder.com/150',
+                // 'picture_2' => 'https://via.placeholder.com/150',
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

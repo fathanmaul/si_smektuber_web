@@ -14,15 +14,15 @@
       <div class="row justify-content-center">
         <div class="col-md-6">
           <div class="text-center mb-4">
-            <a href="/" class="navbar-brand font-weight-bold text-primary"
+            <a href="{{ route('landing.index') }}" class="navbar-brand font-weight-bold text-primary"
               >Smektuber - SMKN 7 Jember</a
             >
           </div>
           <div class="card">
             <div class="card-body">
               <p class="card-text">
-                Use the following OTP to complete procedures. OTP is valid for 5
-                minutes.
+                Gunakan OTP berikut untuk menyelesaikan prosedur. OTP berlaku untuk 5
+                menit.
               </p>
               <div class="text-center bg-primary text-white p-3 rounded mb-3">
                 <h2>{{ $otp }}</h2>
