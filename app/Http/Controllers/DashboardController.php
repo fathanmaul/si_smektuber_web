@@ -20,8 +20,9 @@ class DashboardController extends Controller
         $artikel = Article::orderBy('created_at', 'desc')->take(5)->get();
         $countJurusan = Major::count();
         $countExtra = Extracurricular::count();
+        $countArtikel = Article::count();
         // dd(auth()->user());
         // return view('admin.dashboard.index');
-        return view('admin.dashboard.new.index', compact('artikel', 'countJurusan'));
+        return view('admin.dashboard.new.index', compact('artikel', 'countJurusan', 'countArtikel'));
     }
 }

@@ -47,11 +47,11 @@
                     </label>
                     <ul tabindex="0"
                         class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                        {{-- <li>
-                            <a class="justify-between">
+                        <li>
+                            <a class="justify-center">
                                 Profile
                             </a>
-                        </li> --}}
+                        </li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST"
                                 class="hover:bg-red-100 active:bg-red-200 h-full pb-2 mb-0">
@@ -66,7 +66,7 @@
         {{-- Header Ends Here --}}
 
         {{-- Container --}}
-        <div class="container py-4 px-4 z-20 h-full">
+        <div class="container py-4 px-4 z-20 h-full md:pl-8 lg:pl-0" id="contentSide">
             <div class="mt-12 lg:mt-0">
                 {{-- Content Goes Here --}}
                 <div class="py-4 lg:py-2 relative">
@@ -85,6 +85,7 @@
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="https://kit.fontawesome.com/9aa9764949.js" crossorigin="anonymous"></script>
     @yield('script')
+
 </body>
 
 </html>
