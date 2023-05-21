@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailRegistration;
 use App\Models\Registration;
 use App\Models\SchoolYear;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Storage;
 
 class PpdbController extends Controller
@@ -15,27 +17,36 @@ class PpdbController extends Controller
         $search = $request->query('cari');
 
         $registrations = Registration::with('schoolYear')
-        ->when($search, function ($query, $search) {
-            $query->whereHas('schoolYear', function ($query) use ($search) {
-                $query->where('school_year', 'like', "%$search%");
-            });
-        })
-        ->orderBy('created_at', 'desc')
-        ->paginate(10);
+            ->when($search, function ($query, $search) {
+                $query->whereHas('schoolYear', function ($query) use ($search) {
+                    $query->where('school_year', 'like', "%$search%");
+                });
+            })->whereNotNull('school_year')
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
         return view('admin.Ppdb.new.daftar-ppdb.index', compact('registrations'));
     }
-    public function create(){
+    public function create()
+    {
         $schoolYears = SchoolYear::all();
+        // $registration = Registration::all();
+        // $countPendaftar = DetailRegistration::where('registration_id', $registration->id)->count();
         return view('admin.Ppdb.new.daftar-ppdb.create', compact('schoolYears'));
     }
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         // return $this->backWithSuccess('')
+
         $request->validate([
             'school_year' => 'required|exists:school_year,id',
             'description' => 'required|string',
             'poster' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'date_start' => 'required|date',
             'date_end' => 'required|date|after_or_equal:date_start',
+        ], [
+            'school_year.unique' => 'Tahun Ajaran ini sudah terdaftar dalam PPDB!',
+            'school_year.exists' => 'Tahun Ajaran tidak terdaftar!',
+            'school_year.required' => 'Harap isi Tahun Ajaran!'
         ]);
 
         $registration = new Registration();
@@ -43,21 +54,23 @@ class PpdbController extends Controller
         $registration->description = $request->description;
         $registration->date_start = $request->date_start;
         $registration->date_end = $request->date_end;
+        $registration->created_at = now();
+        $registration->updated_at = now();
+
 
         if ($request->hasFile('poster')) {
             $posterPath = $request->file('poster')->store('posters', 'public');
             $registration->poster = $posterPath;
-        }   
+        }
 
         // $registration->save();
 
         // return redirect()->route('ppdb.daftar.index')->with('success', 'Informasi PPDB berhasil ditambahkan.');
         if ($registration->save()) {
-            return $this->backWithSuccess_1('Informasi PPDB berhasil diperbarui.');
+            return $this->backWithSuccess_1('Informasi PPDB berhasil ditambahkan.');
         } else {
             return $this->backWithError_1('Gagal memperbarui informasi PPDB.');
         }
-        
     }
     public function edit($id)
     {
@@ -101,11 +114,26 @@ class PpdbController extends Controller
             return $this->backWithError_1('Gagal memperbarui informasi PPDB.');
         }
     }
-    public function destroy($id){
+    public function destroy($id)
+    {
         $registration = Registration::findOrFail($id);
         $registration->delete();
 
-        return redirect()->route('ppdb.daftar.index')->with('success', 'Informasi PPDB berhasil dihapus.');
+        return $this->backWithSuccess_1('Data PPDB berhasil dihapus!');
+    }
+
+    public function status($id)
+    {
+
+        $registration = Registration::findOrFail($id);
+        try {
+            Registration::where('status', '1')->update(['status' => '0']);
+            $registration->status = '1';
+            $registration->save();
+            return $this->backWithSuccess_1('Status PPDB berhasil diubah!');
+        } catch (\Throwable $th) {
+            return $th;
+        }
     }
 
     private function backWithSuccess_1($message)
@@ -115,10 +143,11 @@ class PpdbController extends Controller
             'message' => $message
         ]);
     }
-    private function backWithError_1($message){
+    private function backWithError_1($message)
+    {
         return redirect()->route('ppdb.daftar.index')->with('flash', [
-                    'type' => 'danger',
-                    'message' => $message
-                ]);
+            'type' => 'danger',
+            'message' => $message
+        ]);
     }
 }

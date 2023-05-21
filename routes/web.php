@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EkstrakurikulerController;
@@ -96,7 +97,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/auth/logout', [LoginController::class, 'destroy'])->name('logout');
 });
 
-Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () {
+Route::prefix('admin')->middleware(['middleware' => 'auth'])->middleware(['middleware' => 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::group(['prefix' => 'sekolah'], function () {
         Route::redirect('/', '/admin/dashboard')->name('sekolah');
@@ -164,14 +165,14 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
             Route::get('/', [PpdbController::class, 'index'])->name('index');
             Route::get('/tambah', [PpdbController::class, 'create'])->name('create');
             Route::post('/store', [PpdbController::class, 'store'])->name('store');
-            Route::get('/{id}/edit',[PpdbController::class, 'edit'])->name('edit');
-            Route::put('/{id}/edit',[PpdbController::class, 'put'])->name('put');
-            Route::delete('/{id}',[PpdbController::class, 'destroy'])->name('destroy');
+            Route::get('/{id}/edit', [PpdbController::class, 'edit'])->name('edit');
+            Route::put('/{id}/edit', [PpdbController::class, 'put'])->name('put');
+            Route::delete('/{id}', [PpdbController::class, 'destroy'])->name('destroy');
+            Route::put('/{id}/status', [PpdbController::class, 'status'])->name('status');
         });
-        Route::group(['prefix' => 'pendaftar', 'as' => 'pendaftar.'], function(){
+        Route::group(['prefix' => 'pendaftar', 'as' => 'pendaftar.'], function () {
             Route::get('/', [PendaftarController::class, 'index'])->name('index');
             Route::get('/{id}', [PendaftarController::class, 'show'])->name('show');
-            Route::patch('/{id}', [PendaftarController::class, 'updateStatus'])->name('update');
         });
     });
 
@@ -184,13 +185,16 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function () 
         Route::put('/{id}/edit', [ArtikelController::class, 'put'])->name('put');
         Route::delete('/{id}', [ArtikelController::class, 'destroy'])->name('destroy');
     });
+
+    Route::group(['prefix' => 'list', 'as' => 'admin.', 'middleware' => 'developer'], function () {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::get('/tambah', [AdminController::class, 'create'])->name('create');
+        Route::post('/tambah', [AdminController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [AdminController::class, 'edit'])->name('edit');
+        Route::put('/{id}/edit', [AdminController::class, 'put'])->name('put');
+        Route::delete('/{id}', [AdminController::class, 'destroy'])->name('destroy');
+    });
 });
-
-
-
-// Route::prefix('admin')->middleware(['middleware' => 'auth'])->group(function(){
-//     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-// });
 
 
 

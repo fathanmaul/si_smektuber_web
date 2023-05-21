@@ -236,19 +236,6 @@ class JurusanController extends Controller
 
     public function put(Request $request, $id)
     {
-        // $nameFile = [];
-        // $fileFile = [];
-        // foreach($request->file() as $name => $file) {
-        //     $nameFile[] = $name;
-        //     $fileFile[] = $file;
-        // }
-        // return Response::json([
-        //     'name' => $nameFile,
-        //     'file' => $fileFile,
-        // ]);
-        // dd([$nameFile, $fileFile]);
-        // return count($request->file());
-
         if (!Major::find($id)) return $this->backWithError('jurusan.index', 'Jurusan tidak ditemukan!');
         $request->validate([
             'major_name' => 'required|max:255',
@@ -289,7 +276,6 @@ class JurusanController extends Controller
                                 $major->major_logo = $major_logo;
                             }   
                         }else{
-                            // $major_logo = $request->file('picture_2')->store('major/major-pictures');
                             $major_logo = Storage::put('major/major-logos', $file);
                             $major->major_logo = $major_logo;
                         }
