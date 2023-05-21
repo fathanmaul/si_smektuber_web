@@ -30,7 +30,10 @@ CKEDITOR.editorConfig = function( config ) {
         { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Strike', '-', 'RemoveFormat' ] },
         { name: 'clipboard', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
         { name: 'editing', items: [ 'Find', 'Replace', '-', 'SelectAll', '-', 'Scayt' ] },
-        // { name: 'insert', items: [ 'Image', 'HorizontalRule', 'SpecialChar', 'PageBreak' ] },
+        { name: 'insert', items: [ 'Image', 'HorizontalRule', 'SpecialChar', 'PageBreak' ] },
+		{ name: 'links', items: [ 'Link', 'Unlink', 'Anchor' ] },
+		{ name: 'tools', items: [ 'Maximize' ] },
+		
         '/',
         { name: 'styles', items: [ 'Styles' ] },
     ]

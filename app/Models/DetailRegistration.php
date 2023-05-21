@@ -28,23 +28,24 @@ class DetailRegistration extends Model
         'graduation_year',
         'major_id_1',
         'major_id_2',
+        'major_accepted'
     ];
    // Relasi dengan model Registration
-    public function registration()
-   {
-       return $this->belongsTo(Registration::class);
-   }
-    public function user()
-   {
-       return $this->belongsTo(User::class);
-   }
-    public function major1()
-    {
-        return $this->belongsTo(Major::class, 'major_id_1');
-    }
+//     public function registration()
+//    {
+//        return $this->belongsTo(Registration::class);
+//    }
+//     public function user()
+//    {
+//        return $this->belongsTo(User::class);
+//    }
+//     public function major1()
+//     {
+//         return $this->belongsTo(Major::class, 'major_id_1');
+//     }
 
-    public function major2()
-    {
-        return $this->belongsTo(Major::class, 'major_id_2');
-    }
+//     public function major2()
+//     {
+//         return $this->belongsTo(Major::class, 'major_id_2');
+//     }
 }

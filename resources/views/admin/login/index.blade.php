@@ -97,12 +97,22 @@
         </div>
 
 
-        <div class="h-full hidden laptop:block w-[59%] bg-cover brightness-50"
+        {{-- <div class="h-full hidden laptop:block w-[59%] bg-cover brightness-50"
             style="background-image: url('{{ asset('assets/images/sekolah/foto.png') }}')">
             <div class="flex justify-center items-center h-full">
                 <div class="flex flex-col justify-start items-center gap-4 ml-8">
-                    {{-- <h1 class="ml-3 font-bold text-[4rem] text-white">Selamat Datang</h1> --}}
+              
                 </div>
+            </div>
+        </div> --}}
+        <div class="h-full hidden laptop:block w-[59%] bg-gradient-to-br from-primary to-blue-400">
+            <div class="flex flex-col justify-center items-center h-full mx-32">
+                <h3 class="text-white text-4xl font-bold">
+                    Selamat Datang, di {{ $school_name }}
+                </h3>   
+                <h3 class="text-white text-2xl font-normal">
+                    Silahkan Login! Untuk mengakses aplikasi
+                </h3>   
             </div>
         </div>
     </div>
