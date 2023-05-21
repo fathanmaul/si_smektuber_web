@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             SchoolYear::class,
             PpdbRegistration::class,
             Loker::class,
-
+            DetailRegistration::class,
         ]);
     }
 }
