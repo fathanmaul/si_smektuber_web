@@ -251,9 +251,25 @@ class AuthController extends Controller
             'expired_at' => Carbon::now()->addMinutes(5),
         ]);
 
+        $this->sendOtpEmail($user, $otp);
+
         return $otp;
     }
-
+    // add for sendOtpToEmail 
+    protected function sendOtpEmail($user, $otp)
+    {
+        $data = [
+                'otp' => $otp,
+        ];
+        
+        Mail::send('mails.otp', $data, function ($message) use ($user) {
+                $message->to($user->email);
+                $message->subject('OTP Email');
+        });
+        
+        return Response::success([], 'OTP email sent');
+    }
+    
     protected function removeOtp()
     {
         Otp::where('expired_at', '<', Carbon::now())->delete();
