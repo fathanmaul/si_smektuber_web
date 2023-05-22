@@ -142,6 +142,12 @@
                 </tbody>
             </table>
         </div>
+        <div class="w-full flex justify-center mb-3 mt-4">
+            <div class=" flex flex-col gap-4 w-full lg:w-4/5">
+                <h4 class="font-bold">Status</h4>
+                <div class="badge badge-lg badge-warning">Belum Dicek</div>
+            </div>
+        </div>
 
     </div>
     </div>
