@@ -9,13 +9,13 @@
                 <h5 class="mb-4">Tentang Kami</h5>
                 <p>
                     SMKN 7 JEMBER adalah Sekolah Menengah Kejuruan yang terletak di
-                    jalan PB.Sudirman No 16 Jatiroto, jember
+                    JL. PB. SUDIRMAN NO.16, Jatiroto, Kec. Sumberbaru, Kab. Jember Prov. Jawa Timur
                 </p>
                 <p>
-                    <i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA
+                    <i class="fa fa-map-marker-alt me-3"></i>JL. PB. SUDIRMAN NO.16, Jatiroto, Kec. Sumberbaru, Kab. Jember Prov. Jawa Timur
                 </p>
-                <p><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                <p><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                <p><i class="fa fa-phone-alt me-3"></i>0334321400</p>
+                <p><i class="fa fa-envelope me-3"></i>smkn7jember@school.ac.id</p>
             </div>
             
             <div class="col-lg-3 col-md-6">

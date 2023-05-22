@@ -28,7 +28,7 @@ class DetailRegistration extends Seeder
                 'school_origin' => 'SMPN 1 Bandung',
                 'father_name' => 'Budi',
                 'mother_name' => 'Siti',
-                'graduation_year' => '2021-05-13',
+                'graduation_year' => '2021',
                 'major_id_1' => '1',
                 'major_id_2' => '2',
                 'created_at' => now(),

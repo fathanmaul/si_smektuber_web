@@ -287,7 +287,7 @@ class AuthController extends Controller
         $data = [
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => api()->factory()->getTTL() * 60,
+            'expires_in' => api()->factory()->getTTL() * 1440,
         ];
 
         if (!$refresh) {

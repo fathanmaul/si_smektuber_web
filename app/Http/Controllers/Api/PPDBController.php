@@ -42,7 +42,7 @@ class PPDBController extends Controller
                 'father_name' => 'required|string',
                 'mother_name' => 'required|string',
                 'school_origin' => 'required|string',
-                'graduation_year' => 'required|date',
+                'graduation_year' => 'required|year',
                 'major_id_1' => [
                     'required',
                     'integer',
