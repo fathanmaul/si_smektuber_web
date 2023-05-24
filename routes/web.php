@@ -70,7 +70,7 @@ Route::get('/blog', function () {
     return view('landing.detail.blog');
 });
 
-Route::group(['prefik' => 'landing', 'as' => 'landing.'], function(){
+Route::group(['prefix' => 'landing', 'as' => 'landing.'], function(){
     Route::get('/', [LandingHomeController::class, 'index'])->name('index');
     Route::get('/about', [LandingHomeController::class, 'showAbout'])->name('about');
     Route::get('/ppdb',[LandingHomeController::class, 'showPpdb'])->name('ppdb');
