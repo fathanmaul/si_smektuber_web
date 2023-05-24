@@ -75,7 +75,7 @@
                                 <td>{{ $registration->nisn }}</td>
                                 <td>{{ $registration->full_name }}</td>
                                 <td>{{ $registration->school_origin }}</td>
-                                <td>{{ $registration->school_year }}</td>
+                                <td>{{ $registration->school_year_name }}</td>
                                 <td>
                                     @if ($registration->user_registration_status == 1)
                                     <div class="badge badge-success">Diterima</div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Develop;
 
 use App\Models\SchoolYear as ModelsSchoolYear;
 use Illuminate\Database\Seeder;
@@ -15,7 +15,7 @@ class SchoolYear extends Seeder
     public function run()
     {
         $schoolYear = [];
-        for ($i=18; $i <= 25; $i++) { 
+        for ($i=18; $i <= 40; $i++) { 
             array_push($schoolYear, '20'.$i.'/20'.($i+1));
         }
         // $year = ['','2021/2022', '2022/2023', '2023/2024'];

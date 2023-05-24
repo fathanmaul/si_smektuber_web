@@ -136,6 +136,18 @@ class PpdbController extends Controller
         }
     }
 
+    public function statusFalse($id)
+    {
+        $registration = Registration::findOrFail($id);
+        try {
+            $registration->status = '0';
+            $registration->save();
+            return $this->backWithSuccess_1('Status PPDB berhasil diubah!');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
+    }
+
     private function backWithSuccess_1($message)
     {
         return redirect()->route('ppdb.daftar.index')->with('flash', [
