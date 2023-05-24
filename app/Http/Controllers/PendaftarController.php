@@ -86,6 +86,34 @@ class PendaftarController extends Controller
         return redirect()->route('ppdb.pendaftar.index')->with('success', 'Status pendaftar berhasil diperbarui.');
     }
 
+    public function acceptStatus(Request $request, $id)
+    {
+        $pendaftar = DetailRegistration::findOrFail($id);
+        $request->validate([
+            'major_accepted' => 'required'
+        ],[
+            'major_accepted.required' => 'Harap pilih salah satu jurusan yang tersedia!'
+        ]);
+        // if ($request->major_accepted == null) {
+        //     return back()->with('flash', [
+        //         'type' => 'danger',
+        //         'message' => 'Harap pilih salah satu jurusan yang tersedia!'
+        //     ]);
+        // }
+        try {
+            DetailRegistration::where('id', $id)->update([
+                'user_registration_status' => '1',
+                'major_accepted' => $request->major_accepted
+            ]);
+            return back()->with('flash', [
+                'type' => 'success',
+                'message' => 'Siswa berhasil diterima'
+            ]);
+        } catch (\Throwable $th) {
+            return $this->backWithError('ppdb.pendaftar.index', 'Status pendaftar gagal diperbarui.');
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *

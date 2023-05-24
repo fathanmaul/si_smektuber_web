@@ -185,6 +185,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->middleware(['middl
         Route::group(['prefix' => 'pendaftar', 'as' => 'pendaftar.'], function () {
             Route::get('/', [PendaftarController::class, 'index'])->name('index');
             Route::get('/{id}', [PendaftarController::class, 'show'])->name('show');
+            Route::put('/{id}/accept', [PendaftarController::class, 'acceptStatus'])->name('accept-status');
         });
     });
 

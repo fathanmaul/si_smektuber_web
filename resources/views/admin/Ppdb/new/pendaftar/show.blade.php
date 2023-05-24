@@ -21,8 +21,18 @@
 
     <div class="card w-full bg-white p-6 flex flex-col justify-center">
         <div class="w-full flex justify-center mb-3">
-            <div class="w-full lg:w-4/5">
-                <a href="{{ route('ppdb.pendaftar.index') }}" class="btn btn-sm btn-error text-white">Kembali</a>
+            <div class="w-full lg:w-4/5 font-bold">
+                <x-alert />
+            </div>
+        </div>
+        <div class="w-full flex justify-center mb-3 mt-4">
+            <div class=" flex flex-row gap-4 w-full lg:w-4/5">
+                <h4 class="font-bold">Status : </h4>
+                @if ($pendaftar->user_registration_status == 1)
+                    <div class="badge badge-lg badge-success">Diterima</div>
+                @else
+                    <div class="badge badge-lg badge-warning">Belum Dicek</div>
+                @endif
             </div>
         </div>
         <div class="w-full flex justify-center mb-3">
@@ -45,7 +55,7 @@
                     <tr>
                         <td class="w-[10%]">Tempat dan Tanggal Lahir</td>
                         <td class="w-[70%] font-semibold">:
-                            {{ Carbon::parse($pendaftar->date_birth)->translatedFormat('d F Y') }}
+                            {{ $pendaftar->place_birth . ', ' . Carbon::parse($pendaftar->date_birth)->translatedFormat('d F Y') }}
                             ({{ Carbon::parse($pendaftar->date_birth)->diff(Carbon::now())->format('%y th') }})</td>
                     </tr>
                     <tr>
@@ -77,7 +87,7 @@
             </table>
         </div>
         <div class="w-full flex justify-center mb-3 mt-4">
-            <h4 class="w-full lg:w-4/5 font-bold">Informasi Kontak</h4>
+            <h4 class="w-full lg:w-4/5 font-bold">Informasi Akun dan Kontak</h4>
         </div>
         <div class="overflow-x-auto lg:flex lg:justify-center">
             <table class="table border-2 table-zebra w-full lg:w-4/5">
@@ -86,6 +96,10 @@
                     <tr>
                         <td class="w-[10%]">Telepon</td>
                         <td class="w-[70%] font-semibold">: {{ $pendaftar->phone }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w-[10%]">Username</td>
+                        <td class="w-[70%] font-semibold">: {{ $user->username }}</td>
                     </tr>
                     <!-- row 2 -->
                     <tr>
@@ -114,15 +128,52 @@
                 </tbody>
             </table>
         </div>
-        <div class="w-full flex justify-center mb-3 mt-4">
-            <div class=" flex flex-col gap-4 w-full lg:w-4/5">
-                <h4 class="font-bold">Status</h4>
-                @if ($pendaftar->user_registration_status == 1)
-                    <div class="badge badge-lg badge-success">Diterima</div>
-                @else
-                    <div class="badge badge-lg badge-warning">Belum Dicek</div>
+        <div class="w-full flex justify-center my-6 lg:my-3">
+            <div class="w-full lg:w-4/5 flex justify-end flex-col-reverse lg:flex-row gap-3">
+                <a href="{{ route('ppdb.pendaftar.index') }}" class="btn btn-error text-white">Kembali</a>
+                @if ($pendaftar->user_registration_status != 1)
+                    <label for="my-modal" class="btn btn-success text-white">Terima Siswa</label>
                 @endif
             </div>
         </div>
     </div>
+
+    @if ($pendaftar->user_registration_status != 1)
+    <input type="checkbox" id="my-modal" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box">
+            <form action="{{ route('ppdb.pendaftar.accept-status', $pendaftar->id) }}" method="post">
+                @csrf
+                @method('PUT')
+                <h3 class="font-bold text-lg mb-4">Pilih salah satu jurusan yang diterima siswa ini</h3>
+                <select class="select select-bordered w-full" name="major_accepted">
+                    <option disabled selected value="null">Pilih Jurusan</option>
+                    @if ($pendaftar->major_id_1)
+                        <option value="{{ $pendaftar->major_id_1 }}">{{ $pendaftar->major_name }}</option>
+                    @endif
+                    @if ($pendaftar->major_id_2)
+                        <option value="{{ $pendaftar->major_id_2 }}">{{ $pendaftar->major_name2 }}</option>
+                    @endif
+                </select>
+                @error('major_accepted')
+                    <p class="text-red-500 text-sm">{{ $message }}</p>
+                @enderror
+                <div class="modal-action">
+                    <label for="my-modal" onclick="resetMajor()" class="btn btn-error text-white">BATAL</label>
+                    <button type="submit" id="btn_submit" class="btn btn-success text-white">SIMPAN</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    @endif
+@endsection
+
+@section('script')
+    <script src="{{ asset('js/admin/pendaftar/reset.js') }}"></script>
+    @error('major_accepted')
+        <script>
+            const modalToggle = document.querySelector('input#my-modal');
+            modalToggle.checked = true;
+        </script>
+    @enderror
 @endsection
