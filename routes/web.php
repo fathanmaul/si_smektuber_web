@@ -5,6 +5,7 @@ use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\LandingHomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\PostCategoryController;
@@ -40,24 +41,23 @@ use Illuminate\Support\Facades\Route;
  * 
  */
 
-Route::get('/', function () {
-    return view('landing.index');
-})->name('landing.index');
+// Route::get('/', function () {
+//     return view('landing.index');
+// })->name('landing.index');
 
-Route::get('/about', function () {
-    return view('landing.about');
-});
-Route::get('/ppdb', function () {
-    return view('landing.ppdb');
-});
+// Route::get('/about', function () {
+//     return view('landing.about');
+// });
+// Route::get('/ppdb', function () {
+//     return view('landing.ppdb');
+// });
 
-Route::get('/article', function () {
-    return view('landing.article');
-});
-Route::get('/konsultasi', function () {
-    return view('landing.konsultasi');
-});
-
+// Route::get('/article', function () {
+//     return view('landing.article');
+// });
+// Route::get('/konsultasi', function () {
+//     return view('landing.konsultasi');
+// });
 Route::get('/jurusan', function () {
     return view('landing.detail.jurusan');
 });
@@ -69,6 +69,16 @@ Route::get('/ekstra', function () {
 Route::get('/blog', function () {
     return view('landing.detail.blog');
 });
+
+Route::group(['prefix' => 'landing', 'as' => 'landing.'], function(){
+    Route::get('/', [LandingHomeController::class, 'index'])->name('index');
+    Route::get('/about', [LandingHomeController::class, 'showAbout'])->name('about');
+    Route::get('/ppdb',[LandingHomeController::class, 'showPpdb'])->name('ppdb');
+    Route::get('/article',[LandingHomeController::class, 'showArticle'])->name('article');
+    Route::get('/konsultasi', [LandingHomeController::class, 'showKonsultasi'])->name('konsultasi');
+    
+});
+
 /**
  * 
  * 

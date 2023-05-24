@@ -42,17 +42,16 @@ class PPDBController extends Controller
                 'father_name' => 'required|string',
                 'mother_name' => 'required|string',
                 'school_origin' => 'required|string',
-                'graduation_year' => 'required|date',
+                'graduation_year' => 'required|year',
                 'major_id_1' => [
                     'required',
                     'integer',
                     Rule::exists('major', 'id')
                 ],
-                'major_id_2' => [
-                    'required',
-                    'integer',
-                    Rule::exists('major', 'id')
-                ],
+                // 'major_id_2' => [
+                //     'integer',
+                //     Rule::exists('major', 'id')
+                // ],
             ]);
     
             if ($validator->fails()) {
@@ -66,12 +65,8 @@ class PPDBController extends Controller
             if ($isRegistered) {
                 return Response::error('User is already registered', [], 400);
             }
-             // Ambil data registrasi pertama yang tersedia 
             $registration = Registration::first();
-            // $major1 = Major::where('major_name', $request->major_name_1);
-            // $major2 = Major::where('major_name', $request->major_name_2);
 
-            // dd($major1);
             $data= DetailRegistration::create([
                 'user_id' => $user->id,
                 'registration_id' => $registration->id,
