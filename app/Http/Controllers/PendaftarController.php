@@ -32,6 +32,7 @@ class PendaftarController extends Controller
         if ($tahun) {
             $pendaftar->where('registration.school_year', $tahun);
         }
+        $pendaftar->select(['detail_registration.*', 'registration.school_year as school_year_id', 'school_year.school_year as school_year_name']);
         $pendaftar = $pendaftar->orderBy('full_name', 'asc')->paginate(10);
         $pendaftar->appends(['keyword' => $keyword, 'tahun_ajaran' => $tahun]);
         // return Response::json($pendaftar);
@@ -63,10 +64,13 @@ class PendaftarController extends Controller
 
     public function show($id)
     {
-        $pendaftar = DetailRegistration::findOrFail($id)->join('major', 'major.id', '=', 'detail_registration.major_id_1')
+        $pendaftar = DetailRegistration::where('detail_registration.id', $id)->join('major', 'major.id', '=', 'detail_registration.major_id_1')
             ->join('major as major2', 'major2.id', '=', 'detail_registration.major_id_2')
             ->get(['detail_registration.*', 'major.major_name as major_name', 'major2.major_name as major_name2'])
             ->first();
+            if(!$pendaftar){
+                return $this->backWithError('ppdb.pendaftar.index', 'Siswa tidak ditemukan.');
+            }
         //   return Response::json($pendaftar);
         $user = User::findOrFail($pendaftar->user_id);
         $major_1 = Major::where('id', $pendaftar->major_id_1)->first();

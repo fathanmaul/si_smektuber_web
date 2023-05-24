@@ -49,7 +49,11 @@
     <div class="grid grid-cols-1 lg:grid-cols-3 lg:gap-3">
         <div class="col-span-2">
             <div class="px-6 pt-6 pb-3 flex flex-row items-center gap-3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 flex items-center justify-center"><path d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                    class="w-5 h-5 flex items-center justify-center">
+                    <path
+                        d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z" />
+                </svg>
                 <h3 class="text-lg lg:text-xl font-semibold">Artikel Terbaru</h3>
             </div>
             @foreach ($artikel as $item)
@@ -94,22 +98,30 @@
                 <h3 class="text-lg lg:text-xl font-semibold">PPDB Yang Sedang Berjalan</h3>
             </div>
             <div class="card p-6 drop-shadow-lg bg-white flex flex-col gap-4">
-                <div class="form-control gap-2">
-                    <label for="#" class="apperance-none">Tahun Ajaran</label>
-                    <p class="font-bold text-lg">2023/2024</p>
-                </div>
-                <div class="form-control gap-2">
-                    <label for="#" class="apperance-none">Dimulai pada</label>
-                    <p class="font-bold text-lg">12 Desember 2022</p>
-                </div>
-                <div class="form-control gap-2">
-                    <label for="#" class="apperance-none">Berakhir pada</label>
-                    <p class="font-bold text-lg">12 Desember 2022</p>
-                </div>
-                <div class="form-control gap-2">
-                    <label for="#" class="apperance-none">Jumlah pendaftar</label>
-                    <p class="font-bold text-lg">120</p>
-                </div>
+                @if ($ppdb)
+                    <div class="form-control gap-2">
+                        <label for="#" class="apperance-none">Tahun Ajaran</label>
+                        <p class="font-bold text-lg">{{ $ppdb->school_year ?? '-' }}</p>
+                    </div>
+                    <div class="form-control gap-2">
+                        <label for="#" class="apperance-none">Dimulai pada</label>
+                        <p class="font-bold text-lg">
+                            {{ $ppdb->date_start ? Carbon::parse($ppdb->date_start)->translatedFormat('d F Y') : '-' }}</p>
+                    </div>
+                    <div class="form-control gap-2">
+                        <label for="#" class="apperance-none">Berakhir pada</label>
+                        <p class="font-bold text-lg">
+                            {{ $ppdb->date_start ? Carbon::parse($ppdb->date_end)->translatedFormat('d F Y') : '-' }}</p>
+                    </div>
+                    <div class="form-control gap-2">
+                        <label for="#" class="apperance-none">Jumlah pendaftar</label>
+                        <p class="font-bold text-lg">{{ $ppdb->total ?? '-' }}</p>
+                    </div>
+                @else
+                    <div class="text-center text-sm">
+                        Tidak Ada PPDB Yang Sedang Berjalan / Aktif
+                    </div>
+                @endif
             </div>
         </div>
     </div>

@@ -20,40 +20,11 @@
     </div>
 
     <div class="card w-full bg-white p-6 flex flex-col justify-center">
-        {{-- <div class="grid grid-cols-1 lg:grid-cols-2">
-            <div>
-                <div class="form-control mb-6">
-                    <label for="" class="appearance-none">NISN</label>
-                    <h4 class="text-xl font-bold">{{ $pendaftar->nisn }}</h4>
-                </div>
-                <div class="form-control mb-6">
-                    <label for="" class="appearance-none">Nama Lengkap</label>
-                    <h4 class="text-xl font-bold">{{ $pendaftar->full_name }}</h4>
-                </div>
-                <div class="form-control mb-6">
-                    <label for="" class="appearance-none">Tempat dan Tanggal Lahir</label>
-                    <h4 class="text-xl font-bold">{{ $pendaftar->place_birth }},
-                        {{ Carbon::parse($pendaftar->date_birth)->translatedFormat('d F Y') }}
-                        ({{ Carbon::parse($pendaftar->date_birth)->diff(Carbon::now())->format('%y th') }})</h4>
-                </div>
-                <div class="form-control mb-6">
-                    <label for="" class="appearance-none">Alamat</label>
-                    <h4 class="text-xl font-bold">{{ $pendaftar->address }}</h4>
-                </div>
-                <div class="form-control mb-6">
-                    <label for="" class="appearance-none">Asal Sekolah</label>
-                    <h4 class="text-xl font-bold">{{ $pendaftar->school_origin }}</h4>
-                </div>
-                <div class="form-control mb-6">
-                    <label for="" class="appearance-none">Tahun Lulus</label>
-                    <h4 class="text-xl font-bold">{{ Carbon::parse($pendaftar->graduation_year)->format('Y') }}</h4>
-                </div>
+        <div class="w-full flex justify-center mb-3">
+            <div class="w-full lg:w-4/5">
+                <a href="{{ route('ppdb.pendaftar.index') }}" class="btn btn-sm btn-error text-white">Kembali</a>
             </div>
-            <div>
-
-            </div>
-        </div> --}}
-
+        </div>
         <div class="w-full flex justify-center mb-3">
             <h4 class="w-full lg:w-4/5 font-bold">Informasi Siswa</h4>
         </div>
@@ -87,7 +58,8 @@
                     </tr>
                     <tr>
                         <td class="w-[10%]">Tahun Lulus</td>
-                        <td class="w-[70%] font-semibold">: {{ Carbon::parse($pendaftar->graduation_year)->format('Y') }}</td>
+                        <td class="w-[70%] font-semibold">: {{ Carbon::parse($pendaftar->graduation_year)->format('Y') }}
+                        </td>
                     </tr>
                     <tr>
                         <td class="w-[10%]">Nama Ayah</td>
@@ -99,7 +71,7 @@
                     </tr>
                     <tr>
                         <td class="w-[10%]">Nama Wali</td>
-                        <td class="w-[70%] font-semibold">: {{ ($pendaftar->guardian_name ?? '-' ) }}</td>
+                        <td class="w-[70%] font-semibold">: {{ $pendaftar->guardian_name ?? '-' }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -145,10 +117,12 @@
         <div class="w-full flex justify-center mb-3 mt-4">
             <div class=" flex flex-col gap-4 w-full lg:w-4/5">
                 <h4 class="font-bold">Status</h4>
-                <div class="badge badge-lg badge-warning">Belum Dicek</div>
+                @if ($pendaftar->user_registration_status == 1)
+                    <div class="badge badge-lg badge-success">Diterima</div>
+                @else
+                    <div class="badge badge-lg badge-warning">Belum Dicek</div>
+                @endif
             </div>
         </div>
-
-    </div>
     </div>
 @endsection

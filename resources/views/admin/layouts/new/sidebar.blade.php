@@ -282,7 +282,7 @@
                                     {{-- <li><a href="{{ route('ppdb.daftar.index') }}"
                                         class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ppdb.' || $route == 'ppdb.' || $route == 'ppdb.' ? 'nav-active' : '' }}">Daftar PPDB</a>
                                 </li> --}}
-                                    <li><a href="{{ route('artikel.index') }}"
+                                    <li><a href="{{ route('loker.index') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == $loker ? 'nav-active' : '' }}">Daftar Loker</a>
                                     </li>
                                 </ul>
