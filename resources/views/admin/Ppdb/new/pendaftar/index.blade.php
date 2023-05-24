@@ -37,10 +37,10 @@
                     <span class="absolute right-20 text-gray-900">
                         <select class="select select-bordered select-sm w-5 lg:w-[180px]" name="tahun_ajaran">
                             <option disabled selected value="">Pilih Tahun Ajaran</option>
-                            @if (request()->tahun_ajaran == 'all')
-                                <option value="all" selected>Semua</option>
+                            @if (request()->tahun_ajaran == '')
+                                <option value="" selected>Semua</option>
                             @else
-                                <option value="all">Semua</option>
+                                <option value="">Semua</option>
                             @endif
                             @foreach ($tahun_ajaran as $item)
                                 <option value="{{ $item->id }}"
