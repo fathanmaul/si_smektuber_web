@@ -61,9 +61,9 @@ class PPDBController extends Controller
             $user = api()->user();
             // dd($user);
             // Check if user_id is already registered
-            $isRegistered = DetailRegistration::where('user_id', $user->user_id)->exists();
+            $isRegistered = DetailRegistration::where('user_id', $user->id)->exists();
             if ($isRegistered) {
-                return Response::error('User is already registered', [], 400);
+                return Response::error('User telah terdaftar sebelumnya', [], 400);
             }
             $registration = Registration::first();
 
