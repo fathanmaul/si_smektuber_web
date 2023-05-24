@@ -14,8 +14,12 @@ class SchoolYear extends Seeder
      */
     public function run()
     {
-        $year = ['2021/2022', '2022/2023', '2023/2024'];
-        foreach ($year as $value) {
+        $schoolYear = [];
+        for ($i=18; $i < 30; $i++) { 
+            array_push($schoolYear, '20'.$i.'/20'.($i+1));
+        }
+        // $year = ['','2021/2022', '2022/2023', '2023/2024'];
+        foreach ($schoolYear as $value) {
             ModelsSchoolYear::insert([
                 'school_year' => $value,
                 'created_at' => now(),

@@ -34,7 +34,7 @@ class About extends Migration
             $table->string('school_picture_2')->nullable();
             $table->string('school_headmaster_name')->nullable();
             $table->string('school_headmaster_picture')->nullable();
-            $table->string('school_headmaster_quote')->nullable();
+            $table->text('school_headmaster_quote')->nullable();
             $table->timestamps();
         });
     }

@@ -14,14 +14,16 @@ class PpdbRegistration extends Seeder
      */
     public function run()
     {
-        Registration::insert([
-            'school_year' => 1,
-            'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-            'date_start' => '2021-07-01',
-            'date_end' => '2021-07-31',
-            'status' => 1,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        for ($i=1; $i<=12; $i++) {
+            Registration::insert([
+                'school_year' => $i,
+                'description' => 'Penerimaan Peserta Didik Baru Tahun Pelajaran',
+                'date_start' => '2021-07-01',
+                'date_end' => '2021-07-31',
+                'status' => 0,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
     }
 }
