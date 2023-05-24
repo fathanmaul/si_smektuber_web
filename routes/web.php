@@ -71,15 +71,21 @@ Route::get('/blog', function () {
     return view('landing.detail.blog');
 });
 
-Route::group(['prefix' => 'landing', 'as' => 'landing.'], function(){
-    Route::get('/', [LandingHomeController::class, 'index'])->name('index');
-    Route::get('/about', [LandingHomeController::class, 'showAbout'])->name('about');
-    Route::get('/ppdb',[LandingHomeController::class, 'showPpdb'])->name('ppdb');
-    Route::get('/article',[LandingHomeController::class, 'showArticle'])->name('article');
-    Route::get('/konsultasi', [LandingHomeController::class, 'showKonsultasi'])->name('konsultasi');
-    
-});
+// Route::redirect('/', '/landing');
 
+// Route::group(['prefix' => '/landing', 'as' => 'landing.'], function(){
+//     Route::get('/', [LandingHomeController::class, 'index'])->name('index');
+//     Route::get('/about', [LandingHomeController::class, 'showAbout'])->name('about');
+//     Route::get('/ppdb',[LandingHomeController::class, 'showPpdb'])->name('ppdb');
+//     Route::get('/article',[LandingHomeController::class, 'showArticle'])->name('article');
+//     Route::get('/konsultasi', [LandingHomeController::class, 'showKonsultasi'])->name('konsultasi');
+// });
+
+Route::get('/', [LandingHomeController::class, 'index'])->name('landing.index');
+Route::get('/about', [LandingHomeController::class, 'showAbout'])->name('landing.about');
+Route::get('/ppdb', [LandingHomeController::class, 'showPpdb'])->name('landing.ppdb');
+Route::get('/article', [LandingHomeController::class, 'showArticle'])->name('landing.article');
+Route::get('/konsultasi', [LandingHomeController::class, 'showKonsultasi'])->name('landing.konsultasi');
 /**
  * 
  * 
@@ -199,7 +205,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->middleware(['middl
         Route::delete('/{id}', [ArtikelController::class, 'destroy'])->name('destroy');
     });
 
-    Route::group(['prefix' => 'loker', 'as' => 'loker.'], function(){
+    Route::group(['prefix' => 'loker', 'as' => 'loker.'], function () {
         Route::get('/', [LokerController::class, 'index'])->name('index');
         Route::get('/tambah', [LokerController::class, 'create'])->name('create');
         Route::post('/tambah', [LokerController::class, 'store'])->name('store');
