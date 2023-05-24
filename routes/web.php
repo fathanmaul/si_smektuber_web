@@ -78,6 +78,7 @@ Route::group(['prefik' => 'landing', 'as' => 'landing.'], function(){
     Route::get('/konsultasi', [LandingHomeController::class, 'showKonsultasi'])->name('konsultasi');
     
 });
+
 /**
  * 
  * 
