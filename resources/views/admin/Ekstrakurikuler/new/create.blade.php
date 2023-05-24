@@ -65,15 +65,6 @@
                         <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="flex flex-col gap-2 mt-4">
-                    <label for="#" class="appearance-none text-sm lg:text-base">Foto Ekstrakurikuler 2 &nbsp; (Ukuran Maksimal: 1MB | Format: jpg, jpeg, png)</label>
-                    <input type="file"
-                        class="file-input file-input-bordered @error('extracurricular_picture_2') input-error @enderror w-full border-gray-400 rounded"
-                        name="extracurricular_picture_2" />
-                    @error('extracurricular_picture_2')
-                        <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
                 <div class="flex flex-col-reverse gap-3 lg:flex-row items-center justify-end mt-8">
                     <a href="{{ route('ekstrakurikuler.index') }}" class="btn btn-error btn-outline  hover:text-white flex items-center gap-2 w-full lg:w-fit" type="submit">
                         <span>

@@ -9,8 +9,9 @@
                     <h1 class="display-4 mb-3 animated slideInDown">Judul Blog Artikel</h1>
                     <nav aria-label="breadcrumb animated slideInDown">
                         <ol class="breadcrumb mb-0 justify-content-center">
-                            <li class="breadcrumb-item"><a href="#">Artikel</a></li>
-                            <li class="breadcrumb-item"><a href="#">Detail</a></li>
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href="/article">Artikel</a></li>
+                            <li class="breadcrumb-item"><a href="/blog">Detail</a></li>
                         </ol>
                     </nav>
                 </div>

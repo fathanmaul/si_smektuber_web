@@ -1,11 +1,13 @@
 @php
     $route = Route::currentRouteName();
-    
     $ppdb_daftar = Route::currentRouteNamed('ppdb.daftar.*');
+    $artikel = Route::currentRouteNamed('artikel.*');
+    $pendaftar = Route::currentRouteNamed('ppdb.pendaftar.*');
+    $loker = Route::currentRouteNamed('loker.*');
 @endphp
 <div
-    class="sidebar w-[280px] h-full top-0 bottom-0 bg-white text-white rounded-md fixed overflow-y-auto lg:translate-x-0 transition-all ease-in-out duration-300 -translate-x-full z-[100] shadow-lg">
-    <div class="max-h-[calc(100vh - 9rem)] overflow-y-auto">
+    class="sidebar w-[280px] top-0 bottom-0 bg-white text-white rounded-md fixed overflow-y-auto lg:translate-x-0 transition-all ease-in-out duration-300 -translate-x-full z-[100] shadow-lg lg:m-4">
+    <div class="max-h-[calc(100vh - 9rem)] overflow-y-auto h-full">
         <div class="px-6 pt-8">
             <div class="flex items-end justify-between">
                 <div class="flex-1 flex items-center text-gray-900">
@@ -65,7 +67,7 @@
                         <div class="collapse-content text-sm">
                             <div class="sub-menu pt-2">
                                 <ul
-                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'sekolah' ? 'border-primary' : '' }}">
+                                    class="list-none flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'sekolah' ? 'border-primary' : '' }}">
                                     <li><a href="{{ route('sekolah.umum') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ request()->segment(3) == 'umum' ? 'nav-active' : '' }}">Informasi
                                             Umum</a>
@@ -109,8 +111,8 @@
                         <div class="collapse-content text-sm">
                             <div class="sub-menu pt-2">
                                 <ul
-                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'jurusan' ? 'border-primary' : '' }}">
-                                    <li>
+                                    class="list-none flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'jurusan' ? 'border-primary' : '' }}">
+                                    <li class="list-none">
                                         {{-- <a href="{{ route('jurusan.index') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ request()->segment(2) == 'jurusan' ? 'nav-active' : '' }}">Daftar
                                             Jurusan
@@ -156,7 +158,7 @@
                         <div class="collapse-content text-sm">
                             <div class="sub-menu pt-2">
                                 <ul
-                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'ekstrakurikuler' ? 'border-primary' : '' }}">
+                                    class="list-none flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'ekstrakurikuler' ? 'border-primary' : '' }}">
                                     <li><a href="{{ route('ekstrakurikuler.index') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ekstrakurikuler.index' || $route == 'ekstrakurikuler.create' || $route == 'ekstrakurikuler.edit' ? 'nav-active' : '' }}">Daftar
                                             Ekstrakurikuler</a>
@@ -196,7 +198,7 @@
                         <div class="collapse-content text-sm">
                             <div class="sub-menu pt-2">
                                 <ul
-                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'ppdb' ? 'border-primary' : '' }}">
+                                    class="list-none flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'ppdb' ? 'border-primary' : '' }}">
                                     <li><a href="{{ route('ppdb.tahun_ajaran.index') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ppdb.tahun_ajaran.index' || $route == 'ppdb.tahun_ajaran.create' || $route == 'ppdb.tahun_ajaran.edit' ? 'nav-active' : '' }}">Tahun
                                             Ajaran</a>
@@ -208,8 +210,8 @@
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == $ppdb_daftar ? 'nav-active' : '' }}">Daftar
                                             PPDB</a>
                                     </li>
-                                    <li><a href="{{ route('ekstrakurikuler.prestasi.index') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ekstrakurikuler.prestasi.index' || $route == 'ekstrakurikuler.prestasi.create' || $route == 'ekstrakurikuler.prestasi.edit' ? 'nav-active' : '' }}">Data
+                                    <li><a href="{{ route('ppdb.pendaftar.index') }}"
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == $pendaftar  || $route == 'ppdb.pendaftar.edit' ? 'nav-active' : '' }}">Data
                                             Pendaftar</a></li>
                                 </ul>
                             </div>
@@ -220,21 +222,17 @@
                 {{-- Post / Artikel --}}
                 <li>
                     <div
-                        class="collapse fill-current transition-colors rounded hover:bg-[#19a7ce2f] {{ request()->segment(2) == 'ppdb' ? 'hover:bg-transparent' : '' }}">
+                        class="collapse fill-current transition-colors rounded hover:bg-[#19a7ce2f] {{ request()->segment(2) == 'artikel' ? 'hover:bg-transparent' : '' }}">
                         <input type="checkbox" class="peer"
-                            {{ request()->segment(2) == 'ppdb' ? 'checked' : '' }} />
+                            {{ request()->segment(2) == 'artikel' ? 'checked' : '' }} />
                         <div
-                            class="hover:bg-[#19a7ce2f] collapse-title p-3 w-full text-gray-900  flex flex-row items-center text-sm gap-1  py-0 fill-current {{ request()->segment(2) == 'ppdb' ? 'nav-active text-primary hover:bg-transparent' : '' }}">
+                            class="hover:bg-[#19a7ce2f] collapse-title p-3 w-full text-gray-900  flex flex-row items-center text-sm gap-1  py-0 fill-current {{ request()->segment(2) == 'artikel' ? 'nav-active text-primary hover:bg-transparent' : '' }}">
                             <span class="pl-1">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
-                                    class="w-5 h-5 flex justify-center items-center">
-                                    <path
-                                        d="M0 64C0 28.7 28.7 0 64 0H224V128c0 17.7 14.3 32 32 32H384V285.7l-86.8 86.8c-10.3 10.3-17.5 23.1-21 37.2l-18.7 74.9c-2.3 9.2-1.8 18.8 1.3 27.5H64c-35.3 0-64-28.7-64-64V64zm384 64H256V0L384 128zM549.8 235.7l14.4 14.4c15.6 15.6 15.6 40.9 0 56.6l-29.4 29.4-71-71 29.4-29.4c15.6-15.6 40.9-15.6 56.6 0zM311.9 417L441.1 287.8l71 71L382.9 487.9c-4.1 4.1-9.2 7-14.9 8.4l-60.1 15c-5.5 1.4-11.2-.2-15.2-4.2s-5.6-9.7-4.2-15.2l15-60.1c1.4-5.6 4.3-10.8 8.4-14.9z" />
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 flex justify-center items-center"><path d="M96 96c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H80c-44.2 0-80-35.8-80-80V128c0-17.7 14.3-32 32-32s32 14.3 32 32V400c0 8.8 7.2 16 16 16s16-7.2 16-16V96zm64 24v80c0 13.3 10.7 24 24 24H296c13.3 0 24-10.7 24-24V120c0-13.3-10.7-24-24-24H184c-13.3 0-24 10.7-24 24zm208-8c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16h48c8.8 0 16-7.2 16-16s-7.2-16-16-16H384c-8.8 0-16 7.2-16 16zM160 304c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16zm0 96c0 8.8 7.2 16 16 16H432c8.8 0 16-7.2 16-16s-7.2-16-16-16H176c-8.8 0-16 7.2-16 16z"/></svg>
                             </span>
                             <span
-                                class="ml-2 text-sm font-semibold w-full flex items-center justify-between {{ request()->segment(2) == 'ppdb' ? 'nav-active bg-transparent hover:bg-transparent' : '' }} ">
-                                Post
+                                class="ml-2 text-sm font-semibold w-full flex items-center justify-between {{ request()->segment(2) == 'artikel' ? 'nav-active bg-transparent hover:bg-transparent' : '' }} ">
+                                Artikel
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-3 h-3">
                                     <path
                                         d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
@@ -244,21 +242,49 @@
                         <div class="collapse-content text-sm">
                             <div class="sub-menu pt-2">
                                 <ul
-                                    class="flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'ppdb' ? 'border-primary' : '' }}">
-                                    <li><a href="{{ route('ppdb.tahun_ajaran.index') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ppdb.tahun_ajaran.index' || $route == 'ppdb.tahun_ajaran.create' || $route == 'ppdb.tahun_ajaran.edit' ? 'nav-active' : '' }}">Tahun
-                                            Ajaran</a>
-                                    </li>
+                                    class="list-none flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'artikel' ? 'border-primary' : '' }}">
                                     {{-- <li><a href="{{ route('ppdb.daftar.index') }}"
                                         class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ppdb.' || $route == 'ppdb.' || $route == 'ppdb.' ? 'nav-active' : '' }}">Daftar PPDB</a>
                                 </li> --}}
-                                    <li><a href="{{ route('ppdb.daftar.index') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == $ppdb_daftar ? 'nav-active' : '' }}">Daftar
-                                            PPDB</a>
+                                    <li><a href="{{ route('artikel.index') }}"
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == $artikel ? 'nav-active' : '' }}">Daftar Artikel</a>
                                     </li>
-                                    <li><a href="{{ route('ekstrakurikuler.prestasi.index') }}"
-                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ekstrakurikuler.prestasi.index' || $route == 'ekstrakurikuler.prestasi.create' || $route == 'ekstrakurikuler.prestasi.edit' ? 'nav-active' : '' }}">Data
-                                            Pendaftar</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                {{-- Loker --}}
+                <li>
+                    <div
+                        class="collapse fill-current transition-colors rounded hover:bg-[#19a7ce2f] {{ request()->segment(2) == 'loker' ? 'hover:bg-transparent' : '' }}">
+                        <input type="checkbox" class="peer"
+                            {{ request()->segment(2) == 'loker' ? 'checked' : '' }} />
+                        <div
+                            class="hover:bg-[#19a7ce2f] collapse-title p-3 w-full text-gray-900  flex flex-row items-center text-sm gap-1  py-0 fill-current {{ request()->segment(2) == 'loker' ? 'nav-active text-primary hover:bg-transparent' : '' }}">
+                            <span class="pl-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 flex justify-center items-center"><path d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z"/></svg>
+                            </span>
+                            <span
+                                class="ml-2 text-sm font-semibold w-full flex items-center justify-between {{ request()->segment(2) == 'loker' ? 'nav-active bg-transparent hover:bg-transparent' : '' }} ">
+                                Loker
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-3 h-3">
+                                    <path
+                                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="collapse-content text-sm">
+                            <div class="sub-menu pt-2">
+                                <ul
+                                    class="list-none flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'loker' ? 'border-primary' : '' }}">
+                                    {{-- <li><a href="{{ route('ppdb.daftar.index') }}"
+                                        class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ppdb.' || $route == 'ppdb.' || $route == 'ppdb.' ? 'nav-active' : '' }}">Daftar PPDB</a>
+                                </li> --}}
+                                    <li><a href="{{ route('loker.index') }}"
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == $loker ? 'nav-active' : '' }}">Daftar Loker</a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -266,15 +292,15 @@
                 </li>
 
                 @if (auth()->user()->role_id == 1)
+                @php
+                    $adminList = Route::currentRouteNamed('admin.*');
+                @endphp
                     {{-- Admin --}}
                     <li class="">
-                        <a href="#"
-                            class="nav-item flex flex-row items-center gap-3 text-sm font-semibold px-4  py-4 rounded fill-current">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"
-                                class="w-5 h-5 flex items-center justify-center">
-                                <path
-                                    d="M224 0a128 128 0 1 1 0 256A128 128 0 1 1 224 0zM178.3 304h91.4c11.8 0 23.4 1.2 34.5 3.3c-2.1 18.5 7.4 35.6 21.8 44.8c-16.6 10.6-26.7 31.6-20 53.3c4 12.9 9.4 25.5 16.4 37.6s15.2 23.1 24.4 33c15.7 16.9 39.6 18.4 57.2 8.7v.9c0 9.2 2.7 18.5 7.9 26.3H29.7C13.3 512 0 498.7 0 482.3C0 383.8 79.8 304 178.3 304zM436 218.2c0-7 4.5-13.3 11.3-14.8c10.5-2.4 21.5-3.7 32.7-3.7s22.2 1.3 32.7 3.7c6.8 1.5 11.3 7.8 11.3 14.8v30.6c7.9 3.4 15.4 7.7 22.3 12.8l24.9-14.3c6.1-3.5 13.7-2.7 18.5 2.4c7.6 8.1 14.3 17.2 20.1 27.2s10.3 20.4 13.5 31c2.1 6.7-1.1 13.7-7.2 17.2l-25 14.4c.4 4 .7 8.1 .7 12.3s-.2 8.2-.7 12.3l25 14.4c6.1 3.5 9.2 10.5 7.2 17.2c-3.3 10.6-7.8 21-13.5 31s-12.5 19.1-20.1 27.2c-4.8 5.1-12.5 5.9-18.5 2.4l-24.9-14.3c-6.9 5.1-14.3 9.4-22.3 12.8l0 30.6c0 7-4.5 13.3-11.3 14.8c-10.5 2.4-21.5 3.7-32.7 3.7s-22.2-1.3-32.7-3.7c-6.8-1.5-11.3-7.8-11.3-14.8V454.8c-8-3.4-15.6-7.7-22.5-12.9l-24.7 14.3c-6.1 3.5-13.7 2.7-18.5-2.4c-7.6-8.1-14.3-17.2-20.1-27.2s-10.3-20.4-13.5-31c-2.1-6.7 1.1-13.7 7.2-17.2l24.8-14.3c-.4-4.1-.7-8.2-.7-12.4s.2-8.3 .7-12.4L343.8 325c-6.1-3.5-9.2-10.5-7.2-17.2c3.3-10.6 7.7-21 13.5-31s12.5-19.1 20.1-27.2c4.8-5.1 12.4-5.9 18.5-2.4l24.8 14.3c6.9-5.1 14.5-9.4 22.5-12.9V218.2zm92.1 133.5a48.1 48.1 0 1 0 -96.1 0 48.1 48.1 0 1 0 96.1 0z" />
-                            </svg>
+                        <a href="{{ route('admin.index') }}"
+                            class="nav-item flex flex-row items-center gap-3 text-sm font-semibold px-4  py-4 rounded fill-current {{ $route == $adminList ? 'nav-active' : '' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex items-center justify-center" viewBox="0 0 640 512">
+                                <path d="M224 0a128 128 0 1 1 0 256A128 128 0 1 1 224 0zM178.3 304h91.4c11.8 0 23.4 1.2 34.5 3.3c-2.1 18.5 7.4 35.6 21.8 44.8c-16.6 10.6-26.7 31.6-20 53.3c4 12.9 9.4 25.5 16.4 37.6s15.2 23.1 24.4 33c15.7 16.9 39.6 18.4 57.2 8.7v.9c0 9.2 2.7 18.5 7.9 26.3H29.7C13.3 512 0 498.7 0 482.3C0 383.8 79.8 304 178.3 304zM436 218.2c0-7 4.5-13.3 11.3-14.8c10.5-2.4 21.5-3.7 32.7-3.7s22.2 1.3 32.7 3.7c6.8 1.5 11.3 7.8 11.3 14.8v30.6c7.9 3.4 15.4 7.7 22.3 12.8l24.9-14.3c6.1-3.5 13.7-2.7 18.5 2.4c7.6 8.1 14.3 17.2 20.1 27.2s10.3 20.4 13.5 31c2.1 6.7-1.1 13.7-7.2 17.2l-25 14.4c.4 4 .7 8.1 .7 12.3s-.2 8.2-.7 12.3l25 14.4c6.1 3.5 9.2 10.5 7.2 17.2c-3.3 10.6-7.8 21-13.5 31s-12.5 19.1-20.1 27.2c-4.8 5.1-12.5 5.9-18.5 2.4l-24.9-14.3c-6.9 5.1-14.3 9.4-22.3 12.8l0 30.6c0 7-4.5 13.3-11.3 14.8c-10.5 2.4-21.5 3.7-32.7 3.7s-22.2-1.3-32.7-3.7c-6.8-1.5-11.3-7.8-11.3-14.8V454.8c-8-3.4-15.6-7.7-22.5-12.9l-24.7 14.3c-6.1 3.5-13.7 2.7-18.5-2.4c-7.6-8.1-14.3-17.2-20.1-27.2s-10.3-20.4-13.5-31c-2.1-6.7 1.1-13.7 7.2-17.2l24.8-14.3c-.4-4.1-.7-8.2-.7-12.4s.2-8.3 .7-12.4L343.8 325c-6.1-3.5-9.2-10.5-7.2-17.2c3.3-10.6 7.7-21 13.5-31s12.5-19.1 20.1-27.2c4.8-5.1 12.4-5.9 18.5-2.4l24.8 14.3c6.9-5.1 14.5-9.4 22.5-12.9V218.2zm92.1 133.5a48.1 48.1 0 1 0 -96.1 0 48.1 48.1 0 1 0 96.1 0z"/></svg>
                             Admin
                         </a>
                     </li>

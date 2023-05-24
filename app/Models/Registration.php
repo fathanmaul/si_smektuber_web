@@ -8,6 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Registration extends Model
 {
     use HasFactory;
-
     protected $table = 'registration';
+
+    // protected $fillable = [
+    //     'school_year',
+    //     'description',
+    //     'poster',
+    //     'date_start',
+    //     'date_end',
+    // ];
+
+    public function schoolYear()
+    {
+        return $this->belongsTo(SchoolYear::class, 'school_year');
+    }
+
 }

@@ -19,12 +19,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"
         integrity="sha512-YUkaLm+KJ5lQXDBdqBqk7EVhJAdxRnVdT2vtCzwPHSweCzyMgYV/tgGF4/dCyqtCC2eCphz0lRQgatGVdfR0ww=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        @yield('header_link')
 </head>
 
 <body>
     <div class="absolute inset-y-0 left-0 w-full h-64 bg-primary"></div>
     @include('admin.layouts.new.sidebar')
-    <div class="ml-0 lg:ml-[280px]">
+    <div class="ml-0 lg:ml-[280px] h-fit">
         {{-- Header Goes Here --}}
         <div class="navbar shadow-lg lg:shadow-none bg-base-100 px-4 z-20 justify-between fixed lg:static">
             <div class="flex-1">
@@ -45,16 +47,16 @@
                     </label>
                     <ul tabindex="0"
                         class="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52">
-                        {{-- <li>
-                            <a class="justify-between">
+                        <li>
+                            <a class="justify-center">
                                 Profile
                             </a>
-                        </li> --}}
+                        </li>
                         <li>
                             <form action="{{ route('logout') }}" method="POST"
                                 class="hover:bg-red-100 active:bg-red-200 h-full pb-2 mb-0">
                                 @csrf
-                                <button type="submit" class="text-red-600 h-full">Keluar Akun</button>
+                                <button type="submit" class="text-red-600 h-full w-full">Keluar Akun</button>
                             </form>
                         </li>
                     </ul>
@@ -64,7 +66,7 @@
         {{-- Header Ends Here --}}
 
         {{-- Container --}}
-        <div class="container py-4 px-4 z-20">
+        <div class="container py-4 px-4 z-20 h-full md:pl-8 lg:pl-0" id="contentSide">
             <div class="mt-12 lg:mt-0">
                 {{-- Content Goes Here --}}
                 <div class="py-4 lg:py-2 relative">
@@ -83,6 +85,7 @@
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="https://kit.fontawesome.com/9aa9764949.js" crossorigin="anonymous"></script>
     @yield('script')
+
 </body>
 
 </html>

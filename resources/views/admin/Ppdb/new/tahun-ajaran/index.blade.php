@@ -59,12 +59,6 @@
                     @endif
                 </tbody>
             </table>
-            <select class="select select-bordered w-full max-w-xs">
-                <option disabled selected>Who shot first?</option>
-                @foreach ($tahun_ajaran as $item)
-                    <option value="{{ $item->id }}">{{ $item->school_year }}</option>
-                @endforeach
-              </select>
             {{ $tahun_ajaran->links() }}
         </div>
     </div>
@@ -76,7 +70,7 @@
             @csrf
             @method('DELETE')
             <h3 class="font-bold text-lg">Yakin ingin menghapus Tahun Ajaran ini?</h3>
-            {{-- <p class="py-4">Prestasi yang dimiliki oleh ekstrakurikuler ini akan otomatis terhapus!</p> --}}
+            <p class="py-4">Seluruh informasi PPDB Tahun Ajaran ini seperti <strong>Poster PPDB</strong> dan <strong>Data Pendaftar</strong> akan ikut terhapus!</p>
             <div class="modal-action">
                 <label for="my-modal" class="btn rounded">KEMBALI</label>
                 <button class="btn btn-outline btn-error rounded" type="submit" id="button_close">HAPUS</button>

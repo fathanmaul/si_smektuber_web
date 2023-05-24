@@ -1,15 +1,12 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 class LoginController extends Controller
 {
-    //
-
     public function create()
     {
         return view('admin.login.index');
@@ -17,6 +14,8 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
+        $user = User::where('username', $request->username)->first();
+        if($user->role_id > 2) return abort(403, 'Unauthorized action.');
         $credentials = $request->validate([
             'username' => 'required',
             'password_1' => 'required'
@@ -50,7 +49,7 @@ class LoginController extends Controller
     {
         try {
             Auth::logout();
-            return redirect()->route('login');
+            return $this->backWithSuccess('login', 'Anda berhasil logout!');
         } catch (Exception $e) {        
             dd($e->getMessage());   
         }

@@ -13,11 +13,16 @@ class Major extends Model
 
     protected $fillable = [
         'major_name',
-        'major_fillable',
+        'major_description',
         'major_logo',
         'picture_1',
         'picture_2',
         'created_at',
         'updated_at'
     ];
+
+    public function detailRegistrations()
+    {
+        return $this->hasMany(DetailRegistration::class);
+    }
 }

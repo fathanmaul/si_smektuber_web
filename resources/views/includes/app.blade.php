@@ -3,13 +3,12 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>SMK N 7 Jember</title>
+    <title>SMKN 7 Jember</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
+    <link rel="shortcut icon" href="{{ asset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,7 +36,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
 
 </head>
 
@@ -67,6 +69,8 @@
     <script src="{{ asset('landing/lib/waypoints/waypoints.min.js') }}"></script>
     <script src="{{ asset('landing/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('landing/lib/counterup/counterup.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
 
     <!-- Template Javascript -->
     <script src="{{ asset('landing/js/main.js') }}"></script>

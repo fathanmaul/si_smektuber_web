@@ -56,10 +56,10 @@
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <div class="d-flex justify-content-center align-items-center">
-                            <a href="#" class="me-4">
+                            <a href="https://www.youtube.com/@smknegeri7jember184" class="me-4">
                                 <i class="fab fa-youtube fa-2x"></i>
                             </a>
-                            <a href="#" class="me-4">
+                            <a href="https://www.instagram.com/smkn_7_jember_official" class="me-4">
                                 <i class="fab fa-instagram fa-2x"></i>
                             </a>
                             <a href="#" class="me-4">
