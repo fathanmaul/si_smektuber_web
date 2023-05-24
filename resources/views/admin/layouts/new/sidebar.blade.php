@@ -3,6 +3,7 @@
     $ppdb_daftar = Route::currentRouteNamed('ppdb.daftar.*');
     $artikel = Route::currentRouteNamed('artikel.*');
     $pendaftar = Route::currentRouteNamed('ppdb.pendaftar.*');
+    $loker = Route::currentRouteNamed('loker.*');
 @endphp
 <div
     class="sidebar w-[280px] top-0 bottom-0 bg-white text-white rounded-md fixed overflow-y-auto lg:translate-x-0 transition-all ease-in-out duration-300 -translate-x-full z-[100] shadow-lg lg:m-4">
@@ -247,6 +248,42 @@
                                 </li> --}}
                                     <li><a href="{{ route('artikel.index') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == $artikel ? 'nav-active' : '' }}">Daftar Artikel</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                {{-- Loker --}}
+                <li>
+                    <div
+                        class="collapse fill-current transition-colors rounded hover:bg-[#19a7ce2f] {{ request()->segment(2) == 'loker' ? 'hover:bg-transparent' : '' }}">
+                        <input type="checkbox" class="peer"
+                            {{ request()->segment(2) == 'loker' ? 'checked' : '' }} />
+                        <div
+                            class="hover:bg-[#19a7ce2f] collapse-title p-3 w-full text-gray-900  flex flex-row items-center text-sm gap-1  py-0 fill-current {{ request()->segment(2) == 'loker' ? 'nav-active text-primary hover:bg-transparent' : '' }}">
+                            <span class="pl-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-5 h-5 flex justify-center items-center"><path d="M184 48H328c4.4 0 8 3.6 8 8V96H176V56c0-4.4 3.6-8 8-8zm-56 8V96H64C28.7 96 0 124.7 0 160v96H192 320 512V160c0-35.3-28.7-64-64-64H384V56c0-30.9-25.1-56-56-56H184c-30.9 0-56 25.1-56 56zM512 288H320v32c0 17.7-14.3 32-32 32H224c-17.7 0-32-14.3-32-32V288H0V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V288z"/></svg>
+                            </span>
+                            <span
+                                class="ml-2 text-sm font-semibold w-full flex items-center justify-between {{ request()->segment(2) == 'loker' ? 'nav-active bg-transparent hover:bg-transparent' : '' }} ">
+                                Loker
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="w-3 h-3">
+                                    <path
+                                        d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z" />
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="collapse-content text-sm">
+                            <div class="sub-menu pt-2">
+                                <ul
+                                    class="list-none flex flex-col gap-1 ml-2 pl-2 text-gray-900 border-l border-gray-500 {{ request()->segment(2) == 'loker' ? 'border-primary' : '' }}">
+                                    {{-- <li><a href="{{ route('ppdb.daftar.index') }}"
+                                        class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ppdb.' || $route == 'ppdb.' || $route == 'ppdb.' ? 'nav-active' : '' }}">Daftar PPDB</a>
+                                </li> --}}
+                                    <li><a href="{{ route('loker.index') }}"
+                                            class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == $loker ? 'nav-active' : '' }}">Daftar Loker</a>
                                     </li>
                                 </ul>
                             </div>

@@ -1,10 +1,11 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Develop;
 
 use App\Models\Loker as ModelsLoker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
+
 class Loker extends Seeder
 {
     /**
@@ -34,13 +35,23 @@ class Loker extends Seeder
             ]
         ];
 
-        foreach($loker as $key => $value){
+        // foreach($loker as $key => $value){
+        //     ModelsLoker::insert([
+        //         'title' => $title,
+        //         'slug' => Str::slug($value['title']),
+        //         'description' => $value['desc'],
+        //         'created_at'=>now(),
+        //         'updated_at'=>now(),
+        //     ]);
+        // }
+
+        for ($i = 1; $i <= 50; $i++) {
             ModelsLoker::insert([
-                'title' => $value['title'],
-                'slug' => Str::slug($value['title']),
-                'description' => $value['desc'],
-                'created_at'=>now(),
-                'updated_at'=>now(),
+                'title' => $title.' '.$i,
+                'slug' => Str::slug($title.' '.$i),
+                'description' => Str::random(250),
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
     }

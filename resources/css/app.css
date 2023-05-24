@@ -68,4 +68,8 @@
     .card{
         @apply rounded;
     }
+
+    .badge-warning{
+        /* @app */
+    }
 }

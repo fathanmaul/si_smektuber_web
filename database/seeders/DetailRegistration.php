@@ -14,7 +14,7 @@ class DetailRegistration extends Seeder
      */
     public function run()
     {
-        $name = ['Alessandro', 'Alwar', 'Andres', 'Baltasar', 'Baltasar', 'Benedicto', 'Benicio', 'Canda', 'Cariann', 'Carlitos', 'Casimiro', 'Chico', 'Cipriano', 'Dario', 'Daza'];
+        $name = ['Alfa Rizal', 'Anwar Choiril', 'Anisa Nur', 'Siti Aisyah', 'Novi Rohma', 'Nur Ilmi', 'Khoiriah', 'Ahmad Geovani', 'Muhammad Fian', 'Perdana Bakti', 'Aldy Dwi', 'Muhammad Alif Baswedan', 'Lutfi Maharani', 'Rohan Bakrie', 'Clara Rohaniah'];
         foreach ($name as $key => $value) {
             ModelsDetailRegistration::create([
                 'user_id' => '4',

@@ -7,6 +7,7 @@ use App\Http\Controllers\EkstrakurikulerController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\LandingHomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LokerController;
 use App\Http\Controllers\PendaftarController;
 use App\Http\Controllers\PostCategoryController;
 use App\Http\Controllers\PostController;
@@ -70,15 +71,23 @@ Route::get('/blog', function () {
     return view('landing.detail.blog');
 });
 
-Route::group(['landing', 'as' => 'landing.'], function(){
-    Route::get('/', [LandingHomeController::class, 'index'])->name('index');
-    Route::get('/about', [LandingHomeController::class, 'showAbout'])->name('about');
-    Route::get('/ppdb',[LandingHomeController::class, 'showPpdb'])->name('ppdb');
-    Route::get('/article',[LandingHomeController::class, 'showArticle'])->name('article');
-    Route::get('/konsultasi', [LandingHomeController::class, 'showKonsultasi'])->name('konsultasi');
-    
-});
 
+// Route::redirect('/', '/landing');
+
+
+// Route::group(['prefix' => '/landing', 'as' => 'landing.'], function(){
+//     Route::get('/', [LandingHomeController::class, 'index'])->name('index');
+//     Route::get('/about', [LandingHomeController::class, 'showAbout'])->name('about');
+//     Route::get('/ppdb',[LandingHomeController::class, 'showPpdb'])->name('ppdb');
+//     Route::get('/article',[LandingHomeController::class, 'showArticle'])->name('article');
+//     Route::get('/konsultasi', [LandingHomeController::class, 'showKonsultasi'])->name('konsultasi');
+// });
+
+Route::get('/', [LandingHomeController::class, 'index'])->name('landing.index');
+Route::get('/about', [LandingHomeController::class, 'showAbout'])->name('landing.about');
+Route::get('/ppdb', [LandingHomeController::class, 'showPpdb'])->name('landing.ppdb');
+Route::get('/article', [LandingHomeController::class, 'showArticle'])->name('landing.article');
+Route::get('/konsultasi', [LandingHomeController::class, 'showKonsultasi'])->name('landing.konsultasi');
 /**
  * 
  * 
@@ -179,10 +188,12 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->middleware(['middl
             Route::put('/{id}/edit', [PpdbController::class, 'put'])->name('put');
             Route::delete('/{id}', [PpdbController::class, 'destroy'])->name('destroy');
             Route::put('/{id}/status', [PpdbController::class, 'status'])->name('status');
+            Route::put('/{id}/status/false', [PpdbController::class, 'statusFalse'])->name('status.false');
         });
         Route::group(['prefix' => 'pendaftar', 'as' => 'pendaftar.'], function () {
             Route::get('/', [PendaftarController::class, 'index'])->name('index');
             Route::get('/{id}', [PendaftarController::class, 'show'])->name('show');
+            Route::put('/{id}/accept', [PendaftarController::class, 'acceptStatus'])->name('accept-status');
         });
     });
 
@@ -194,6 +205,15 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->middleware(['middl
         Route::get('/{id}/edit', [ArtikelController::class, 'edit'])->name('edit');
         Route::put('/{id}/edit', [ArtikelController::class, 'put'])->name('put');
         Route::delete('/{id}', [ArtikelController::class, 'destroy'])->name('destroy');
+    });
+
+    Route::group(['prefix' => 'loker', 'as' => 'loker.'], function () {
+        Route::get('/', [LokerController::class, 'index'])->name('index');
+        Route::get('/tambah', [LokerController::class, 'create'])->name('create');
+        Route::post('/tambah', [LokerController::class, 'store'])->name('store');
+        Route::get('/{id}/edit', [LokerController::class, 'edit'])->name('edit');
+        Route::put('/{id}/edit', [LokerController::class, 'put'])->name('put');
+        Route::delete('/{id}', [LokerController::class, 'destroy'])->name('destroy');
     });
 
     Route::group(['prefix' => 'list', 'as' => 'admin.', 'middleware' => 'developer'], function () {

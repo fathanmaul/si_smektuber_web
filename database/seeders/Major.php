@@ -14,22 +14,32 @@ class Major extends Seeder
      */
     public function run()
     {
-        $major = [
-            'Teknik Kendaraan Ringan',
-            'Teknik Sepeda Motor',
-            'Teknik Komputer dan Jaringan',
-            'Multimedia',
-            'Tata Kecantikan Kulit dan Rambut'
+        $majorr = [
+            [
+                'name' => 'Teknik Komputer dan Jaringan',
+                'desc' => 'TKJ (Teknik Komputer dan Jaringan) adalah ilmu berbasis Teknologi Informasi dan Komunikasi terkait kemampuan algoritma, dan pemrograman komputer, perakitan komputer, perakitan jaringan komputer, dan pengoperasian perangkat lunak, dan internet. Teknik komputer, dan jaringan juga membutuhkan pemahaman di bidang teknik listrik, dan ilmu komputer sehingga mampu mengembangkan, dan mengintegrasikan perangkat lunak, dan perangkat keras.'
+            ],
+            [
+                'name' => 'Desain Komunikasi Visual',
+                'desc' => 'DKV adalah salah satu cabang ilmu desain yang mempelajari konsep komunikasi melalui berbagai media yang dapat berupa gambar, tatanan huruf, video, media interaktif, dan media visual lainnya agar gagasan yang disampaikan dapat diterima dengan baik, lebih menarik, atau sesuai dengan kebutuhan lainnya ketika diterima oleh penerima pesan.'
+            ],
+            [
+                'name' => 'Kecantikan Kulit dan Rambut',
+                'desc' => 'program pendidikan yang berfokus pada pengajaran tentang teknik, teori, dan praktik dalam bidang kecantikan, seperti perawatan kulit, pemakaian makeup, dan perawatan rambut'
+            ],
+            [
+                'name' => 'Otomotif',
+                'desc' => 'program pendidikan yang berfokus pada pengajaran tentang teknik, teori, dan praktik dalam bidang otomotif, seperti perawatan kendaraan, perbaikan kendaraan, dan perakitan kendaraan'
+            ]
         ];
-        $lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum';
+        
 
-        foreach ($major as $key => $value) {
+        foreach ($majorr as $key => $value) {
             ModelsMajor::insert([
-                'major_name' => $value,
-                'major_description' => $lorem,
-                'major_logo' => 'https://via.placeholder.com/150',
-                'picture_1' => 'https://via.placeholder.com/150',
-                // 'picture_2' => 'https://via.placeholder.com/150',
+                'major_name' => $value['name'],
+                'major_description' => $value['desc'],
+                // 'major_logo' => 'https://via.placeholder.com/150',
+                // 'picture_1' => 'https://via.placeholder.com/150',
                 'created_at' => now(),
                 'updated_at' => now()
             ]);

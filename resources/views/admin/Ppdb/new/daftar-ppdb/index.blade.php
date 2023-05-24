@@ -78,7 +78,7 @@
                                     </div>
                                     @else
                                     <div class="tooltip" data-tip="Nonaktifkan">
-                                        <a href="{{ route('ppdb.daftar.status', $registration->id) }}" class="btn btn-square btn-sm btn-error text-white" onclick="updateStatus(event, this)">
+                                        <a href="{{ route('ppdb.daftar.status.false', $registration->id) }}" class="btn btn-square btn-sm btn-error text-white" onclick="updateStatusFalse(event, this)">
                                             <i class="fa-solid fa-circle-xmark"></i>
                                         </a>
                                     </div>
@@ -96,6 +96,9 @@
                         @endforeach
                     </tbody>
                 </table>
+                <div class="mt-4">
+                    {{ $registrations->links() }}
+                </div>
 
             </div>
         </div>
@@ -124,6 +127,19 @@
             <div class="modal-action">
                 <label for="my-modal-update" class="btn rounded">KEMBALI</label>
                 <button class="btn btn-success text-white rounded" type="submit" id="button_close_1">AKTIFKAN</button>
+            </div>
+        </form>
+    </div>
+
+    <input type="checkbox" class="modal-toggle" id="my-modal-update-false"/>
+    <div class="modal modal-update-false">
+        <form class="modal-box rounded" id="modal-box-update-false" method="POST">
+            @csrf
+            @method('PUT')
+            <h3 class="font-bold text-lg">Yakin ingin menonaktifkan PPDB pada Tahun Ajaran ini?</h3>
+            <div class="modal-action">
+                <label for="my-modal-update-false" class="btn rounded">KEMBALI</label>
+                <button class="btn btn-error text-white rounded" type="submit" id="button_close_1">NON AKTIFKAN</button>
             </div>
         </form>
     </div>
@@ -161,6 +177,19 @@
         }
         document.querySelector('#button_close_1').addEventListener('click', function() {
             const modalToggle = document.querySelector('input#my-modal-update');
+            modalToggle.checked = false;
+        });
+
+        function updateStatusFalse(event, props) {
+            const modalToggle = document.querySelector('input#my-modal-update-false');
+            event.preventDefault();
+            const url = props.getAttribute('href');
+            const modal = document.querySelector('.modal-update-false');
+            modalToggle.checked = true;
+            modal.querySelector('#modal-box-update-false').setAttribute('action', url);
+        }
+        document.querySelector('#button_close_1').addEventListener('click', function() {
+            const modalToggle = document.querySelector('input#my-modal-update-false');
             modalToggle.checked = false;
         });
         </script>

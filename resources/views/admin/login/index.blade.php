@@ -111,7 +111,7 @@
                     Selamat Datang, di {{ $school_name }}
                 </h3>   
                 <h3 class="text-white text-2xl font-normal">
-                    Silahkan Login! Untuk mengakses aplikasi
+                    Silahkan masukkan Username dan Password Anda untuk mengakses aplikasi
                 </h3>   
             </div>
         </div>
