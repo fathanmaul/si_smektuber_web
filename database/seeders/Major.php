@@ -15,11 +15,10 @@ class Major extends Seeder
     public function run()
     {
         $major = [
-            'Teknik Kendaraan Ringan',
-            'Teknik Sepeda Motor',
             'Teknik Komputer dan Jaringan',
-            'Multimedia',
-            'Tata Kecantikan Kulit dan Rambut'
+            'Desain Komunikasi Visual',
+            'Kecantikan Kulit dan Rambut',
+            'Otomotif'
         ];
         $lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum';
 
@@ -27,9 +26,8 @@ class Major extends Seeder
             ModelsMajor::insert([
                 'major_name' => $value,
                 'major_description' => $lorem,
-                'major_logo' => 'https://via.placeholder.com/150',
-                'picture_1' => 'https://via.placeholder.com/150',
-                // 'picture_2' => 'https://via.placeholder.com/150',
+                // 'major_logo' => 'https://via.placeholder.com/150',
+                // 'picture_1' => 'https://via.placeholder.com/150',
                 'created_at' => now(),
                 'updated_at' => now()
             ]);
