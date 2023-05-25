@@ -18,7 +18,7 @@ class ArtikelController extends Controller
         }
         $artikel = $artikel->orderBy('updated_at', 'desc')->paginate(10);
         $artikel->appends(['cari' => $keyword]);
-        return view('admin.artikel.index', compact('artikel', 'keyword'));
+        return view('admin.Artikel.index', compact('artikel', 'keyword'));
     }
 
     public function show($slug)
