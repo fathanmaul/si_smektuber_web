@@ -17,12 +17,13 @@ class PPDBController extends Controller
     public function show()
     {
         try {
-            $registration = Registration::first();
+            $count = Registration::where('status', 1)->count();
             
-            if ($registration) {
+            if ($count > 0) {
+                $registration = Registration::where('status', 1)->first();
                 return Response::success($registration);
             } else {
-                return Response::error('No registration data found', [], 404);
+                return Response::error('No active registration data found', [], 404);
             }
         } catch (\Exception $e) {
             return Response::internalServerError($e->getMessage());
