@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LOGIN</title>
+    {{-- JQuery --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <link rel="shortcut icon" href="{{ asset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -45,7 +47,7 @@
                             <input type="text"
                                 class="w-full h-[40px] py-[1.40rem] pl-10 border-2 rounded-lg outline-none text-slate-800 transition-all ease-in-out duration-300 hover:shadow-lg focus:shadow-lg dark:bg-white
                             @error('username') border-red-500 @enderror"
-                                placeholder="Username" name="username" value="{{ old('username') }}">
+                                placeholder="Username" id="username" name="username" value="{{ old('username') }}">
                         </div>
 
                         @error('username')
@@ -54,21 +56,15 @@
                         <div class="mt-4">
                             <label for="" class="text-sm">Password</label>
                             <div class="mt-2">
-                                {{-- <input type="password" name="password" class="input input-bordered w-full max-w-xs"
-                                    placeholder="Masukkan password">
-
-                                @error('password')
-                                    <p class="text-sm text-red-500 mt-2">{{ $message }}</p>
-                                @enderror --}}
 
                                 <div class="flex relative w-full items-center mt-2">
                                     <span class="absolute left-4"><i
-                                            class="fa-solid fa-key @error('username')
+                                            class="fa-solid fa-key @error('password_1')
                                         text-red-600
                                         @enderror"></i></span>
                                     <input type="password"
                                         class="w-full h-[40px] py-[1.40rem] pr-10 pl-10 border-2 rounded-lg outline-none  text-slate-800 transition-all ease-in-out duration-300 hover:shadow-lg focus:shadow-lg
-                                    @error('username') border-red-500 @enderror"
+                                    @error('password_1') border-red-500 @enderror"
                                         placeholder="Password" name="password_1">
 
                                     <span class="reveal absolute right-4 cursor-pointer">
@@ -76,7 +72,7 @@
                                     </span>
                                 </div>
                             </div>
-                            @error('password')
+                            @error('password_1')
                                 <p class="text-sm text-red-500 mt-2">{{ $message }}</p>
                             @enderror
                         </div>
@@ -119,20 +115,7 @@
 </body>
 <script src="{{ asset('js/app.js') }}"></script>
 
-<script>
-    const reveal = document.querySelector('.reveal');
-    const input = document.querySelector('input[type="password"]');
-
-    reveal.addEventListener('click', () => {
-        if (input.type === 'password') {
-            input.type = 'text';
-            reveal.innerHTML = '<i class="fa-sharp fa-solid fa-eye"></i>';
-        } else {
-            input.type = 'password';
-            reveal.innerHTML = '<i class="fa-sharp fa-solid fa-eye-slash"></i>';
-        }
-    });
-</script>
+<script src="{{ asset('js/admin/auth/main.js') }}"></script>
 <script src="https://kit.fontawesome.com/9aa9764949.js" crossorigin="anonymous"></script>
 
 </html>

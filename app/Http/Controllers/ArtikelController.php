@@ -27,12 +27,12 @@ class ArtikelController extends Controller
         if(!$artikel){
             return $this->backWithError('artikel', 'Artikel tidak ditemukan!!');
         }
-        return view('admin.artikel.show', compact('artikel'));
+        return view('admin.Artikel.show', compact('artikel'));
     }
 
     public function create()
     {
-        return view('admin.artikel.create');
+        return view('admin.Artikel.create');
     }
 
     public function store(Request $request)
@@ -85,7 +85,7 @@ class ArtikelController extends Controller
         if (!$artikel) {
             return $this->backWithError('artikel.index', 'Artikel tidak ditemukan!');
         }
-        return view('admin.artikel.edit', compact('artikel'));
+        return view('admin.Artikel.edit', compact('artikel'));
     }
 
     public function put(Request $request, $id)

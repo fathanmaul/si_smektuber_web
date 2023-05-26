@@ -52,7 +52,10 @@
                                 class="input input-bordered @error('school_phone')
                             input-error
                         @enderror w-full pl-11 dark:bg-white"
-                                placeholder="Telepon Sekolah" name="school_phone" value="{{ $kontak->school_phone }}">
+                                placeholder="Telepon Sekolah" name="school_phone"
+                                @if (old('school_phone')) value="{{ old('school_phone') }}"
+                                @elseif($kontak->school_phone)
+                                    value="{{ $kontak->school_phone }}" @endif>
                         </div>
                         @error('school_phone')
                             <div class="text-xs text-red-500 mt-1">{{ $message }}</div>
@@ -66,11 +69,14 @@
                             <span class="absolute left-4">
                                 <i class="fa-brands fa-whatsapp"></i>
                             </span>
-                            <input type="text"
+                            <input type="text" onkeypress="return restrictAlpha(event)"
                                 class="input input-bordered @error('school_whatsapp')
                             input-error
                         @enderror w-full pl-10 dark:bg-white"
-                                placeholder="62812345678" name="school_whatsapp" value="{{ $kontak->school_whatsapp }}">
+                                placeholder="62812345678" id="school_whatsapp" name="school_whatsapp"
+                                @if (old('school_whatsapp')) value="{{ old('school_whatsapp') }}"
+                                @else
+                                value="{{ $kontak->school_whatsapp }}" @endif>
                         </div>
                         @error('school_whatsapp')
                             <div class="text-xs text-red-500 mt-1">{{ $message }}</div>
@@ -169,4 +175,13 @@
 @endsection
 
 @section('script')
+    <script type="text/javascript">
+        function restrictAlpha(e) {
+            var x = e.which || e.keycode;
+            if ((x >= 48 && x <= 57))
+                return true;
+            else
+                return false;
+        }
+    </script>
 @endsection

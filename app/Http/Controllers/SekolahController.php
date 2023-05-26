@@ -89,8 +89,8 @@ class SekolahController extends Controller
     {
         $request->validate([
             'school_email' => 'required|email',
-            'school_phone' => 'required|max:18',
-            'school_whatsapp' => 'max:18',
+            'school_phone' => 'required|numeric|digits_between:7,20',
+            'school_whatsapp' => 'nullable|numeric|digits_between:10,20',
             'school_facebook' => [
                 'url',
             ],
@@ -107,8 +107,10 @@ class SekolahController extends Controller
             'school_email.required' => 'Harap isi Email Sekolah!',
             'school_email.email' => 'Harap isi Email Sekolah dengan benar!',
             'school_phone.required' => 'Harap isi Nomor Telepon Sekolah!',
-            'school_phone.max' => 'Nomor Telepon Sekolah terlalu panjang!',
-            'school_whatsapp.max' => 'Nomor Whatsapp Sekolah terlalu panjang!',
+            'school_phone.numeric' => 'Nomor Telepon Sekolah harus berupa angka!',
+            'school_phone.digits_between' => 'Nomor Telepon Sekolah minimal 7 digit dan maksimal 20 digit!',
+            'school_whatsapp.numeric' => 'Nomor Whatsapp Sekolah harus berupa angka!',
+            'school_whatsapp.digits_between' => 'Nomor WhatsApp Sekolah minimal 10 digit dan maksimal 20 digit!',
             'school_facebook.url' => 'Masukkan URL Facebook yang valid! ex. https://www.facebook.com/{nama_akun}',
             'school_instagram.url' => 'Masukkan URL Instagram yang valid! ex. https://www.instagram.com/{nama_akun}',
             'school_youtube.url' => 'Masukkan URL Youtube yang valid! ex. https://www.youtube.com/@VestiaZeta',
