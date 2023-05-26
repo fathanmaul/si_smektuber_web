@@ -71,7 +71,9 @@ Route::get('/blog', function () {
     return view('landing.detail.blog');
 });
 
+
 // Route::redirect('/', '/landing');
+
 
 // Route::group(['prefix' => '/landing', 'as' => 'landing.'], function(){
 //     Route::get('/', [LandingHomeController::class, 'index'])->name('index');
