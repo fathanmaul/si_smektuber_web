@@ -66,7 +66,7 @@
         {{-- Header Ends Here --}}
 
         {{-- Container --}}
-        <div class="container py-4 px-4 z-20 h-full md:pl-8 lg:pl-0" id="contentSide">
+        <div class="container py-4 px-4 sm:pl-0 z-20 h-full md:pl-8 lg:pl-8 xl:pl-8" id="contentSide">
             <div class="mt-12 lg:mt-0">
                 {{-- Content Goes Here --}}
                 <div class="py-4 lg:py-2 relative">
