@@ -1,9 +1,9 @@
 @extends('admin.layouts.new.app', ['title' => 'Daftar Admin'])
 
 @php
-use Carbon\Carbon;
+    use Carbon\Carbon;
     $data = '';
-    $data = ($admins ?? '');
+    $data = $admins ?? '';
 @endphp
 @section('content')
     <div class="flex flex-col lg:ml-2 w-full lg:w-3/5 px-4 py-3 lg:px-0 lg:gap-2">
@@ -29,7 +29,7 @@ use Carbon\Carbon;
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </span>
                     <input type="text" class="input input-bordered w-full px-11 dark:bg-white"
-                        placeholder="Nama, username...." name="cari"
+                        placeholder="cari berdasarkan nama..." name="cari"
                         @if (request()->has('cari')) value="{{ request()->cari }}"
                             @else
                             value="" @endif>
@@ -55,7 +55,7 @@ use Carbon\Carbon;
                         <th style="width: 20%">Nama Admin</th>
                         <th style="width: 20%">Username</th>
                         <th style="width: 20%">Dibuat Pada</th>
-                        <th style="width: 20%">Role</th>
+                        <th style="width: 20%">Role / Jabatan</th>
                         <th style="width: 10%">Aksi</th>
                     </tr>
                 </thead>
@@ -70,18 +70,21 @@ use Carbon\Carbon;
                                 <td>{{ $admin->role_name }}</td>
                                 <td>
                                     <div class="flex gap-2">
-                                        <div class="tooltip" data-tip="Ubah Admin">
+                                        @if ($admin->id != 1)
                                             <a href="{{ route('admin.edit', $admin->id) }}"
-                                                class="btn btn-square btn-sm btn-warning text-white flex items-center justify-center">
-                                                <i class="fa-solid fa-edit"></i>
+                                                class="btn btn-sm btn-square text-white btn-warning">
+                                                <i class="fa-solid fa-pencil"></i>
                                             </a>
-                                        </div>
-                                        <div class="tooltip" data-tip="Hapus Admin">
-                                            <a href="{{ route('admin.edit', $admin->id) }}"
-                                                class="btn btn-square btn-sm btn-error text-white flex items-center justify-center">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </a>
-                                        </div>
+                                            @if ($admin->id != auth()->user()->id)
+                                                <button data-url="{{ route('admin.destroy', $admin->id) }}" type="submit"
+                                                    class="btn btn-sm btn-square text-white btn-error"
+                                                    onclick="destroyAdmin(event, this)">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </button>
+                                            @endif
+                                        @else
+                                            <span class="text-sm font-bold">-</span>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
@@ -95,4 +98,26 @@ use Carbon\Carbon;
             </table>
         </div>
     </div>
+
+
+    <!-- Put this part before </body> tag -->
+    <input type="checkbox" id="modal-destroy" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box rounded">
+            <form method="post" id="modalDestroyAdmin" class="m-0">
+                @csrf
+                @method('DELETE')
+                <h3 class="font-bold text-lg">Yakin ingin menghapus Admin ini?</h3>
+                <div class="modal-action">
+                    <label for="modal-destroy" class="btn" id="btn-cancel">Batal</label>
+                    <button type="submit" class="btn btn-error btn-outline">Hapus</button>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
+
+
+@section('script')
+    <script src="{{ asset('js/admin/admin/delete-admin.js') }}"></script>
 @endsection
