@@ -129,5 +129,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/admin/admin/edit-form.js') }}"></script>
+    <script src="{{ getAsset('js/admin/admin/edit-form.js') }}"></script>
 @endsection

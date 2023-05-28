@@ -58,14 +58,14 @@
                 </div>
                 <div class="flex flex-col gap-2 mt-4">
                     @if ($extracurricular->extracurricular_logo)
-                        <p class="text-sm">Logo Ekstrakurikuler sebelumnya : </p>
+                        <p class="text-sm">Pratinjau Logo Ekstrakurikuler sebelumnya : </p>
                         <div class="w-64">
-                            <img src="{{ asset('storage/' . $extracurricular->extracurricular_logo) }}" alt="" />
+                            <img src="{{ url('storage/app/public/' . $extracurricular->extracurricular_logo) }}" alt="" />
                         </div>
                     @else
                         <p class="text-sm text-gray-500">Foto tidak tersedia!</p>
                     @endif
-                    <label for="#" class="appearance-none text-sm lg:text-base">Logo Ekstrakurikuler &nbsp; (Ukuran
+                    <label for="#" class="appearance-none text-sm lg:text-base">Pratinjau Logo Ekstrakurikuler &nbsp; (Ukuran
                         Maksimal: 1MB | Format: jpg, jpeg, png)</label>
                     <input type="file"
                         class="file-input file-input-bordered @error('extracurricular_logo') input-error @enderror w-full border-gray-400 rounded"
@@ -76,12 +76,12 @@
                 </div>
                 <div class="flex flex-col gap-2 mt-4">
                     @if ($extracurricular->extracurricular_photo_1)
-                        <p class="text-sm">Foto Ekstrakurikuler 1 sebelumnya : </p>
+                        <p class="text-sm">Pratinjau Foto Ekstrakurikuler sebelumnya : </p>
                         <div class="w-64">
-                            <img src="{{ asset('storage/' . $extracurricular->extracurricular_photo_1) }}" alt="" />
+                            <img src="{{ url('storage/app/public/' . $extracurricular->extracurricular_photo_1) }}" alt="" />
                         </div>
                     @else
-                        <p class="text-sm text-gray-500">Foto tidak tersedia!</p>
+                        <p class="text-sm text-gray-500">Pratinjau Foto tidak tersedia!</p>
                     @endif
                     <label for="#" class="appearance-none text-sm lg:text-base">Foto Ekstrakurikuler 1 &nbsp; (Ukuran
                         Maksimal: 1MB | Format: jpg, jpeg, png)</label>

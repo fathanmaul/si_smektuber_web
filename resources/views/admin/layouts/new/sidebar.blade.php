@@ -13,7 +13,7 @@
                 <div class="flex-1 flex items-center text-gray-900">
                     <a href="#" class="p-2 rounded-lg flex justify-center items-center">
                         <div class="w-10">
-                            <img src="{{ asset('assets/images/logo/logo-smk7.png') }}" alt="">
+                            <img src="{{ getAsset('assets/images/logo/logo-smk7.png') }}" alt="">
                         </div>
                     </a>
                     <span class="text-sm font-semibold">{{ $school_name }}</span>

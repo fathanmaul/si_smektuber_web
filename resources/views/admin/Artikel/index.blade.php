@@ -120,5 +120,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/admin/artikel/main.js') }}"></script>
+    <script src="{{ getAsset('js/admin/artikel/main.js') }}"></script>
 @endsection

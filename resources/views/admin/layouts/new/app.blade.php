@@ -11,8 +11,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&display=swap"
         rel="stylesheet">
-        <link rel="shortcut icon" href="{{ asset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="shortcut icon" href="{{ getAsset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ getAsset('css/app.css') }}">
     {{-- JQuery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     {{-- Ajax Form --}}
@@ -79,10 +79,10 @@
         {{-- Container Ends --}}
     </div>
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ getAsset('js/app.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.7.0.slim.js"
         integrity="sha256-7GO+jepT9gJe9LB4XFf8snVOjX3iYNb0FHYr5LI1N5c=" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/sidebar.js') }}"></script>
+    <script src="{{ getAsset('js/sidebar.js') }}"></script>
     <script src="https://kit.fontawesome.com/9aa9764949.js" crossorigin="anonymous"></script>
     @yield('script')
 
