@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-lg-6 animated fadeIn">
                     <img class="img-fluid animated pulse infinite" style="animation-duration: 3s"
-                        src="{{ asset('landing/img/logo_smektuber_hero.png') }}" alt="" />
+                        src="{{ getAsset('landing/img/logo_smektuber_hero.png') }}" alt="" />
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid" src="{{ asset('landing/img/smk7.png') }}" alt="" />
+                    <img class="img-fluid" src="{{ getAsset('landing/img/smk7.png') }}" alt="" />
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">
@@ -63,17 +63,17 @@
         <div class="container py-5">
             <div class="row g-5">
                 <div class="col-lg-4 col-md-6 text-center wow fadeIn" data-wow-delay="0.1s">
-                    <img class="img-fluid mb-4" src="{{ asset('landing/img/futbol.svg') }}" alt="" style="width: 30%; height: 30%;" />
+                    <img class="img-fluid mb-4" src="{{ getAsset('landing/img/futbol.svg') }}" alt="" style="width: 30%; height: 30%;" />
                     <h1 class="display-4" data-toggle="counter-up">5</h1>
                     <p class="fs-5 text-primary mb-0">Total Jurusan</p>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center wow fadeIn" data-wow-delay="0.3s">
-                    <img class="img-fluid mb-4" src="{{ asset('landing/img/futbol.svg') }}" alt="" style="width: 30%; height: 30%;" />
+                    <img class="img-fluid mb-4" src="{{ getAsset('landing/img/futbol.svg') }}" alt="" style="width: 30%; height: 30%;" />
                     <h1 class="display-4" data-toggle="counter-up">5</h1>
                     <p class="fs-5 text-primary mb-0">Total Ekstrakulikuler</p>
                 </div>
                 <div class="col-lg-4 col-md-6 text-center wow fadeIn" data-wow-delay="0.5s">
-                    <img class="img-fluid mb-4" src="{{ asset('landing/img/futbol.svg') }}" alt="" style="width: 30%; height: 30%;" />
+                    <img class="img-fluid mb-4" src="{{ getAsset('landing/img/futbol.svg') }}" alt="" style="width: 30%; height: 30%;" />
                     <h1 class="display-4" data-toggle="counter-up">100</h1>
                     <p class="fs-5 text-primary mb-0">Total Prestasi</p>
                 </div>
@@ -94,7 +94,7 @@
                 <!-- Card -->
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
+                        <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}" alt="" />
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Ini artikel menarik cuman masih dami</h4>
 
@@ -106,7 +106,7 @@
                 <!-- Card -->
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
+                        <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}" alt="" />
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Ini artikel menarik cuman masih dami</h4>
 
@@ -118,7 +118,7 @@
                 <!-- Card -->
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
+                        <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}" alt="" />
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Ini artikel menarik cuman masih dami</h4>
 

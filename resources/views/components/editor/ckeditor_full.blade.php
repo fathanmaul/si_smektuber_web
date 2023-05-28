@@ -9,8 +9,8 @@
             let ckeditorElement = document.getElementById('{{ $id }}');
             // console.log(ckeditorElement);
             CKEDITOR.replace(ckeditorElement)
-            // CKEDITOR.config.customConfig = "{{ asset('vendor/ckeditor/config.js') }}";
-            CKEDITOR.config.customConfig = "{{ asset('vendor/ckeditor/config/full-config.js') }}"
+            // CKEDITOR.config.customConfig = "{{ getAsset('vendor/ckeditor/config.js') }}";
+            CKEDITOR.config.customConfig = "{{ getAsset('vendor/ckeditor/config/full-config.js') }}"
         });
     </script>
 @endsection

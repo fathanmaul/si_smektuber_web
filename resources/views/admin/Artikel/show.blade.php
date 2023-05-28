@@ -18,7 +18,7 @@
 
             <div class="w-full h-[350px]">
                 @if ($artikel->thumbnail != null)
-                    <img src="{{ url('storage/app/public/' . $artikel->thumbnail) }}" alt="" class="w-full h-full object-cover" />
+                    <img src="{{ url('storage/app/' . $artikel->thumbnail) }}" alt="" class="w-full h-full object-cover" />
                 @else
                     <img src="{{ getAsset('assets/images/img-not-found.png') }}" alt=""
                         class="w-full h-full object-cover" />

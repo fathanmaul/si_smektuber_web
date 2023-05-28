@@ -60,7 +60,7 @@
                     @if ($extracurricular->extracurricular_logo)
                         <p class="text-sm">Pratinjau Logo Ekstrakurikuler sebelumnya : </p>
                         <div class="w-64">
-                            <img src="{{ url('storage/app/public/' . $extracurricular->extracurricular_logo) }}" alt="" />
+                            <img src="{{ url('storage/app/' . $extracurricular->extracurricular_logo) }}" alt="" />
                         </div>
                     @else
                         <p class="text-sm text-gray-500">Foto tidak tersedia!</p>
@@ -78,7 +78,7 @@
                     @if ($extracurricular->extracurricular_photo_1)
                         <p class="text-sm">Pratinjau Foto Ekstrakurikuler sebelumnya : </p>
                         <div class="w-64">
-                            <img src="{{ url('storage/app/public/' . $extracurricular->extracurricular_photo_1) }}" alt="" />
+                            <img src="{{ url('storage/app/' . $extracurricular->extracurricular_photo_1) }}" alt="" />
                         </div>
                     @else
                         <p class="text-sm text-gray-500">Pratinjau Foto tidak tersedia!</p>

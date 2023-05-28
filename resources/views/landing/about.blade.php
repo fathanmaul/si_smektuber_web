@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeInUp order-lg-last" data-wow-delay="0.1s">
-                    <img class="img-fluid" src="{{ asset('landing/img/smk7.png') }}" alt="" />
+                    <img class="img-fluid" src="{{ getAsset('landing/img/smk7.png') }}" alt="" />
                 </div>
                 <div class="col-lg-6 wow fadeInUp order-lg-first" data-wow-delay="0.5s">
                     <div class="h-100">
@@ -105,7 +105,7 @@
                 <!-- Card -->
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
+                        <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}" alt="" />
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Jurusan</h4>
                             <a href="/jurusan" class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
@@ -117,7 +117,7 @@
                 <!-- Card -->
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
+                        <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}" alt="" />
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Jurusan</h4>
                             <a href="" class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
@@ -129,7 +129,7 @@
                 <!-- Card -->
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
+                        <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}" alt="" />
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Jurusan</h4>
                             <a href="" class="btn btn-primary px-4 mx-auto my-2 rounded-pill">Selengkapnya</a>
@@ -156,7 +156,7 @@
                         <!-- Card -->
                         <div class="col-lg-4 mb-4">
                             <div class="card border-0 shadow-sm mb-2">
-                                <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}"
+                                <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}"
                                     alt="" />
                                 <div class="card-body bg-light text-center p-4">
                                     <h4 class="">Judul Ekstra</h4>
@@ -170,7 +170,7 @@
                         <!-- Card -->
                         <div class="col-lg-4 mb-4">
                             <div class="card border-0 shadow-sm mb-2">
-                                <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}"
+                                <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}"
                                     alt="" />
                                 <div class="card-body bg-light text-center p-4">
                                     <h4 class="">Judul Ekstra</h4>
@@ -184,7 +184,7 @@
                         <!-- Card -->
                         <div class="col-lg-4 mb-4">
                             <div class="card border-0 shadow-sm mb-2">
-                                <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}"
+                                <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}"
                                     alt="" />
                                 <div class="card-body bg-light text-center p-4">
                                     <h4 class="">Judul Ekstra</h4>
@@ -198,7 +198,7 @@
                         <!-- Card -->
                         <div class="col-lg-4 mb-4">
                             <div class="card border-0 shadow-sm mb-2">
-                                <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}"
+                                <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}"
                                     alt="" />
                                 <div class="card-body bg-light text-center p-4">
                                     <h4 class="">Judul Ekstra</h4>

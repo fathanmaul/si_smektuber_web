@@ -16,8 +16,10 @@
                     <a href="" class="btn btn-primary py-3 px-5 animated slideInDown">Cek Pendaftaran</a>
                 </div>
                 <div class="col-lg-6 animated fadeIn">
+                    {{-- <img class="img-fluid animated pulse infinite" style="animation-duration: 3s"
+                        src="{{ getAsset('landing/img/logo_smektuber_hero.png') }}" alt="" /> --}}
                     <img class="img-fluid animated pulse infinite" style="animation-duration: 3s"
-                        src="{{ asset('landing/img/logo_smektuber_hero.png') }}" alt="" />
+                        src="{{ getAsset('assets/images/img-not-found.png') }}" alt="" />
                 </div>
             </div>
         </div>
@@ -29,7 +31,7 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid" src="{{ asset('landing/img/smk7.png') }}" alt="" />
+                    <img class="img-fluid" src="{{ getAsset('landing/img/smk7.png') }}" alt="" />
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">

@@ -3,7 +3,7 @@
     <div class="container py-4">
         <div class="row g-5">
             <div class="col-md-4 pt-5 justify-content-center">
-                <img src="{{ asset('landing/img/Logo_smektuber.png') }}" alt="" />
+                <img src="{{ getAsset('landing/img/Logo_smektuber.png') }}" alt="" />
             </div>
             <div class="col-lg-4 col-md-6">
                 <h5 class="mb-4">Tentang Kami</h5>

@@ -49,7 +49,7 @@
                 @if ($loker->thumbnail != null)
                     <p><span><i class="fa-solid fa-image mr-1"></i></span>&nbsp;Pratinjau Thumbnail sebelumnya :</p>
                     <div class="w-[350px] h-full">
-                        <img src="{{ url('storage/app/public/' . $loker->thumbnail) }}" alt=""
+                        <img src="{{ url('storage/app/' . $loker->thumbnail) }}" alt=""
                             class="w-full h-full object-cover">
                     </div>
                 @else

@@ -61,7 +61,7 @@
                     class="card rounded-md bg-white drop-shadow-lg mx-2 mb-5 flex flex-col h-[500px] lg:h-[250px]  lg:flex-row gap-4">
                     <div class="w-full h-[200px] lg:w-[250px] lg:h-[250px]">
                         @if ($item->thumbnail)
-                            <img src="{{ url('storage/app/public/' . $item->thumbnail) }}"
+                            <img src="{{ url('storage/app/' . $item->thumbnail) }}"
                                 class="w-full h-full object-cover bg-center rounded-t-md lg:rounded-l-md" alt="">
                         @else
                             <img src="{{ getAsset('assets/images/img-not-found.png') }}"
