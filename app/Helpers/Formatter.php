@@ -23,6 +23,7 @@ function formatUser()
     return $user;
 }
 
+
 /**
  * Get error message for validation
  * 
@@ -58,4 +59,9 @@ if (!function_exists('api')) {
     {
         return auth('api');
     }
+}
+
+function getAsset($path, $secure = null)
+{
+    return app('url')->asset("public/".$path, $secure);
 }

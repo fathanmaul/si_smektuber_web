@@ -8,8 +8,9 @@
     <title>LOGIN</title>
     {{-- JQuery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link rel="shortcut icon" href="{{ asset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ getAsset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
+    {{-- <link href="{{ getAsset('css/app.css') }}" rel="stylesheet"> --}}
+    <link href="{{ getAsset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -18,7 +19,7 @@
             <div class="h-full flex flex-col items-center justify-center">
                 <div class="m-24">
                     <div class="flex flex-col justify-center items-center gap-4 -mt-8 mb-8">
-                        <img src="{{ asset('assets/favicon/smk-logo.png') }}" class="w-24" alt="">
+                        <img src="{{ getAsset('assets/favicon/smk-logo.png') }}" class="w-24" alt="">
                         <h1 class="ml-3 font-bold text-2xl">{{ $school_name ?? 'Silahkan Login!' }}</h1>
                     </div>
                     <h1 class="text-2xl font-bold mb-6">Masuk</h1>
@@ -94,7 +95,7 @@
 
 
         {{-- <div class="h-full hidden laptop:block w-[59%] bg-cover brightness-50"
-            style="background-image: url('{{ asset('assets/images/sekolah/foto.png') }}')">
+            style="background-image: url('{{ getAsset('assets/images/sekolah/foto.png') }}')">
             <div class="flex justify-center items-center h-full">
                 <div class="flex flex-col justify-start items-center gap-4 ml-8">
               
@@ -113,9 +114,9 @@
         </div>
     </div>
 </body>
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ getAsset('js/app.js') }}"></script>
 
-<script src="{{ asset('js/admin/auth/main.js') }}"></script>
+<script src="{{ getAsset('js/admin/auth/main.js') }}"></script>
 <script src="https://kit.fontawesome.com/9aa9764949.js" crossorigin="anonymous"></script>
 
 </html>

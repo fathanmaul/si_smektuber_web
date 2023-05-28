@@ -68,23 +68,24 @@
                                 </td>
                                 <td>
                                     <div class="flex gap-2">
-                                        <div class="tooltip" data-tip="Lihat Artikel">
-                                            <a href="{{ route('artikel.show', $value->slug) }}"
-                                                class="btn btn-square btn-sm text-white flex items-center justify-center">
-                                                <i class="fa-solid fa-eye"></i>
-                                            </a>
-                                        </div>
-                                        <div class="tooltip" data-tip="Ubah Artikel">
-                                            <a href="{{ route('artikel.edit', $value->id) }}"
+                                        <div class="tooltip" data-tip="Ubah Loker">
+                                            <a href="{{ route('loker.edit', $value->id) }}"
                                                 class="btn btn-square btn-sm btn-warning text-white flex items-center justify-center">
                                                 <i class="fa-solid fa-edit"></i>
                                             </a>
                                         </div>
 
-                                        <div class="tooltip" data-tip="Hapus Artikel">
-                                            <a href="{{ route('artikel.destroy', $value->id) }}" class="btn btn-delete btn-square btn-sm btn-error text-white flex items-center justify-center" onclick="destroyArticle(event, this)">
+                                        <div class="tooltip" data-tip="Hapus Loker">
+                                            {{-- <a href="{{ route('loker.destroy', $value->id) }}"
+                                                class="btn btn-delete btn-square btn-sm btn-error text-white flex items-center justify-center"
+                                                onclick="destroyArticle(event, this)">
                                                 <i class="fa-solid fa-trash"></i>
-                                            </a>
+                                            </a> --}}
+                                            <button
+                                                class="btn btn-delete btn-square btn-sm btn-error text-white flex items-center justify-center"
+                                                data-url="{{ route('loker.destroy', $value->id) }}" id="btn-delete" onclick="showModalDestroy(this)">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
                                         </div>
                                     </div>
                                 </td>
@@ -102,4 +103,41 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Put this part before </body> tag -->
+    <input type="checkbox" id="destroy-modal" class="modal-toggle" />
+    <div class="modal">
+        <div class="modal-box rounded">
+            <form method="post" class="my-0">
+                @csrf
+                @method('DELETE')
+                <h3 class="font-bold text-lg">Yakin ingin menghapus Lowongan Kerja ini?</h3>
+
+
+                <div class="modal-action">
+                    <label for="destroy-modal" class="btn">BATAL</label>
+                    <button type="button" class="btn btn-error btn-outline" id="btn-submit">HAPUS</button>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
+
+@section('script')
+    <script>
+        function showModalDestroy(props) {
+            const modalToggle = document.querySelector('input#destroy-modal');
+            modalToggle.checked = true;
+            const url = props.getAttribute('data-url');
+            const formModalDestroy = document.querySelector('.modal .modal-box form');
+            formModalDestroy.setAttribute('action', url);
+        }
+        const btnSubmit = document.querySelector('button#btn-submit');
+        btnSubmit.addEventListener('click', function(e) {
+            e.preventDefault();
+            const formModalDestroy = document.querySelector('.modal .modal-box form');
+            formModalDestroy.submit();
+        })
+    </script>
 @endsection

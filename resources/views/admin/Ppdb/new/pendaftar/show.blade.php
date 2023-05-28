@@ -169,7 +169,7 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/admin/pendaftar/reset.js') }}"></script>
+    <script src="{{ getAsset('js/admin/pendaftar/reset.js') }}"></script>
     @error('major_accepted')
         <script>
             const modalToggle = document.querySelector('input#my-modal');

@@ -1,5 +1,5 @@
 function destroyAdmin(event, props) {
-    console.log(props.getAttribute('data-url'));
+    // console.log(props.getAttribute('data-url'));
     const modalDestroyToggle = document.querySelector('#modal-destroy');
     modalDestroyToggle.checked = true;
     const url = props.getAttribute('data-url');

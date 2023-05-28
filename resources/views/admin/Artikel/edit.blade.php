@@ -52,7 +52,7 @@
                     <p>Thumbnail Sebelumnya : </p>
                     @if ($artikel->thumbnail)
                     <div class="w-full lg:w-1/3">
-                        <img src="{{ asset('storage/' . $artikel->thumbnail) }}" alt=""/>
+                        <img src="{{ url('storage/app/public/' . $artikel->thumbnail) }}" alt=""/>
                     </div>
                     @else
                         <p class="text-sm text-gray-600">Thumbnail tidak tersedia!</p>
