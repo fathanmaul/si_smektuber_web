@@ -72,4 +72,8 @@
     .badge-warning{
         /* @app */
     }
+
+    .btn-primary{
+        @apply bg-[#19A7CE] border-none hover:bg-[#148aaa];
+    }
 }
