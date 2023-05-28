@@ -9,7 +9,7 @@
             style="width: 45px"
           />Sistem Informasi SMKN 7 Jember
         </h2> -->
-        <img src="landing/img/Logo_smektuber.png" style="width: 200px"
+        <img src="{{ getAsset('landing/img/Logo_smektuber.png') }}" style="width: 200px"
             class="img-fluid me-2 align-items-center pt-3 pb-3" />
     </a>
     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
