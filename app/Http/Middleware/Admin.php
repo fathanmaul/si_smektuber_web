@@ -16,6 +16,12 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
+        if (!$request->user()) {
+            return redirect()->route('login')->with('flash', [
+                'type' => 'danger',
+                'message' => 'Silahkan Login Terlebih Dahulu!'
+            ]);
+        }
         if ($request->user()->role_id > 2) {
             abort(403, 'Unauthorized action.');
         }
