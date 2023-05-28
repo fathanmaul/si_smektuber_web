@@ -63,12 +63,13 @@ class TahunAjaranController extends Controller
         };
 
         $request->validate([
-            'school_year' => 'required|max:20|regex:/^\d{4}\/\d{4}$/',
+            'school_year' => 'required|max:20|regex:/^\d{4}\/\d{4}$/|unique:school_year,school_year,' . $id,
         ], [
             'school_year.required' => 'Harap isi Tahun Ajaran',
             'school_year.max' => 'Tahun Ajaran terlalu panjang!',
             'school_year.regex' => 'Format Tahun Ajaran tidak sesuai!'
         ]);
+
 
         try {
             if ($request->school_year == $schoolYear->school_year) {

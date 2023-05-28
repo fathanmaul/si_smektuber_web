@@ -132,7 +132,7 @@
                                         {{-- <div class="tooltip" data-tip="Lihat Foto">
                                             <a target="_blank"
                                                 href="
-                                            @if ($achievements->photo != null) {{ asset('storage/' . $achievements->photo) }}
+                                            @if ($achievements->photo != null) {{ getAsset('storage/' . $achievements->photo) }}
                                             @else
                                             https://www.google.com @endif
                                             "
@@ -165,5 +165,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/jurusan/main.js') }}"></script>
+    <script src="{{ getAsset('js/jurusan/main.js') }}"></script>
 @endsection

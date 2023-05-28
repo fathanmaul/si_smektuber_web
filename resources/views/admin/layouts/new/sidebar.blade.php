@@ -13,7 +13,7 @@
                 <div class="flex-1 flex items-center text-gray-900">
                     <a href="#" class="p-2 rounded-lg flex justify-center items-center">
                         <div class="w-10">
-                            <img src="{{ asset('assets/images/logo/logo-smk7.png') }}" alt="">
+                            <img src="{{ getAsset('assets/images/logo/logo-smk7.png') }}" alt="">
                         </div>
                     </a>
                     <span class="text-sm font-semibold">{{ $school_name }}</span>
@@ -122,9 +122,9 @@
                                             Jurusan
                                         </a>
                                     </li>
-                                    <li><a href="{{ route('jurusan.prestasi.index') }}"
+                                    {{-- <li><a href="{{ route('jurusan.prestasi.index') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'jurusan.prestasi.index' || $route == 'jurusan.prestasi.create' || $route == 'jurusan.prestasi.edit' ? 'nav-active' : '' }}">Prestasi
-                                            Jurusan</a></li>
+                                            Jurusan</a></li> --}}
                                 </ul>
                             </div>
                         </div>
@@ -163,9 +163,9 @@
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ekstrakurikuler.index' || $route == 'ekstrakurikuler.create' || $route == 'ekstrakurikuler.edit' ? 'nav-active' : '' }}">Daftar
                                             Ekstrakurikuler</a>
                                     </li>
-                                    <li><a href="{{ route('ekstrakurikuler.prestasi.index') }}"
+                                    {{-- <li><a href="{{ route('ekstrakurikuler.prestasi.index') }}"
                                             class="inline-block w-full px-4 py-2 text-sm rounded nav-item {{ $route == 'ekstrakurikuler.prestasi.index' || $route == 'ekstrakurikuler.prestasi.create' || $route == 'ekstrakurikuler.prestasi.edit' ? 'nav-active' : '' }}">Prestasi
-                                            Ekstrakurikuler</a></li>
+                                            Ekstrakurikuler</a></li> --}}
                                 </ul>
                             </div>
                         </div>

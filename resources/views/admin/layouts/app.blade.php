@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title ? $title . ' | ' . $school_name : $school_name }}</title>
-    <link rel="shortcut icon" href="{{ asset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ getAsset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
+    <link href="{{ getAsset('css/app.css') }}" rel="stylesheet">
 
     {{-- JQuery --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -78,9 +78,9 @@
 
 
     {{-- <script src="//cdn.ckeditor.com/4.21.0/basic/ckeditor.js"></script> --}}
-    {{-- <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('vendor/ckeditor/config.js') }}"></script> --}}
-    <script src="{{ asset('/js/main.js') }}"></script>
+    {{-- <script src="{{ getAsset('vendor/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ getAsset('vendor/ckeditor/config.js') }}"></script> --}}
+    <script src="{{ getAsset('/js/main.js') }}"></script>
 
     @yield('script')
     <script type="text/javascript"></script>

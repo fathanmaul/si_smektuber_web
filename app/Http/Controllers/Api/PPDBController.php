@@ -17,12 +17,13 @@ class PPDBController extends Controller
     public function show()
     {
         try {
-            $registration = Registration::first();
+            $count = Registration::where('status', 1)->count();
             
-            if ($registration) {
+            if ($count > 0) {
+                $registration = Registration::where('status', 1)->first();
                 return Response::success($registration);
             } else {
-                return Response::error('No registration data found', [], 404);
+                return Response::error('No active registration data found', [], 404);
             }
         } catch (\Exception $e) {
             return Response::internalServerError($e->getMessage());
@@ -61,9 +62,9 @@ class PPDBController extends Controller
             $user = api()->user();
             // dd($user);
             // Check if user_id is already registered
-            $isRegistered = DetailRegistration::where('user_id', $user->user_id)->exists();
+            $isRegistered = DetailRegistration::where('user_id', $user->id)->exists();
             if ($isRegistered) {
-                return Response::error('User is already registered', [], 400);
+                return Response::error('User telah terdaftar sebelumnya', [], 400);
             }
             $registration = Registration::first();
 
