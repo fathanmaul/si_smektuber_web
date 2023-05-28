@@ -63,11 +63,21 @@
                     @if ($data)
                         @foreach ($data as $key => $admin)
                             <tr>
-                                <td>{{ $admins->firstItem() + $key }}</td>
-                                <td>{{ $admin->name }}</td>
-                                <td>{{ $admin->username }}</td>
-                                <td>{{ Carbon::parse($admin->created_at)->translatedFormat('d M Y - H:i') }}</td>
-                                <td>{{ $admin->role_name }}</td>
+                                <td class="@if ($admin->id == auth()->user()->id)
+                                    font-bold
+                                @endif">{{ $admins->firstItem() + $key }}</td>
+                                <td class="@if ($admin->id == auth()->user()->id)
+                                    font-bold
+                                @endif">{{ $admin->name }}</td>
+                                <td class="@if ($admin->id == auth()->user()->id)
+                                    font-bold
+                                @endif">{{ $admin->username }}</td>
+                                <td class="@if ($admin->id == auth()->user()->id)
+                                    font-bold
+                                @endif">{{ Carbon::parse($admin->created_at)->translatedFormat('d M Y - H:i') }}</td>
+                                <td class="@if ($admin->id == auth()->user()->id)
+                                    font-bold
+                                @endif">{{ $admin->role_name }}</td>
                                 <td>
                                     <div class="flex gap-2">
                                         @if ($admin->id != 1)

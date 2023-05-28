@@ -17,6 +17,7 @@ use App\Http\Controllers\PrestasiEkstrakurikulerController;
 use App\Http\Controllers\PrestasiJurusanController;
 use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\TahunAjaranController;
+use App\Http\Controllers\UserController;
 use App\Models\About;
 use Database\Seeders\PpdbRegistration;
 use GuzzleHttp\Middleware;
@@ -118,6 +119,12 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::prefix('admin')->middleware(['middleware' => 'auth'])->middleware(['middleware' => 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::group(['prefix' => 'akun', 'as' => 'akun.'], function(){
+        Route::get('/', [UserController::class, 'index'])->name('index');
+        Route::put('/', [UserController::class, 'putProfil'])->name('put');
+        Route::get('/changePassword', [UserController::class, 'editPassword'])->name('password.edit');
+        Route::put('/changePassword', [UserController::class, 'putPassword'])->name('password.put');
+    });
     Route::group(['prefix' => 'sekolah'], function () {
         Route::redirect('/', '/admin/dashboard')->name('sekolah');
         Route::group(['prefix' => 'umum'], function () {
