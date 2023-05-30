@@ -31,8 +31,8 @@
                     <div class="h-100">
                         <h1 class="display-6">Tentang Kami</h1>
                         <!-- <p class="text-primary fs-5 mb-4">
-                            The Most Trusted Cryptocurrency Platform
-                          </p> -->
+                                    The Most Trusted Cryptocurrency Platform
+                                  </p> -->
                         <p>
                             Penerimaan Peserta Didik Baru untuk SMK Negeri se Jawa Timur termasuk di dalamnya SMK Negeri
                             7 Jember, akan dibuka tahapannya mulai tanggal 20 Juni 2023 dan terintegrasi dalam sistem
@@ -76,7 +76,8 @@
                         <h8 class="display-8">Download</h8>
                         <h1 class="display-6">Smektuber Mobile</h1>
                         <h5 class="display-8">Download aplikasi smektuber untuk informasi pendaftaran lebih lanjut</h5>
-                        <a class="btn btn-primary py-3 px-4" href="">
+                        <a class="btn btn-primary py-3 px-4"
+                            href="https://play.google.com/store/apps/details?id=com.nekoid.smektuber">
                             <i class="fab fa-google-play me-2"></i> Download
                         </a>
 
