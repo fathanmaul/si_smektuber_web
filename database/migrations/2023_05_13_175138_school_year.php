@@ -15,7 +15,8 @@ class SchoolYear extends Migration
     {
         Schema::create('school_year', function (Blueprint $table) {
             $table->id();
-            $table->string('school_year', 10)->unique();
+            $table->string('school_year', 10);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

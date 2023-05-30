@@ -58,7 +58,7 @@
                     @if ($jurusan->major_logo)
                         <p class="text-sm">Logo sebelumnya : </p>
                         <div class="w-64">
-                            <img src="{{ asset('storage/' . $jurusan->major_logo) }}" alt="" />
+                            <img src="{{ url('storage/app/' . $jurusan->major_logo) }}" alt="" />
                         </div>
                     @else
                         <p class="text-sm text-gray-500">Logo tidak tersedia!</p>
@@ -76,12 +76,12 @@
                     @if ($jurusan->picture_1)
                         <div class="w-64">
                             <p class="text-sm">Foto Jurusan 1 sebelumnya : </p>
-                            <img src="{{ asset('storage/' . $jurusan->picture_1) }}" alt="" />
+                            <img src="{{ url('storage/app/' . $jurusan->picture_1) }}" alt="" />
                         </div>
                     @else
                         <p class="text-sm text-gray-500">Foto tidak tersedia!</p>
                     @endif
-                    <label for="#" class="appearance-none text-sm lg:text-base">Foto Jurusan 1 &nbsp; (Ukuran
+                    <label for="#" class="appearance-none text-sm lg:text-base">Foto Jurusan &nbsp; (Ukuran
                         Maksimal: 1MB | Format: jpg, jpeg, png)</label>
                     <input type="file"
                         class="file-input file-input-bordered @error('picture_1') input-error @enderror w-full border-gray-400 rounded"
@@ -90,24 +90,7 @@
                         <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
                     @enderror
                 </div>
-                <div class="flex flex-col gap-2 mt-4">
-                    @if ($jurusan->picture_2)
-                        <p class="text-sm">Foto Jurusan 2 sebelumnya : </p>
-                        <div class="w-64">
-                            <img src="{{ asset('storage/' . $jurusan->picture_2) }}" alt="" />
-                        </div>
-                    @else
-                        <p class="text-sm text-gray-500">Foto tidak tersedia!</p>
-                    @endif
-                    <label for="#" class="appearance-none text-sm lg:text-base">Foto Jurusan 2 &nbsp; (Ukuran
-                        Maksimal: 1MB | Format: jpg, jpeg, png)</label>
-                    <input type="file"
-                        class="file-input file-input-bordered @error('picture_2') input-error @enderror w-full border-gray-400 rounded"
-                        name="picture_2" />
-                    @error('picture_2')
-                        <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
+                
                 <div class="flex flex-col-reverse gap-3 lg:flex-row items-center justify-end mt-8">
                     <a href="{{ route('jurusan.index') }}"
                         class="btn btn-error btn-outline  hover:text-white flex items-center gap-2 w-full lg:w-fit"

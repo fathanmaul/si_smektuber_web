@@ -15,12 +15,12 @@ class Role extends Seeder
     {
         \App\Models\Role::insert([
             [
-                'role_name' => 'developer',
+                'name' => 'Superadmin',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'role_name' => 'admin',
+                'name' => 'Admin',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
@@ -35,12 +35,12 @@ class Role extends Seeder
             //     'updated_at' => now()
             // ],
             [
-                'role_name' => 'siswa',
+                'name' => 'Siswa',
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'role_name' => 'member',
+                'name' => 'Member',
                 'created_at' => now(),
                 'updated_at' => now()
             ],

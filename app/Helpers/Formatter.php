@@ -9,19 +9,20 @@ use App\Models\Role;
  */
 function formatUser()
 {
-    $avatar = (auth()->user()->avatar) ? asset('storage/' . auth()->user()->avatar) : null;
+    $avatar = (api()->user()->avatar) ? asset('storage/' . api()->user()->avatar) : null;
 
     $user = [
-        'name' => auth()->user()->name,
-        'username' => auth()->user()->username,
-        'email' => auth()->user()->email,
-        'email_verified_at' => auth()->user()->email_verified_at,
-        'role' => Role::where('id', auth()->user()->role_id)->first()->name,
+        'name' => api()->user()->name,
+        'username' => api()->user()->username,
+        'email' => api()->user()->email,
+        'email_verified_at' => api()->user()->email_verified_at != null ? true : false,
+        'role' => Role::where('id', api()->user()->role_id)->first()->name,
         'avatar' => $avatar,
     ];
 
     return $user;
 }
+
 
 /**
  * Get error message for validation
@@ -34,7 +35,7 @@ function errorMsg()
         // auth
         'name.required' => 'Name is required',
         'username.required' => 'Username is required',
-        'username.numeric' => 'Username must be numeric',
+        'username.string' => 'Username must be string',
         'email.required' => 'Email is required',
         'email.email' => 'Email is not valid',
         'password.required' => 'Password is required',
@@ -46,4 +47,21 @@ function errorMsg()
         'avatar.mimes' => 'Avatar must be a file of type: jpeg, png, jpg, svg',
         'avatar.max' => 'Avatar may not be greater than 2048 kilobytes',
     ];
+}
+
+if (!function_exists('api')) {
+    /**
+     * Get the available auth instance (API).
+     *
+     * @return \Illuminate\Contracts\Auth\Factory|\Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|mixed
+     */
+    function api()
+    {
+        return auth('api');
+    }
+}
+
+function getAsset($path, $secure = null)
+{
+    return app('url')->asset("public/".$path, $secure);
 }

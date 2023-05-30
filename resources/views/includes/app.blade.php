@@ -3,13 +3,12 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>SMK N 7 Jember</title>
+    <title>SMKN 7 Jember</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon" />
+    <link rel="shortcut icon" href="{{ getAsset('assets/favicon/smk-logo.png') }}" type="image/x-icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,14 +23,14 @@
     <!-- Libraries Stylesheet -->
 
     {{-- Contoh di Bawah ini --}}
-    <link href="{{ asset('landing/lib/animate/animate.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('landing/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet" />
+    <link href="{{ getAsset('landing/lib/animate/animate.min.css') }}" rel="stylesheet" />
+    <link href="{{ getAsset('landing/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{ asset('landing/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link href="{{ getAsset('landing/css/bootstrap.min.css') }}" rel="stylesheet" />
 
     <!-- Template Stylesheet -->
-    <link href="{{ asset('landing/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ getAsset('landing/css/style.css') }}" rel="stylesheet" />
 
     <!-- Font Awesome Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -65,16 +64,16 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('landing/lib/wow/wow.min.js') }}"></script>
-    <script src="{{ asset('landing/lib/easing/easing.min.js') }}"></script>
-    <script src="{{ asset('landing/lib/waypoints/waypoints.min.js') }}"></script>
-    <script src="{{ asset('landing/lib/owlcarousel/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('landing/lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ getAsset('landing/lib/wow/wow.min.js') }}"></script>
+    <script src="{{ getAsset('landing/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ getAsset('landing/lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ getAsset('landing/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ getAsset('landing/lib/counterup/counterup.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 
 
     <!-- Template Javascript -->
-    <script src="{{ asset('landing/js/main.js') }}"></script>
+    <script src="{{ getAsset('landing/js/main.js') }}"></script>
 </body>
 
 </html>

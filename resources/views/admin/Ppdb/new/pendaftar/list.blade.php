@@ -1,0 +1,1 @@
+@extends('admin.layouts.new.app', ['title' => 'Data Calon Pendaftar'])

@@ -46,7 +46,7 @@
                 <!-- Card -->
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
+                        <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}" alt="" />
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Blog SMK 7 Jember</h4>
                             <a href="/blog" class="btn btn-primary px-4 mx-auto my-2">Selengkapnya</a>
@@ -57,7 +57,7 @@
                 <!-- Card -->
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
+                        <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}" alt="" />
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Ekstra Kulikuler SMK 7 Jember</h4>
                             <a href="" class="btn btn-primary px-4 mx-auto my-2">Selengkapnya</a>
@@ -68,7 +68,7 @@
                 <!-- Card -->
                 <div class="col-lg-4 mb-4">
                     <div class="card border-0 shadow-sm mb-2">
-                        <img class="card-img-top mb-2" src="{{ asset('landing/img/blog_dami.png') }}" alt="" />
+                        <img class="card-img-top mb-2" src="{{ getAsset('landing/img/blog_dami.png') }}" alt="" />
                         <div class="card-body bg-light text-center p-4">
                             <h4 class="">Data PPDB</h4>
                             <a href="" class="btn btn-primary px-4 mx-auto my-2">Selengkapnya</a>

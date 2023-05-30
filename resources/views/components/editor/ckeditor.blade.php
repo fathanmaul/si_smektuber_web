@@ -3,14 +3,14 @@
 </div>
 
 @section('script')
-    <script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ getAsset('vendor/ckeditor/ckeditor.js') }}"></script>
 
     <script type="text/javascript">
         $(function () {
             let ckeditorElement = document.getElementById('{{ $id }}');
-            console.log(ckeditorElement);
+            // console.log(ckeditorElement);
             CKEDITOR.replace(ckeditorElement)
-            CKEDITOR.config.customConfig = "{{ asset('vendor/ckeditor/config.js') }}";
+            CKEDITOR.config.customConfig = "{{ getAsset('vendor/ckeditor/config.js') }}";
             
         });
     </script>

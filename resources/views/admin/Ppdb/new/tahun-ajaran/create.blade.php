@@ -1,4 +1,4 @@
-@extends('admin.layouts.new.app', ['title' => 'Tambah Jurusan'])
+@extends('admin.layouts.new.app', ['title' => 'Tambah Tahun Ajaran'])
 
 @section('content')
     <div class="flex w-full justify-center">
@@ -22,24 +22,55 @@
         <div class="card rounded p-6 drop-shadow-lg bg-white mt-4 w-full lg:w-3/5 ">
             <h2 class="text-sm lg:text-base font-bold lg:text-center">Masukkan data Tahun Ajaran yang baru
             </h2>
-            <div class="divider"></div>
+            <div class="divider my-2"></div>
+                <x-alert />
             <form action="{{ route('ppdb.tahun_ajaran.store') }}" method="post">
                 @csrf
-                <div class="form-control gap-2 mb-4">
+                {{-- <div class="form-control gap-2 mb-4">
                     <label for="#" class="appearance-none text-sm lg:text-base">Masukkan Tahun Ajaran</label>
-                    <input type="text" class="input input-bordered @error('school_year')
+                    <input type="text"
+                        class="input input-bordered @error('school_year')
                         input-error
-                    @enderror w-full" name="school_year" placeholder="Tahun Ajaran" value="{{ old('school_year') }}">
+                    @enderror w-full"
+                        name="school_year" placeholder="Tahun Ajaran" value="{{ old('school_year') }}">
                     @error('school_year')
                         <p class="text-red-500">{{ $message }}</p>
                     @enderror
+                </div> --}}
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-4">
+                    <label for="#" class="appearance-none text-sm lg:text-base">Masukkan Tahun Ajaran</label>
+                    <div class="flex flex-row gap-2">
+                        <input type="text"
+                            class="input input-bordered w-[150px] input-year @error('year-picker-1')
+                        input-error
+                        @enderror"
+                            name="year-picker-1" 
+                            @if (old('year-picker-1'))
+                                value="{{ old('year-picker-1') }}"   
+                            @endif>
+                        <p class="text-2xl flex items-center justify-center"> / </p>
+                        <input type="text"
+                            class="input input-bordered w-[150px] input-year @error('year-picker-2')
+                        input-error
+                        @enderror"
+                            name="year-picker-2" 
+                            @if (old('year-picker-2'))
+                                value="{{ old('year-picker-2') }}"
+                            @endif>
+                    </div>
+                    
                 </div>
                 <div class="flex flex-col-reverse lg:flex-row items-center justify-end w-full gap-4 lg:gap-3">
-                    <a href="{{ route('ppdb.tahun_ajaran.index') }}" class="btn btn-outline btn-error w-full lg:w-fit">BATAL</a>           
-                    <button type="submit" class="btn w-full lg:w-fit">SIMPAN</button> 
+                    <a href="{{ route('ppdb.tahun_ajaran.index') }}"
+                        class="btn btn-outline btn-error w-full lg:w-fit">BATAL</a>
+                    <button type="submit" class="btn w-full lg:w-fit">SIMPAN</button>
                 </div>
-                
             </form>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="{{ getAsset('js/admin/ppdb/tahun-ajaran/year-picker.js') }}"></script>
 @endsection

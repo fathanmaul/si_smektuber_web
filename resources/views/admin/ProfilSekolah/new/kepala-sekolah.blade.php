@@ -59,7 +59,7 @@
             <div class="form-control mt-4 gap-2">
                 <label for="" class="appearance-none">Foto Kepala Sekolah {!! $kepala_sekolah->school_headmaster_picture != null
                     ? '&nbsp; &nbsp; <a href="' .
-                        asset('storage/' . $kepala_sekolah->school_headmaster_picture) .
+                    url('storage/app/' . $kepala_sekolah->school_headmaster_picture) .
                         '" class="hover:underline text-sm" target="_blank">Lihat Foto <span><i class="fa-solid fa-window-restore text-xs"></i></span></a>'
                     : '' !!}
                 </label>

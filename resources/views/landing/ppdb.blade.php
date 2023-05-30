@@ -25,7 +25,7 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <img class="img-fluid" src="{{ asset('landing/img/smk7.png') }}" alt="" />
+                    <img class="img-fluid" src="{{ getAsset('landing/img/smk7.png') }}" alt="" />
                 </div>
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
                     <div class="h-100">
@@ -69,11 +69,11 @@
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 wow fadeInUp order-lg-last text-end" data-wow-delay="0.1s">
-                    <img class="img-fluid" src="{{ asset('landing/img/gambar_aplikasi.png') }}" alt="" />
+                    <img class="img-fluid" src="{{ getAsset('landing/img/gambar_aplikasi.png') }}" alt="" />
                 </div>
                 <div class="col-lg-6 wow fadeInUp order-lg-first" data-wow-delay="0.5s">
                     <div class="h-100">
-                        <h8 class="display-8">Download</h8>
+                        <h6 class="display-8">Download</h6>
                         <h1 class="display-6">Smektuber Mobile</h1>
                         <h5 class="display-8">Download aplikasi smektuber untuk informasi pendaftaran lebih lanjut</h5>
                         <a class="btn btn-primary py-3 px-4"
