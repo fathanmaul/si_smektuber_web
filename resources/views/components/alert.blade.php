@@ -1,6 +1,6 @@
 @if (session()->has('flash'))
     <div @class([
-        'p-4 text-md rounded-lg my-4 flex flex-row gap-3 items-center',
+        'p-4 text-md rounded-lg mb-3 flex flex-row gap-3 items-center',
         'alert-danger' => session('flash')['type'] == 'danger',
         'alert-warning' => session('flash')['type'] == 'warning',
         'alert-success' => session('flash')['type'] == 'success',

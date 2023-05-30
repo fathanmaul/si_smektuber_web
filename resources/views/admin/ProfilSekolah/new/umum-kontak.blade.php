@@ -16,7 +16,9 @@
 
     <div class="card rounded-md drop-shadow-lg p-6 bg-white">
         @include('admin.ProfilSekolah.umum.layouts.tabs')
-        <x-alert />
+        <div class="mt-3">
+            <x-alert />
+        </div>
         <h2 class="font-bold text-lg {{ session()->has('flash') ? 'mt-0' : 'mt-4' }}">Kontak</h2>
         <div class="divider my-0 h-0 mb-4 mt-4"></div>
         <form action="{{ route('sekolah.kontak.put') }}" method="POST">
@@ -86,7 +88,7 @@
                 <div class="w-full">
                     <div class="form-control gap-2">
                         <label for="" class="appearance-none">URL Facebook<br> (contoh:
-                            https://www.facebook.com/flyingcat)</label>
+                            https://www.facebook.com/abcd)</label>
                         <div class="flex relative w-full items-center">
                             <span class="absolute left-4">
                                 <i class="fa-brands fa-facebook"></i>
@@ -106,7 +108,7 @@
                 <div class="w-full">
                     <div class="form-control gap-2">
                         <label for="" class="appearance-none">URL Instagram<br>(contoh:
-                            https://www.instagram.com/flyingcatx)</label>
+                            https://www.instagram.com/abcd)</label>
                         <div class="flex relative w-full items-center">
                             <span class="absolute left-4">
                                 <i class="fa-brands fa-instagram"></i>
@@ -126,7 +128,7 @@
                 <div class="w-full">
                     <div class="form-control gap-2">
                         <label for="" class="appearance-none">URL Twitter<br>(contoh:
-                            https://www.twitter.com/flyingcat)</label>
+                            https://www.twitter.com/abcd)</label>
                         <div class="flex relative w-full items-center">
                             <span class="absolute left-4">
                                 <i class="fa-brands fa-twitter"></i>
@@ -146,7 +148,7 @@
                 <div class="w-full">
                     <div class="form-control gap-2">
                         <label for="" class="appearance-none">URL Youtube <br>(contoh:
-                            https://www.youtube.com/)</label>
+                            https://www.youtube.com/abcd)</label>
                         <div class="flex relative w-full items-center">
                             <span class="absolute left-4">
                                 <i class="fa-brands fa-youtube"></i>
