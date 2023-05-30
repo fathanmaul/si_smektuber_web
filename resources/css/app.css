@@ -62,11 +62,11 @@
     }
 
     .input{
-        @apply dark:bg-white;
+        @apply rounded-md dark:bg-white;
     }
 
     .card{
-        @apply rounded;
+        @apply rounded-md;
     }
 
     .badge-warning{

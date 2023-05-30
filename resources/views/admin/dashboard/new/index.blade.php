@@ -19,28 +19,43 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        <div class="card rounded-md p-6 my-2 mx-2 h-[150px] bg-white drop-shadow-lg">
-            <div>
-                <h3 class="text-lg text-primary">Jurusan</h3>
+        <div class="card rounded-md my-2 mx-2 h-[150px] bg-white drop-shadow-lg flex flex-row">
+            <div class="w-2 rounded-tl-md rounded-bl-md h-full bg-red-400">
+
             </div>
-            <div class="h-full flex items-end justify-end ">
-                <h4 class="text-4xl font-bold text-primary">{{ $countJurusan }}</h4>
-            </div>
-        </div>
-        <div class="card rounded-md p-6 my-2 mx-2 h-[150px] bg-white drop-shadow-lg">
-            <div>
-                <h3 class="text-lg text-primary">Ekstrakurikuler</h3>
-            </div>
-            <div class="h-full flex items-end justify-end ">
-                <h4 class="text-4xl font-bold text-primary">{{ $countJurusan }}</h4>
+            <div class="p-6 flex flex-col justify-between h-full flex-1">
+                <div>
+                    <h3 class="text-lg text-primary">Jurusan</h3>
+                </div>
+                <div class="h-full flex items-end justify-end ">
+                    <h4 class="text-4xl font-bold text-primary">{{ $countJurusan }}</h4>
+                </div>
             </div>
         </div>
-        <div class="card rounded-md p-6 my-2 mx-2 h-[150px] bg-white drop-shadow-lg">
-            <div>
-                <h3 class="text-lg text-primary">Artikel</h3>
+        <div class="card rounded-md my-2 mx-2 h-[150px] bg-white drop-shadow-lg flex flex-row">
+            <div class="w-2 rounded-tl-md rounded-bl-md h-full bg-yellow-400">
+
             </div>
-            <div class="h-full flex items-end justify-end ">
-                <h4 class="text-4xl font-bold text-primary">{{ $countArtikel }}</h4>
+            <div class="p-6 flex flex-col justify-between h-full flex-1">
+                <div>
+                    <h3 class="text-lg text-primary">Ekstrakurikuler</h3>
+                </div>
+                <div class="h-full flex items-end justify-end ">
+                    <h4 class="text-4xl font-bold text-primary">{{ $countExtra }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="card rounded-md my-2 mx-2 h-[150px] bg-white drop-shadow-lg flex flex-row">
+            <div class="w-2 rounded-tl-md rounded-bl-md h-full bg-teal-400">
+
+            </div>
+            <div class="p-6 flex flex-col justify-between h-full flex-1">
+                <div>
+                    <h3 class="text-lg text-primary">Artikel</h3>
+                </div>
+                <div class="h-full flex items-end justify-end ">
+                    <h4 class="text-4xl font-bold text-primary">{{ $countArtikel }}</h4>
+                </div>
             </div>
         </div>
 
