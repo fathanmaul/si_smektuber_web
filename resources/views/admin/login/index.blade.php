@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div class="h-screen flex flex-row-reverse">
+    <div class="h-screen flex flex-row">
         <div class="h-full flex-1 bg-white">
             <div class="h-full flex flex-col items-center justify-center">
                 <div class="m-24">
