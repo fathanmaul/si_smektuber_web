@@ -88,7 +88,7 @@ class SekolahController extends Controller
     public function kontakPut(Request $request)
     {
         $request->validate([
-            'school_email' => 'required|email',
+            'school_email' => 'required|email|email:rfc,dns',
             'school_phone' => 'required|numeric|digits_between:7,20',
             'school_whatsapp' => 'nullable|numeric|digits_between:10,20',
             'school_facebook' => [
@@ -158,6 +158,11 @@ class SekolahController extends Controller
     {
         $dataProfil = About::first();
         return view('admin.ProfilSekolah.sejarah.index', ['profil' => $dataProfil]);
+    }
+
+    public function foto()
+    {
+        return view('admin.ProfilSekolah.new.umum-foto');
     }
 
     public function visiMisi()
@@ -293,6 +298,8 @@ class SekolahController extends Controller
         // $fileSize = $request->file('school_headmaster_picture')->getSize();
 
     }
+
+    
 
 
     public function prestasiSekolah()

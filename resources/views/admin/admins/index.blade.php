@@ -106,6 +106,12 @@
                     @endif
                 </tbody>
             </table>
+            <div class="mt-3 hidden lg:block">
+                {{ $data->links() }}
+            </div>
+            <div class="mt-3 block lg:hidden">
+                {{ $data->links('pagination::bootstrap-4') }}
+            </div>
         </div>
     </div>
 

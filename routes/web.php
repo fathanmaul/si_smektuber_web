@@ -141,6 +141,10 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->middleware(['middl
             Route::get('/', [SekolahController::class, 'kepalaSekolah'])->name('sekolah.kepala-sekolah');
             Route::post('/', [SekolahController::class, 'kepalaSekolahPut'])->name('sekolah.kepala-sekolah.put');
         });
+        Route::group(['prefix' => 'foto', 'as' => 'sekolah.'], function(){
+            Route::get('/', [SekolahController::class, 'foto'])->name('foto');
+            Route::post('/', [SekolahController::class, 'fotoPut'])->name('foto.put');
+        });
         // Route::get('/prestasi-sekolah', [SekolahController::class, 'prestasiSekolah'])->name('sekolah.prestasi');
         // Route::get('/ekstrakurikuler', [SekolahController::class, 'ekstrakurikuler'])->name('sekolah.ekstrakurikuler');
     });
