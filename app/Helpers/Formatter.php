@@ -9,7 +9,7 @@ use App\Models\Role;
  */
 function formatUser()
 {
-    $avatar = (api()->user()->avatar) ? asset('storage/' . api()->user()->avatar) : null;
+    $avatar = (api()->user()->avatar) ? asset('storage/app/' . api()->user()->avatar) : null;
 
     $user = [
         'name' => api()->user()->name,

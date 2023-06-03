@@ -24,10 +24,12 @@ Route::prefix('/auth')->group(function () {
         Route::post('/logout', 'AuthController@logout')->name('api.auth.logout');
         Route::post('/refresh', 'AuthController@refresh')->name('api.auth.refresh');
         Route::put('/update-password', 'AuthController@updatePassword')->name('api.auth.reset-password');
+        
     });
 
     Route::post('/forgot-password', 'AuthController@forgotPassword')->name('api.auth.forgot-password');
     Route::post('/otp', 'AuthController@validateOtp')->name('api.auth.otp');
+    Route::post('/reset-password','AuthController@resetForgotPassword')->name('api.auth.reset-forgot-password');
 });
 
 Route::prefix('/article')->middleware('api.auth')->group(function () {
@@ -39,6 +41,7 @@ Route::prefix('/user')->middleware('api.auth')->group(function () {
     Route::get('/detail', 'UserController@show')->name('api.user.detail');
     Route::put('/update', 'UserController@update')->name('api.user.update');
     Route::post('/avatar', 'UserController@updateAvatar')->name('api.user.update-avatar');
+    Route::delete('/avatar', 'UserController@deleteAvatar')->name('api.user.delete-avatar');
 });
 
 // Route::get('/about', fn () => Response::success(About::first()))->middleware('api.auth')->name('api.about');
