@@ -11,7 +11,17 @@ class JobController extends Controller
         $page = request()->get('page') ?? 1;
 
         try {
-            return Response::paginate(Job::paginate(10, ['*'], 'page', $page));
+            // return Response::paginate(Job::paginate(10, ['*'], 'page', $page));
+            $jobs = Job::paginate(10, ['*'], 'page', $page);
+
+            $imageJobs = $jobs->getCollection()->map(function ($job){
+                $job->thumbnail = formatImageUrl($job->thumbnail);
+                return $job;
+            });
+
+            $formattedPaginateJobs = $jobs->setCollection($imageJobs);
+
+            return Response::paginate($formattedPaginateJobs);
         } catch (\Throwable $th) {
             return Response::internalServerError($th->getMessage());
         }
@@ -20,10 +30,13 @@ class JobController extends Controller
     public function show($id)
     {
         try {
-            if (!Job::find($id)) {
+            $job = Job::find($id);
+            if (!$job) {
                 return Response::error('Job not found', [], 404);
             }
-            return Response::success(Job::findOrFail($id));
+
+            $job->thumbnail = formatImageUrl($job->thumbnail);
+            return Response::success($job);
         } catch (\Throwable $th) {
             return Response::internalServerError($th->getMessage());
         }
