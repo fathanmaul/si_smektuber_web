@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Role;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * Format user model to array for response json
@@ -9,7 +10,7 @@ use App\Models\Role;
  */
 function formatUser()
 {
-    $avatar = (api()->user()->avatar) ? asset('storage/' . api()->user()->avatar) : null;
+    $avatar = (api()->user()->avatar) ? asset('storage/app/' . api()->user()->avatar) : null;
 
     $user = [
         'name' => api()->user()->name,
@@ -64,4 +65,14 @@ if (!function_exists('api')) {
 function getAsset($path, $secure = null)
 {
     return app('url')->asset("public/".$path, $secure);
+}
+
+/**
+ * Get url Path for image
+ * 
+ * @return url(Storage::url('app/'.$url));
+ */
+function formatImageUrl($url)
+{
+    return $url ? url(Storage::url('app/'.$url)) : null;
 }
