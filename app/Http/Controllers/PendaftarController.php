@@ -88,6 +88,11 @@ class PendaftarController extends Controller
                 'user_registration_status' => '1',
                 'major_accepted' => $request->major_accepted
             ]);
+
+            $user = User::findOrFail($pendaftar->user_id);
+            $user->role_id = 3;
+            $user->save();
+
             return back()->with('flash', [
                 'type' => 'success',
                 'message' => 'Siswa berhasil diterima'

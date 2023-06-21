@@ -30,7 +30,9 @@ class AppServiceProvider extends ServiceProvider
     {
         if (!$this->app->runningInConsole()) {
             $school_name = ModelsAbout::pluck('school_name')->first();
+            $school_info = \App\Models\About::first();
             View::share('school_name', $school_name);
+            View::share('school_info', $school_info);
         }
         Validator::extend('year', function ($attribute, $value, $parameters, $validator) {
             return preg_match('/^\d{4}$/', $value);
