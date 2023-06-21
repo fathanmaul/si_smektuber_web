@@ -274,17 +274,22 @@ class EkstrakurikulerController extends Controller
     public function destroy($id)
     {
 
+        
         $extracurricular = Extracurricular::find($id);
-        $cek_logo = file_exists(public_path('storage/' . $extracurricular->extracurricular_logo));
-        $cek_picture = file_exists(public_path('storage/' . $extracurricular->extracurricular_photo_1));
+        // $cek_logo = file_exists(public_path('storage/app/' . $extracurricular->extracurricular_logo));
+        $cek_logo = Storage::exists('storage/app/' . $extracurricular->extracurricular_logo);
+        // $cek_picture = file_exists(public_path('storage/app/' . $extracurricular->extracurricular_photo_1));
+        $cek_picture = Storage::exists('storage/app/' . $extracurricular->extracurricular_photo_1);
         if ($extracurricular == null) {
             return $this->backWithError_1('Ekstrakurikuler tidak ditemukan!');
         }
         if ($extracurricular->extracurricular_logo != null) {
-            unlink(public_path('storage/' . $extracurricular->extracurricular_logo));
+            // unlink(public_path('storage/app/' . $extracurricular->extracurricular_logo));
+            Storage::delete('storage/app/' . $extracurricular->extracurricular_logo);
         }
         if ($extracurricular->extracurricular_photo_1 != null) {
-            unlink(public_path('storage/' . $extracurricular->extracurricular_photo_1));
+            // unlink(public_path('storage/app/' . $extracurricular->extracurricular_photo_1));
+            Storage::delete('storage/app/' . $extracurricular->extracurricular_photo_1);
         }
         Extracurricular::destroy($id);
         return $this->backWithSuccess_1('Ekstrakurikuler berhasil dihapus!');

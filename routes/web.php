@@ -85,10 +85,26 @@ Route::get('/blog', function () {
 // });
 
 Route::get('/', [LandingHomeController::class, 'index'])->name('landing.index');
-Route::get('/about', [LandingHomeController::class, 'showAbout'])->name('landing.about');
-Route::get('/ppdb', [LandingHomeController::class, 'showPpdb'])->name('landing.ppdb');
-Route::get('/article', [LandingHomeController::class, 'showArticle'])->name('landing.article');
+Route::group(['prefix' => '/tentang', 'as' => 'landing.tentang.'], function () {
+    Route::get('/profil', [LandingHomeController::class, 'showProfilSekolah'])->name('profil');
+    Route::get('/jurusan', [LandingHomeController::class, 'showJurusan'])->name('jurusan');
+    Route::get('/ekstrakurikuler', [LandingHomeController::class, 'showEkstrakurikuler'])->name('ekstrakurikuler');
+});
+Route::group(['prefix' => '/artikel', 'as' => 'landing.artikel.'], function () {
+    Route::get('/', [LandingHomeController::class, 'showArticle'])->name('index');
+    Route::get('/{slug}', [LandingHomeController::class, 'showArticleDetail'])->name('detail');
+});
+
+Route::group(['prefix' => '/ppdb', 'as' => 'landing.ppdb.'], function(){
+    Route::get('/', [LandingHomeController::class, 'showPpdb'])->name('index');
+});
+
+// Route::get('/about', [LandingHomeController::class, 'showAbout'])->name('landing.about');
+// Route::get('/ppdb', [LandingHomeController::class, 'showPpdb'])->name('landing.ppdb');
+// Route::get('/article', [LandingHomeController::class, 'showArticle'])->name('landing.article');
 Route::get('/konsultasi', [LandingHomeController::class, 'showKonsultasi'])->name('landing.konsultasi');
+
+
 /**
  * 
  * 
@@ -119,7 +135,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::prefix('admin')->middleware(['middleware' => 'auth'])->middleware(['middleware' => 'admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::group(['prefix' => 'akun', 'as' => 'akun.'], function(){
+    Route::group(['prefix' => 'akun', 'as' => 'akun.'], function () {
         Route::get('/', [UserController::class, 'index'])->name('index');
         Route::put('/', [UserController::class, 'putProfil'])->name('put');
         Route::get('/changePassword', [UserController::class, 'editPassword'])->name('password.edit');
@@ -141,7 +157,7 @@ Route::prefix('admin')->middleware(['middleware' => 'auth'])->middleware(['middl
             Route::get('/', [SekolahController::class, 'kepalaSekolah'])->name('sekolah.kepala-sekolah');
             Route::post('/', [SekolahController::class, 'kepalaSekolahPut'])->name('sekolah.kepala-sekolah.put');
         });
-        Route::group(['prefix' => 'foto', 'as' => 'sekolah.'], function(){
+        Route::group(['prefix' => 'foto', 'as' => 'sekolah.'], function () {
             Route::get('/', [SekolahController::class, 'foto'])->name('foto');
             Route::post('/', [SekolahController::class, 'fotoPut'])->name('foto.put');
         });

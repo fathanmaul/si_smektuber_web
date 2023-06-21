@@ -12,5 +12,8 @@
             Informasi Sekolah / Foto Sekolah
         </h3>
     </div>
+    <div class="card rounded-md drop-shadow-lg p-6 bg-white">
+        @include('admin.ProfilSekolah.umum.layouts.tabs')
+    </div>
 </div>
 @endsection
