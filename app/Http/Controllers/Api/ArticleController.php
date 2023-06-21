@@ -13,7 +13,15 @@ class ArticleController extends Controller
             $page = $request->query('page', 1);
     
             $articles = Article::paginate(10, ['*'], 'page', $page);
-    
+            
+            $imageArticles = $articles->getCollection()->map(function ($article) {
+                $article->thumbnail =formatImageUrl($article->thumbnail);
+                return $article;
+            });
+
+            $formattedPaginateArticles = $articles->setCollection($imageArticles);
+
+            return Response::paginate($formattedPaginateArticles);
             return Response::paginate($articles);
         } catch (\Throwable $th) {
             return Response::internalServerError($th->getMessage());
@@ -23,10 +31,15 @@ class ArticleController extends Controller
     public function show($id)
     {
         try {
-            if (!Article::find($id)) {
+            $article = Article::find($id);
+
+            if (!$article) {
                 return Response::error('Article not found', [], 404);
             }
-            return Response::success(Article::find($id));
+
+            $article->thumbnail =formatImageUrl($article->thumbnail);
+
+            return Response::success($article);
         } catch (\Throwable $th) {
             return Response::internalServerError($th->getMessage());
         }

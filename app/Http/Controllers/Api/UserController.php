@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Query\UserQuery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -71,6 +72,22 @@ class UserController extends Controller
             $user->save();
 
             return Response::success(formatUser(), 'Avatar updated successfully');
+        } catch (\Throwable $th) {
+            return Response::internalServerError($th->getMessage());
+        }
+    }
+    public function deleteAvatar()
+    {
+        try {
+            $user = api()->user();
+
+            if ($user->avatar) {
+                Storage::delete($user->avatar);
+                $user->avatar = null;
+                $user->save();
+            }
+
+            return Response::success(formatUser(), 'Avatar deleted successfully');
         } catch (\Throwable $th) {
             return Response::internalServerError($th->getMessage());
         }
