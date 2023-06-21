@@ -9,7 +9,7 @@
             style="width: 45px"
           />Sistem Informasi SMKN 7 Jember
         </h2> -->
-        <img src="landing/img/Logo_smektuber.png" style="width: 200px"
+        <img src="{{ getAsset('landing/img/Logo_smektuber.png') }}" style="width: 200px"
             class="img-fluid me-2 align-items-center pt-3 pb-3" />
     </a>
     <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -22,10 +22,10 @@
             <a href="/ppdb" class="nav-item nav-link {{ Request::is('ppdb') ? 'active' : '' }}">PPDB</a>
             <a href="/article" class="nav-item nav-link {{ Request::is('article') ? 'active' : '' }}">Artikel</a>
 
-            <a href="/konsultasi" class="nav-item nav-link">Konsultasi</a>
+            <a href="/konsultasi"
+                class="nav-item nav-link {{ Request::is('konsultasi') ? 'active' : '' }}">Konsultasi</a>
         </div>
         <a href="/login" class="btn btn-primary px-4">Sign in </a>
-        
     </div>
 </nav>
 <!-- Navbar End -->

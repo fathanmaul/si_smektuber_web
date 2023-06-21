@@ -25,6 +25,7 @@ class DashboardController extends Controller
         $countJurusan = Major::count();
         $countExtra = Extracurricular::count();
         $countArtikel = Article::count();
+        $countExtra=Extracurricular::count();
         $ppdb = DetailRegistration::select([
             'registration.id',
             'school_year.school_year',
@@ -38,6 +39,6 @@ class DashboardController extends Controller
             // return Response::json($ppdb);   
         // dd(auth()->user());
         // return view('admin.dashboard.index');
-        return view('admin.dashboard.new.index', compact('artikel', 'countJurusan', 'countArtikel', 'ppdb'));
+        return view('admin.dashboard.new.index', compact('artikel', 'countJurusan', 'countArtikel', 'countExtra', 'ppdb'));
     }
 }

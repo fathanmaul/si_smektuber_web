@@ -11,7 +11,16 @@ class ExtraController extends Controller
         $page = request()->get('page') ?? 1;
 
         try {
-            return Response::paginate(Extra::paginate(10, ['*'], 'page', $page));
+            $extras = Extra::paginate(10, ['*'], 'page', $page);
+
+            $imageExtras = $extras->getCollection()->map(function ($extra) {
+                $extra->extracurricular_logo = formatImageUrl($extra->extracurricular_logo);
+                $extra->extracurricular_photo_1 =  formatImageUrl($extra->extracurricular_photo_1);
+                return $extra;
+            });
+
+            $formattedPaginateExtras = $extras->setCollection($imageExtras);
+            return Response::paginate( $formattedPaginateExtras );
         } catch (\Throwable $th) {
             return Response::internalServerError($th->getMessage());
         }
@@ -20,10 +29,13 @@ class ExtraController extends Controller
     public function show($id)
     {
         try {
-            if (!Extra::find($id)) {
-                return Response::error('Extra not found', [], 404);
+            $extra = Extra::find($id);
+            if (!$extra) {
+                return Response::error('Extrakurikuler not found', [], 404);
             }
-            return Response::success(Extra::find($id));
+            $extra->extracurricular_logo = formatImageUrl($extra->extracurricular_logo);
+            $extra->extracurricular_photo_1 =  formatImageUrl($extra->extracurricular_photo_1);
+            return Response::success($extra);
         } catch (\Throwable $th) {
             return Response::internalServerError($th->getMessage());
         }

@@ -55,9 +55,9 @@ class ArtikelController extends Controller
         $slug = Str::slug($request->title);
         $image = $request->file('thumbnail');
         $image_url = null;
-        $image_name = time() . '-' . $slug . '.' . $image->extension();
         try {
             if ($image) {
+                $image_name = time() . '-' . $slug . '.' . $image->extension();
                 $image_url = Storage::putFileAs('/article/thumbnail', $image, $image_name);
             }
             Article::insert([
@@ -122,6 +122,7 @@ class ArtikelController extends Controller
                     if ($thumbnail_check) {
                         Storage::delete($article->thumbnail);
                         $image_url = Storage::putFileAs('/article/thumbnail', $image, $image_name);
+                        $article->thumbnail = $image_url;
                     } else {
                         $image_url = Storage::putFileAs('/article/thumbnail', $image, $image_name);
                         $article->thumbnail = $image_url;

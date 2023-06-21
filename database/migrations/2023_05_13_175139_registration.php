@@ -21,6 +21,7 @@ class Registration extends Migration
             $table->date('date_start');
             $table->date('date_end');
             $table->tinyInteger('status')->default(0);
+            $table->softDeletes();
             $table->timestamps(); // created_at & updated_at
         });
     }

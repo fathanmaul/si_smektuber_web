@@ -59,7 +59,12 @@
                     @endif
                 </tbody>
             </table>
-            {{ $tahun_ajaran->links() }}
+            <div class="mt-3 hidden lg:block">
+                {{ $tahun_ajaran->links() }}
+            </div>
+            <div class="mt-3 block lg:hidden">
+                {{ $tahun_ajaran->links('pagination::bootstrap-4') }}
+            </div>
         </div>
     </div>
 

@@ -14,7 +14,7 @@ class PpdbRegistration extends Seeder
      */
     public function run()
     {
-        for ($i=1; $i<=12; $i++) {
+        for ($i=1; $i<=8; $i++) {
             Registration::insert([
                 'school_year' => $i,
                 'description' => 'Penerimaan Peserta Didik Baru Tahun Pelajaran',

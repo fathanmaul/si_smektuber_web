@@ -21,6 +21,7 @@ class PPDBController extends Controller
             
             if ($count > 0) {
                 $registration = Registration::where('status', 1)->first();
+                $registration->poster = formatImageUrl($registration->poster);
                 return Response::success($registration);
             } else {
                 return Response::error('No active registration data found', [], 404);

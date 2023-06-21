@@ -58,7 +58,7 @@
                     @if ($jurusan->major_logo)
                         <p class="text-sm">Logo sebelumnya : </p>
                         <div class="w-64">
-                            <img src="{{ asset('storage/' . $jurusan->major_logo) }}" alt="" />
+                            <img src="{{ url('storage/app/' . $jurusan->major_logo) }}" alt="" />
                         </div>
                     @else
                         <p class="text-sm text-gray-500">Logo tidak tersedia!</p>
@@ -76,7 +76,7 @@
                     @if ($jurusan->picture_1)
                         <div class="w-64">
                             <p class="text-sm">Foto Jurusan 1 sebelumnya : </p>
-                            <img src="{{ asset('storage/' . $jurusan->picture_1) }}" alt="" />
+                            <img src="{{ url('storage/app/' . $jurusan->picture_1) }}" alt="" />
                         </div>
                     @else
                         <p class="text-sm text-gray-500">Foto tidak tersedia!</p>

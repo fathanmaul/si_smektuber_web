@@ -45,22 +45,6 @@ class PendaftarController extends Controller
         // ->orderBy('created_at', 'desc')
         // ->paginate(10);
     }
-    // public function show($id)
-    // {
-    //     if ($id == null || $id == "") {
-    //         return $this->backWithError('ppdb.pendaftar.index', 'Siswa tidak ditemukan.');
-    //     }
-    //     //
-    //     $pendaftar = DetailRegistration::where('id', $id);
-    //     return Response::json($pendaftar);
-    //     $major_1 = Major::where('id',$pendaftar->major_id_1);
-    //     $major_2 = Major::where('id',$pendaftar->major_id_2);
-    //     // dd($major);
-    //     // Jika menggunakan Eloquent, gunakan "findOrFail" untuk menemukan pendaftaran berdasarkan ID atau lemparkan pengecualian jika tidak ditemukan
-
-    //     return view('admin.Ppdb.new.pendaftar.show', compact('pendaftar', 'major_1', 'major_2'));
-
-    // }
 
     public function show($id)
     {
@@ -71,7 +55,6 @@ class PendaftarController extends Controller
             if(!$pendaftar){
                 return $this->backWithError('ppdb.pendaftar.index', 'Siswa tidak ditemukan.');
             }
-        //   return Response::json($pendaftar);
         $user = User::findOrFail($pendaftar->user_id);
         $major_1 = Major::where('id', $pendaftar->major_id_1)->first();
         $major_2 = Major::where('id', $pendaftar->major_id_2)->first();
@@ -105,6 +88,11 @@ class PendaftarController extends Controller
                 'user_registration_status' => '1',
                 'major_accepted' => $request->major_accepted
             ]);
+
+            $user = User::findOrFail($pendaftar->user_id);
+            $user->role_id = 3;
+            $user->save();
+
             return back()->with('flash', [
                 'type' => 'success',
                 'message' => 'Siswa berhasil diterima'
